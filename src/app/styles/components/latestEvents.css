@@ -1,0 +1,36 @@
+/* ----------------------------- */
+/* ------- LATEST EVENTS ------- */
+/* ----------------------------- */
+
+section.latestEvents{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding: var(--site-space);
+}
+section.latestEvents h2{
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    text-align: left;
+}
+section.latestEvents a{
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    text-align: right;
+    text-decoration: none;
+    color: var(--txt-black);
+}
+section.latestEvents div.latestEvents-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--site-space-vertical) 0;
+    overflow: hidden;
+}
+section.latestEvents div.latestEvents-container div.slider-container{
+    display: flex;
+}

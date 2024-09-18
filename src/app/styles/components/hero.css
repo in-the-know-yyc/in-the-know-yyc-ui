@@ -1,0 +1,65 @@
+:root {
+    --hero-min-height: 500px;
+}
+
+/* -------------------- */
+/* ------- HERO ------- */
+/* -------------------- */
+
+section.hero{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: var(--hero-min-height);
+}
+section.hero div.hero-slide{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: var(--site-space);
+    min-height: var(--hero-min-height);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;
+}
+section.hero div.hero-slide div.hero-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    min-height: var(--hero-min-height);
+    background-color: #FFFFFF;
+    border-radius:3px;
+    box-shadow: 0 0 10px 0 #FFFFFF;
+}
+section.hero div.hero-slide div.hero-content h1{
+    margin:0;
+    padding:0;
+    font-size: 5rem;
+    background: #03264B;
+    background: linear-gradient(to right, #03264B 0%, #692DD7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+section.hero div.hero-slide div.hero-content h2{
+    margin:0;
+    padding:0;
+    font-weight: normal;
+}
+section.hero div.hero-slide div.hero-content h2 span{
+    color:var(--btn-lightblue-bkg);
+}
+section.hero div.hero-slide div.hero-content div.call-to-action{
+    width:fit-content;
+    padding: var(--site-space);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px 10px var(--header-shadow);
+}
+section.hero div.hero-slide div.hero-content div.call-to-action button{
+    background-color: var(--btn-blue-bkg);
+    color: #FFFFFF;
+    font-size: 1.2rem;
+}

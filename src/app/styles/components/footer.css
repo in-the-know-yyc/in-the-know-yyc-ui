@@ -1,0 +1,104 @@
+/** ---------------------- **/
+/** ------- FOOTER ------- **/
+/** ---------------------- **/
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: var(--footer-bkg);
+    padding:var(--site-space);
+    color: #FFFFFF;
+  }
+  footer div.newsletter-container,
+  footer div.nav-container,
+  footer div.copyright-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: var(--site-space-vertical) 0;
+    margin: var(--site-space-vertical) 0;
+  }
+  /* Newsletter */
+  footer div.newsletter-container div h3,
+  footer div.newsletter-container div p{
+    margin: 0;
+    padding:0;
+  }
+  footer div.newsletter-container div form input{
+    border:none;
+    padding: 15px 25px;
+    margin: 0 2px;
+    background-color: var(--bkg-light);
+  }
+  footer div.newsletter-container div form button{
+    border: none;
+    background-color: var(--btn-blue-bkg);
+    padding: 15px 25px;
+    color: var(--bkg-light);
+  }
+  /* Navigation */
+  footer div.nav-container{
+    justify-content: space-between;
+    align-items: flex-start;
+    border-top: solid 1px #FFFFFF;
+    border-bottom: solid 1px #FFFFFF;
+  }
+  footer div.nav-container div h3{
+    padding-top: var(--site-space-vertical);
+    margin: 0;
+  }
+  footer div.nav-container div ul{
+    margin: 0;
+    padding:0;
+    list-style: none;
+  }
+  footer div.nav-container div ul li{
+    padding: var(--site-space-vertical) 0 0 0;
+  }
+  footer div.nav-container div ul li a{
+    color:#FFFFFF;
+    text-decoration: none;
+  }
+  footer div.nav-container div.social-container ul{
+    display: flex;
+    margin: 0;
+    padding:0;
+    list-style: none;
+  }
+  footer div.nav-container div.social-container ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--site-space-vertical) 10px var(--site-space-vertical) 0;
+    padding:.3dvw;
+    border-radius:6px;
+    background: #81BEFF;
+  }
+  footer div.nav-container div.social-container ul li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:1.5dvw;
+    height:1.5dvw;
+    margin:0;
+    padding:0;
+  }
+  footer div.nav-container div.social-container ul li a img{
+    width:1.5dvw;
+    height:1.5dvw;
+    margin:0;
+    padding:0;
+  }
+  /* Copyright */
+  footer div.copyright-container p{
+    margin:0;
+    padding:0;
+  }
+  footer div.copyright-container p span{
+    background-color: var(--btn-lightblue-bkg);
+    border-radius: 3px;
+    padding:.3dvw;
+  }
