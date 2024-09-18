@@ -1,0 +1,58 @@
+/* -------------------------------- */
+/* ------- CARDS | VERTICAL ------- */
+/* -------------------------------- */
+
+article.cardVertical{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width:20dvw;
+    margin-right:30px;
+    padding:10px;
+    box-shadow: 0 0 10px 10px var(--header-shadow);
+    border:solid 1px var(--header-shadow);
+}
+article.cardVertical img{
+    max-width: 100%;
+}
+article.cardVertical h3{
+    margin: 0;
+    padding: 1dvh 0;
+}
+article.cardVertical p{
+    margin: 0;
+    padding: 1dvh 0;
+}
+article.cardVertical ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin:0;
+    padding: 1dvh 0;
+    list-style: none;
+}
+article.cardVertical ul li{
+    width: 55%;
+    margin:10px 0;
+    padding:0 10px 0 0;
+    font-size: .8rem;
+}
+article.cardVertical ul li:nth-child(even){
+    width: 40%;
+    padding:0 0 0 10px;
+    text-align: right;
+}
+article.cardVertical ul li.attendants{
+    color: var(--cobalt-blue);
+}
+article.cardVertical ul li img{
+    margin-right:10px;
+    vertical-align: middle;
+}
+article.cardVertical ul li button{
+    color:var(--cobalt-blue);
+    border:solid 2px var(--cobalt-blue);
+    border-radius:3px;
+    background-color: #FFFFFF;
+}

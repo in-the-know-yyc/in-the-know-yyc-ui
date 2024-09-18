@@ -1,0 +1,49 @@
+:root{
+    --comments-space: 7dvh;
+}
+
+/* ------------------------ */
+/* ------- COMMENTS ------- */
+/* ------------------------ */
+section.comments div.comments-container div.comment{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding-top:var(--comments-space);
+    padding-bottom:0;
+}
+section.comments div.comments-container div.comment:nth-child(even){
+    padding-top:0;
+    padding-bottom:var(--comments-space);
+}
+section.comments div.comments-container-odd div.comment:last-child{
+    margin:0 auto;
+}
+section.comments div.comments-container div.comment div.photo{
+    width:5dvw;
+    height:5dvw;
+    background-position: center center;
+    background-size: cover;
+    border-radius:50%;
+    margin-left:1dvw;
+    z-index: 1;
+}
+section.comments div.comments-container div.comment div.text{
+    background-color: #FFFFFF;
+    border-radius:10px;
+    padding: 3dvw 2dvw;
+    margin-top:-2dvw;
+    box-shadow: 0 0 10px 0 #FFFFFF;
+    z-index: 0;
+}
+section.comments div.comments-container div.comment div.text label{
+    font-weight: bold;
+    padding-right: 1dvw;
+}
+section.comments div.comments-container div.comment div.text span{
+    font-weight: 300;
+}
+section.comments div.comments-container div.comment div.text p{
+    width: 100%;
+    text-align: left;
+}

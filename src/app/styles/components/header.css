@@ -1,0 +1,70 @@
+/** ---------------------- **/
+/** ------- HEADER ------- **/
+/** ---------------------- **/
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--site-space);
+    box-shadow: 0 0 10px 10px var(--header-shadow);
+  }
+  header div img{
+    width: auto;
+    height: 10dvh;
+  }
+  header form input{
+    border-radius:10px;
+    border: solid 1px var(--input-border-color);
+    padding: 15px 25px;
+    margin:0 2px;
+    background-color: var(--bkg-light);
+  }
+  header form button{
+    border-radius:10px;
+    border: solid 1px var(--btn-black-bkg);
+    padding: 15px 25px;
+    margin:0 2px;
+    background-color: var(--btn-black-bkg);
+    color:var(--bkg-light);
+    transition: .3s;
+  }
+  header form button:hover{
+    background-color: var(--cobalt-blue);
+    border-color: var(--cobalt-blue);
+  }
+  header nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin:0;
+    padding:0;
+  }
+  header nav ul li{
+    padding: 0 1dvw;
+  }
+  header nav ul li:last-child{
+    padding-right: 0;
+  }
+  header nav ul li a{
+    text-decoration: none;
+    color: var(--txt-black);
+    transition: .3s;
+  }
+  header nav ul li a:hover{
+    color: var(--cobalt-blue);
+  }
+  header nav ul li button{
+    border-radius:10px;
+    border: solid 1px var(--btn-black-bkg);
+    background-color: var(--btn-black-bkg);
+    padding: 15px 25px;
+    color:var(--bkg-light);
+    transition: .3s;
+  }
+  header nav ul li button:hover{
+    background-color: var(--cobalt-blue);
+    border-color: var(--cobalt-blue);
+  }

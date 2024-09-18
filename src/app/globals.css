@@ -1,0 +1,37 @@
+/** ---------------------- **/
+/** ------- GLOBAL ------- **/
+/** ---------------------- **/
+
+html,body{
+  margin:0;
+  padding:0;
+  min-width:100%;
+  min-height:100%;
+}
+*{
+  box-sizing:border-box;
+  font-family: var(--font-montserrat);
+}
+button,input,textarea,select{
+  font-family: var(--font-sarabun);
+}
+button{
+  cursor: pointer;
+  border:none;
+  padding: 15px 25px;
+}
+:root {
+  --btn-black-bkg: #0A0A0B;
+  --txt-black: #151515;
+  --header-shadow: #F6F8FD;
+  --input-border-color: #4362BE;
+  --bkg-light: #FFFFFF;
+  --cobalt-blue: #4362BE;
+  --footer-bkg: #1E2A38;
+  --btn-blue-bkg: #007BFF;
+  --btn-lightblue-bkg: #81BEFF;
+  --site-space: 3dvh 10dvw;
+  --site-space-horizontal: 10dvw;
+  --site-space-vertical: 3dvh;
+}
+
