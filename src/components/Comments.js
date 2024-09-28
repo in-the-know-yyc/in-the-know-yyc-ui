@@ -31,7 +31,7 @@ const Comments = () => {
     <section className="comments">
       <h2>What People are Saying</h2>
       <div className={`comments-container ${commentsQuantityOddClass}`}>
-        <h4>Discover what our event facilitators and attendees are saying about their experience with the events we put out</h4>
+        <h4>Discover what our event facilitators and <br /> attendees are saying about their experience <br /> with the events we put out</h4>
 
         {commentsContentTest.map((comment, index) => {
           return (
@@ -40,6 +40,7 @@ const Comments = () => {
         })}
 
       </div>
+      <div className='background-bottom'></div>
     </section>
   );
 };

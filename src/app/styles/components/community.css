@@ -15,6 +15,9 @@ section.community div{
     justify-content: space-evenly;
     align-items: flex-start;
 }
+section.community div:first-of-type{
+    width: 370px;
+}
 section.community div h2{
     width: 100%;
     margin:0;
@@ -37,11 +40,13 @@ section.community div ul{
     margin:0;
     padding:5dvh 0;
     list-style: none;
-    list-style-image: url("/images/icons/check-black.svg");
 }
 section.community div ul li{
-    width:40%;
+    width:fit-content;
     padding:5dvh 0;
+}
+section.community div ul li img{
+    margin-right: 10px;
 }
 section.community div button{
     color:#FFFFFF;

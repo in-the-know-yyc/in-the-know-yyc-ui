@@ -9,9 +9,18 @@ const Community = () => {
         <h2>Join Our Community</h2>
         <p>Sign-Up now to create your own event and be part of a global event network.</p>
         <ul>
-          <li>Easy registration</li>
-          <li>Global Access</li>
-          <li>User-Friendly Tools</li>
+          <li>
+            <Image src={`/images/icons/check-black.svg`} width={15} height={13} alt="Easy registration" />
+            Easy registration
+          </li>
+          <li>
+            <Image src={`/images/icons/check-black.svg`} width={15} height={13} alt="Global Access" />
+            Global Access
+          </li>
+          <li>
+            <Image src={`/images/icons/check-black.svg`} width={15} height={13} alt="User-Friendly Tools" />
+            User-Friendly Tools
+          </li>
         </ul>
         <button>Get Started</button>
       </div>
