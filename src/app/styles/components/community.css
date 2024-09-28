@@ -7,7 +7,7 @@ section.community{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: var(--site-space);
+    padding: 75px 7dvw;
 }
 section.community div.col1{
     display: flex;
