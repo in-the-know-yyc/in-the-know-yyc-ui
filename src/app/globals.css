@@ -26,7 +26,6 @@ html,body{
 }
 body{
   padding-top:var(--header-height);
-  padding-bottom: 100dvh;
 }
 *{
   box-sizing:border-box;
