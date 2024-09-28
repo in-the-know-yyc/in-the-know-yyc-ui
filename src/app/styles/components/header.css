@@ -2,37 +2,92 @@
 /** ------- HEADER ------- **/
 /** ---------------------- **/
 
+:root{
+  --input-border-radius: 10px;
+}
+
 header{
+    position: fixed;
+    top:0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
-    padding: var(--site-space);
-    box-shadow: 0 0 10px 10px var(--header-shadow);
+    height: var(--header-height);
+    padding: 3dvh 3.5dvw 3dvh 7dvw;
+    background-color: #FFFFFF;
+    box-shadow: -6px 10px 50px -2px #BADBFF;
+    z-index: 10;
   }
   header div img{
-    width: auto;
-    height: 10dvh;
+    width: 5.1rem;
+    height: 3.25rem;
+    margin-right:3.75dvw;
   }
-  header form input{
-    border-radius:10px;
-    border: solid 1px var(--input-border-color);
-    padding: 15px 25px;
-    margin:0 2px;
-    background-color: var(--bkg-light);
+  header form{
+    display: flex;
+    justify-content: space-between;
+    width: 29rem;
+    margin-right:3.75dvw;
+  }
+  header form div.headerInputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(90deg, #4362BE 0%, #9248FB 100%);
+    border-radius:var(--input-border-radius);
+    border:0;
+    padding:1px;
+  }
+  header form div.headerInputContainer input{
+    border-radius:var(--input-border-radius);
+    border: 0;
+    padding: 1rem 1rem 1rem 2.25rem;
+    margin:0;
+    font-size: .75rem;
+    color: #4362BE;
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+    background-position: center left 1rem;
+    background-size: 1rem;
+  }
+  header form div.headerInputContainer input:focus {
+    outline: none;
+  }
+  header form div.headerInputContainer input::placeholder{
+    color: #4362BE80;
+  }
+  header form div.headerInputContainer input#inputSearchHeader{
+    width: 14rem;
+    background-image: url('/images/icons/search-gray.svg');
+  }
+  header form div.headerInputContainer input#inputLocationHeader{
+    width: 11rem;
+    background-image: url('/images/icons/location-blue.svg');
   }
   header form button{
+    width: 3rem;
     border-radius:10px;
-    border: solid 1px var(--btn-black-bkg);
-    padding: 15px 25px;
-    margin:0 2px;
-    background-color: var(--btn-black-bkg);
-    color:var(--bkg-light);
+    padding: 1rem;
+    font-size:.75rem;
+    background-color: #151515;
+    background-image: url('/images/icons/search-white.svg');
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    background-position: center center;
     transition: .3s;
   }
   header form button:hover{
     background-color: var(--cobalt-blue);
     border-color: var(--cobalt-blue);
+  }
+  header nav{
+    flex-grow: 1;
+    margin-right:3.75dvw;
   }
   header nav ul{
     display: flex;
@@ -43,25 +98,45 @@ header{
     padding:0;
   }
   header nav ul li{
-    padding: 0 1dvw;
+    position:relative;
+    padding: .5rem;
+  }
+  header nav ul li:first-child{
+    padding-left: 0;
   }
   header nav ul li:last-child{
     padding-right: 0;
   }
   header nav ul li a{
+    position:relative;
+    font-size: 1rem;
     text-decoration: none;
-    color: var(--txt-black);
+    color: #151515;
+    transition: .3s;
+  }
+  header nav ul li a:after{
+    content: '';
+    position: absolute;
+    background: var(--cobalt-blue);
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -.3rem;
     transition: .3s;
   }
   header nav ul li a:hover{
     color: var(--cobalt-blue);
   }
+  header nav ul li a:hover:after{
+    width: 100%;
+  }
   header nav ul li button{
+    font-family: var(--font-montserrat);
+    font-size: 1rem;
     border-radius:10px;
-    border: solid 1px var(--btn-black-bkg);
-    background-color: var(--btn-black-bkg);
-    padding: 15px 25px;
-    color:var(--bkg-light);
+    background-color: #0A0A0B;
+    padding: 1rem;
+    color:#FFFFFF;
     transition: .3s;
   }
   header nav ul li button:hover{
