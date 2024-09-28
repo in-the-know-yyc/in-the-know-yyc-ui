@@ -30,7 +30,7 @@ header{
     display: flex;
     justify-content: space-between;
     width: 29rem;
-    margin-right:3.75dvw;
+    margin-right:3.5dvw;
   }
   header form div.headerInputContainer{
     display: flex;
@@ -87,7 +87,7 @@ header{
   }
   header nav{
     flex-grow: 1;
-    margin-right:3.75dvw;
+    margin-right:3.5dvw;
   }
   header nav ul{
     display: flex;
