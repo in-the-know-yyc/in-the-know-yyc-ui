@@ -8,10 +8,10 @@ section.latestEvents{
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-    padding: 1.4rem 7dvw;
+    padding: 1.4rem 0;
 }
 section.latestEvents h2{
-    margin: 0;
+    margin: 0 0 0 7dvw;
     padding: 0;
     font-size: 2.5rem;
     font-weight: 700;
@@ -19,7 +19,7 @@ section.latestEvents h2{
     text-align: left;
 }
 section.latestEvents a{
-    margin: 0;
+    margin: 0 7dvw 0 0;
     padding: 0;
     font-size: 1.5rem;
     text-align: right;
@@ -30,9 +30,9 @@ section.latestEvents a{
 section.latestEvents div.latestEvents-container{
     display: flex;
     justify-content: space-between;
-    width: calc(100% + 28px + 41px);
-    padding: 22px 41px 42.6px 28px;
-    margin-left:-28px;
+    width: 100%;
+    padding: 22px 41px 42.6px 7dvw;
+    overflow: hidden;
 }
 section.latestEvents div.latestEvents-container div.slider-container{
     display: flex;
