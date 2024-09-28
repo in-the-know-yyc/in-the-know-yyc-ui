@@ -5,7 +5,7 @@ const Community = () => {
 
   return (
     <section className="community">
-      <div>
+      <div className="col1">
         <h2>Join Our Community</h2>
         <p>Sign-Up now to create your own event and be part of a global event network.</p>
         <ul>
@@ -24,7 +24,7 @@ const Community = () => {
         </ul>
         <button>Get Started</button>
       </div>
-      <div>
+      <div className="col2">
         <Image src={`/images/community.png`} width={687} height={511} alt="Join Our Community | In The Know YYC" />
       </div>
     </section>
