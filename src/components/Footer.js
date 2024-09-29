@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div className="nav-container">
             <div>
-                <Image src="images/logo-white.svg" alt="In The Know YYC - Logo White" width={168} height={106} />
+                <Image src="/images/logo-white.svg" alt="In The Know YYC - Logo White" width={168} height={106} />
             </div>
             <div>
                 <h3>Your Account</h3>
@@ -49,22 +49,22 @@ const Footer = () => {
                 <ul>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/x.svg" alt="X icon" width={19} height={16} />
+                            <Image src="/images/social/x.svg" alt="X icon" width={19} height={16} />
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/facebook.svg" alt="Facebook icon" width={17} height={16} />
+                            <Image src="/images/social/facebook.svg" alt="Facebook icon" width={17} height={16} />
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/linkedin.svg" alt="Linkedin icon" width={17} height={16} />
+                            <Image src="/images/social/linkedin.svg" alt="Linkedin icon" width={17} height={16} />
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/instagram.svg" alt="Instagram icon" width={16} height={15} />
+                            <Image src="/images/social/instagram.svg" alt="Instagram icon" width={16} height={15} />
                         </Link>
                     </li>
                 </ul>
