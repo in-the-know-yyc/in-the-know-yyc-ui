@@ -109,6 +109,7 @@ header{
   }
   header nav ul li a{
     position:relative;
+    width: fit-content;
     font-size: 1rem;
     text-decoration: none;
     color: #151515;
