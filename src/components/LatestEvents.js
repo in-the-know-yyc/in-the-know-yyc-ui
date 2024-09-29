@@ -8,6 +8,7 @@ const LatestEvents = () => {
   // This constant is only simulating a response from the API to show any quantity of events
   const eventsContentTest = [
     {
+      id: 1,
       imagePath: '/images/events/evt1.png',
       title: 'TECHNOLOGY ADDICT24',
       description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...',
@@ -17,11 +18,11 @@ const LatestEvents = () => {
       attendants: 5000,
       price: 0
     },
-    { imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
-    { imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
-    { imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
-    { imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
-    { imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 }
+    { id: 2, imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
+    { id: 3, imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
+    { id: 4, imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
+    { id: 5, imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 },
+    { id: 6, imagePath: '/images/events/evt1.png', title: 'TECHNOLOGY ADDICT24', description: 'Join us for InnovateX, a dynamic tech event where industry leaders and innovators come together to discuss the future of technology. This free event will cover the latest trends in...', location: 'TechHub Auditorium, 123 Innovation Drive, San Francisco, CA 94103', speaker: 'Dr. Debbie Jones', date: 'Dec 12, 2024', attendants: 5000, price: 0 }
   ];
 
   return (

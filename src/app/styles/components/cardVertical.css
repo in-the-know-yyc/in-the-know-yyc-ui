@@ -88,7 +88,9 @@ article.cardVertical ul li img{
     margin-right: .4rem;
     vertical-align: middle;
 }
-article.cardVertical ul li button{
+article.cardVertical ul li a{
+    display: inline-block;
+    margin: 0;
     font-size: .75rem;
     line-height: 1rem;
     color:var(--cobalt-blue);

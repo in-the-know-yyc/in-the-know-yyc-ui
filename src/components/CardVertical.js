@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import "../app/styles/components/cardVertical.css";
 
 const CardVertical = ({content}) => {
@@ -35,7 +36,7 @@ const CardVertical = ({content}) => {
         )}
 
         {/* PRICE | REQUIRED */}
-        <li><button>{(content.price !== 0) ? content.price : 'Free'}</button></li>
+        <li><Link href={`/events/${content.id}`}>{(content.price !== 0) ? content.price : 'Free'}</Link></li>
       </ul>
     </article>
   );
