@@ -1,8 +1,8 @@
-import Banner from '../components/Banner';
-import CardHorizontal from '../components/CardHorizontal'
+import Banner from '../../components/Banner';
+import CardHorizontal from '../../components/CardHorizontal'
 
 
-export default function Home() {
+export default function AllEvents() {
 
   // This constant is only simulating a response from the API to show any quantity of events
   const eventsContentTest = [

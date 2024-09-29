@@ -4,7 +4,7 @@ import "../app/styles/components/cardHorizontal.css";
 
 const CardHorizontal = ({ content }) => {
   return (
-    <Link href={'/event'}>
+    <Link href={`/events/${content.id}`}>
       <article className="cardHorizontal">
         {/* IMAGE | REQUIRED */}
         <div className="img" style={{ backgroundImage: `url(${content.imagePath})` }}></div>
