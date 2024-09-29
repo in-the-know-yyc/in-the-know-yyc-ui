@@ -31,8 +31,8 @@ const Footer = () => {
             <div>
                 <h3>Legal</h3>
                 <ul>
-                    <li><Link href="#">Privacy Policy</Link></li>
-                    <li><Link href="#">Terms and Conditions</Link></li>
+                    <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                    <li><Link href="/terms-and-conditions">Terms and Conditions</Link></li>
                 </ul>
             </div>
             <div>
@@ -41,7 +41,7 @@ const Footer = () => {
                     <li><Link href="#">Events</Link></li>
                     <li><Link href="#">About Us</Link></li>
                     <li><Link href="#">Contact Us</Link></li>
-                    <li><Link href="#">FAQ</Link></li>
+                    <li><Link href="/frequently-asked-questions">FAQ</Link></li>
                 </ul>
             </div>
             <div className="social-container">
