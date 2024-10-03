@@ -28,9 +28,9 @@ jobs:
       - name: Set env vars (test)
         if: ${{ !endsWith(github.ref, '/prod') && !endsWith(github.ref, '/develop') }}
         run: |
-          echo 'env: test'
+          echo 'env: dev'
           echo  "SELF_HOSTED_RUNNER=aws-ec2-dev" >> $GITHUB_ENV
-          echo  "NAME=test" >> $GITHUB_ENV
+          echo  "NAME=dev" >> $GITHUB_ENV
     outputs:
       runner: ${{ env.SELF_HOSTED_RUNNER }}
       env: ${{ env.NAME }}
@@ -59,4 +59,17 @@ jobs:
       - name: Publish image to Docker Hub
         run: docker push intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}:latest
 
-  
+  deploy:
+    name: Deployment
+    needs: [ prepare-env, build ]
+    runs-on: ${{ needs.prepare-env.outputs.runner }}
+
+    steps:
+      - name: Pull Image from Docker Hub
+        run: docker pull intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}:latest
+
+      - name: Delete old container
+        run: docker rm -f in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}-container
+
+      - name: Run docker container
+        run: docker run -d -p 3000:3000 --name in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}-container intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}
