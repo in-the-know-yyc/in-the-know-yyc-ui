@@ -23,16 +23,20 @@ Repository for front-end development of the InTheKnowYYC project.
 
 ```BASH
 in-the-know-yyc-ui
+│
 ├───public
-├───└───images # Only general images for the site, not images for events uploaded by API
-├───src
-├───├───app
-├───│   ├───fonts
-├───│   ├───styles # CSS files for every page and component
-├───│   ├───├───components
-├───│   │    └───pages
-├───│-──│─── globals.css # Styles used in the entire site
-├───│-──│─── page.tsx # Home page of the project
-├───├───components # There is a component for each content block to facilitate reuse
-└───└───pages # Automatic routing according to the file name. Ie: "about.js" will be accessed by [www.intheknowyyc.com/about]
+│   └───images # Only general images for the site, not images for events uploaded by API
+│
+└───src
+    ├───app
+    │   ├───fonts
+    │   └───styles # CSS files for every page and component
+    │       ├───components
+    │       │───pages
+    │       └───globals.css # Styles used in the entire site
+    │
+    ├───components # There is a component for each content block to facilitate reuse
+    │
+    └───pages # Automatic routing according to the file name. Ie: "about.js" will be accessed by [www.intheknowyyc.com/about]
+        └───_app.tsx # Home page of the project
 ```
