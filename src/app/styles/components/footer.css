@@ -142,7 +142,10 @@ footer{
     font-size: 2rem;
     vertical-align: middle;
   }
-  footer div.copyright-container p span:last-child{
+  footer div.copyright-container p a{
+    width: fit-content;
+    text-decoration: none;
+    color:#FFFFFF;
     background-color: #81BEFF;
     border-radius: 4px;
     padding:.6rem;
