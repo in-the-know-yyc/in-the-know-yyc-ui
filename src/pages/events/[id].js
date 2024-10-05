@@ -26,7 +26,7 @@ export default function EventInfo() {
         <section class="eventInformation">
             <div className="row-1">
                 <Link href={'/events'}>
-                    <Image src={'/images/icons/back-arrow.svg'} width={'15'} height={'15'} />
+                    <Image src={'/images/icons/back-arrow.svg'} width={'15'} height={'15'} alt='' />
                 </Link>
                 <h1>{eventContentTest.title_short}</h1>
             </div>

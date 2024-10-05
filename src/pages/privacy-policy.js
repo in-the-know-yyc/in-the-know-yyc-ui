@@ -4,7 +4,7 @@ export default function TermsAndConditions() {
     return (
         <main className="textPage">
             <h1>Privacy Policy</h1>
-            <p>Welcome to [Your Website Name] ("we," "our," or "us"). This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you use our website and services related to event creation, registration, and management. We are committed to protecting your privacy and ensuring that your personal information is handled safely and responsibly.</p>
+            <p>Welcome to [Your Website Name] (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you use our website and services related to event creation, registration, and management. We are committed to protecting your privacy and ensuring that your personal information is handled safely and responsibly.</p>
             <p>By using our website, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
 
             <h2>1. Information We Collect</h2>
@@ -54,7 +54,7 @@ export default function TermsAndConditions() {
             <p>Our services are not intended for individuals under the age of 13. We do not knowingly collect personal information from children. If you believe that a child has provided us with their personal data, please contact us immediately.</p>
 
             <h2>8. Changes to This Privacy Policy</h2>
-            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this policy periodically to stay informed about how we are protecting your information.</p>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated &quot;Last Updated&quot; date. We encourage you to review this policy periodically to stay informed about how we are protecting your information.</p>
 
 
 

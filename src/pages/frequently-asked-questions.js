@@ -9,16 +9,16 @@ export default function TermsAndConditions() {
             <p>Your Website Name] is an online platform for planning, organizing, and managing events. We provide tools for event organizers to create and promote events, and for attendees to easily discover, register, and participate in events.</p>
 
             <h2>2. How do I create an event?</h2>
-            <p>To create an event, simply sign up or log into your account, click on "Create Event" and follow the step-by-step instructions to enter event details such as date, time, location, and ticket options. Once published, your event will be live on the platform for attendees to view and register.</p>
+            <p>To create an event, simply sign up or log into your account, click on &quot;Create Event&quot; and follow the step-by-step instructions to enter event details such as date, time, location, and ticket options. Once published, your event will be live on the platform for attendees to view and register.</p>
 
             <h2>3. Is there a fee for using [Your Website Name]?</h2>
             <p>We offer both free and paid services. Creating and managing free events is free of charge. However, for ticketed events, we charge a small service fee per ticket sold. The exact fees will depend on the ticket price and payment processing fees.</p>
 
             <h2>4. How can I register for an event?</h2>
-            <p>To register for an event, browse through our event listings or search for a specific event. Once you find the event you are interested in, click on the "Register" or "Buy Tickets" button and follow the prompts to complete your registration.</p>
+            <p>To register for an event, browse through our event listings or search for a specific event. Once you find the event you are interested in, click on the &quot;Register&quot; or &quot;Buy Tickets&quot; button and follow the prompts to complete your registration.</p>
 
             <h2>5. Can I get a refund if I can’t attend the event?</h2>
-            <p>Refund policies vary depending on the event organizer. Please refer to the specific event's refund policy, which can typically be found on the event page. If you are eligible for a refund, contact the organizer directly to process it.</p>
+            <p>Refund policies vary depending on the event organizer. Please refer to the specific event&apos;s refund policy, which can typically be found on the event page. If you are eligible for a refund, contact the organizer directly to process it.</p>
 
             <h2>6. What happens if an event is canceled?</h2>
             <p>If an event is canceled, the event organizer is responsible for notifying all registered attendees and providing refunds where applicable. You will be informed via the email you used to register for the event.</p>

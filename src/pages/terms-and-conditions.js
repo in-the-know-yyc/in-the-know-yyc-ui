@@ -56,7 +56,7 @@ export default function PrivacyPolicy() {
             <p>These Terms shall be governed by and construed in accordance with the laws of [Your Country/State], without regard to its conflict of law provisions. Any legal action or proceeding related to these Terms or your use of the website shall be brought exclusively in the courts located in [Your Jurisdiction].</p>
 
             <h2>13. Changes to the Terms</h2>
-            <p>We may update these Terms from time to time. Any changes will be posted on this page with the "Last Updated" date. Your continued use of the website after the changes become effective constitutes your acceptance of the new Terms.</p>
+            <p>We may update these Terms from time to time. Any changes will be posted on this page with the &quot;Last Updated&quot; date. Your continued use of the website after the changes become effective constitutes your acceptance of the new Terms.</p>
         </main>
     );
 };
