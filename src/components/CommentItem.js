@@ -10,7 +10,7 @@ const CommentItem = ({comment}) => {
       <div className="text">
         <label>{comment.name}</label>
         <span>{comment.position}</span>
-        <p>"{comment.comment}"</p>
+        <p>&quot;{comment.comment}&quot;</p>
       </div>
     </div>
 

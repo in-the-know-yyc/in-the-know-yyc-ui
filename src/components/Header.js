@@ -9,9 +9,13 @@ const Header = () => {
         <Image src='/images/logo.svg' alt="In The Know YYC - Logo" width={83} height={54} />
       </div>
       <form action='#' method='get'>
-        <input type='text' placeholder='Search Event' />
-        <input type='text' placeholder='Calgary, AB' />
-        <button>O</button>
+        <div className='headerInputContainer'>
+          <input id='inputSearchHeader' type='text' placeholder='Search Event' />
+        </div>
+        <div className='headerInputContainer'>
+          <input id='inputLocationHeader' type='text' placeholder='Calgary, AB' />
+        </div>
+        <button></button>
       </form>
       <nav>
         <ul>

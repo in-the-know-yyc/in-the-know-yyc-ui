@@ -1,13 +1,13 @@
-import fs from 'fs';
 import Image from 'next/image';
 import "../app/styles/components/sponsors.css";
 
 const Sponsors = () => {
-    const directoryPath = 'public/images/sponsors/';
-    const icons = fs.readdirSync(directoryPath);
+    // This constant is only simulating a response from the API to show any quantity of comments
+    const icons = ['Google.svg', 'Amazon.svg', 'Meta.svg', 'Apple.svg', 'Tesla.svg', 'Microsoft.svg', 'Google.svg', 'Amazon.svg'];
 
     return (
         <div id='sponsors-container'>
+
             {icons.map((icon) => {
                 const iconPath = 'images/sponsors/' + icon;
 

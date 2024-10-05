@@ -7,47 +7,59 @@ section.community{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: var(--site-space);
+    padding: 75px 7dvw;
 }
-section.community div{
+section.community div.col1{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+    width: 34dvw;
 }
-section.community div h2{
+section.community div.col1 h2{
     width: 100%;
+    font-size:2.5rem;
+    line-height: 4.6rem;
     margin:0;
     padding:0;
     text-align: left;
-    margin-bottom: 2dvh;
 }
-section.community div p{
+section.community div.col1 p{
     width: 100%;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
     margin:0;
     padding:0;
-    margin-bottom: 2dvh;
 }
-section.community div ul{
+section.community div.col1 ul{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 100%;
+    width: 80%;
     margin:0;
-    padding:5dvh 0;
+    padding: 2.6rem 0 0 0;
     list-style: none;
-    list-style-image: url("/images/icons/check-black.svg");
 }
-section.community div ul li{
-    width:40%;
-    padding:5dvh 0;
+section.community div.col1 ul li{
+    font-size: 1.5rem;
+    width:fit-content;
+    padding:0;
+    margin: 0 0 1.6rem 0;
 }
-section.community div button{
+section.community div.col1 ul li img{
+    margin-right: 10px;
+}
+section.community div.col1 button{
+    font-size: 1.5rem;
     color:#FFFFFF;
     background-color: var(--btn-blue-bkg);
+    padding:1rem 4rem;
+    border-radius:10px;
 }
 
-section.community div img{
+section.community div.col2 img{
     border-radius: 10px;
+    width: 45dvw;
+    height: auto;
 }

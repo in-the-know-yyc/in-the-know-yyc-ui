@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div className="nav-container">
             <div>
-                <Image src="images/logo-white.svg" alt="In The Know YYC - Logo White" width={168} height={106} />
+                <Image src="/images/logo-white.svg" alt="In The Know YYC - Logo White" width={168} height={106} />
             </div>
             <div>
                 <h3>Your Account</h3>
@@ -31,8 +31,8 @@ const Footer = () => {
             <div>
                 <h3>Legal</h3>
                 <ul>
-                    <li><Link href="#">Privacy Policy</Link></li>
-                    <li><Link href="#">Terms and Conditions</Link></li>
+                    <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                    <li><Link href="/terms-and-conditions">Terms and Conditions</Link></li>
                 </ul>
             </div>
             <div>
@@ -41,7 +41,7 @@ const Footer = () => {
                     <li><Link href="#">Events</Link></li>
                     <li><Link href="#">About Us</Link></li>
                     <li><Link href="#">Contact Us</Link></li>
-                    <li><Link href="#">FAQ</Link></li>
+                    <li><Link href="/frequently-asked-questions">FAQ</Link></li>
                 </ul>
             </div>
             <div className="social-container">
@@ -49,22 +49,22 @@ const Footer = () => {
                 <ul>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/x.svg" alt="X icon" width={19} height={16} />
+                            <Image src="/images/social/x.svg" alt="X icon" width={19} height={16} />
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/facebook.svg" alt="Facebook icon" width={17} height={16} />
+                            <Image src="/images/social/facebook.svg" alt="Facebook icon" width={17} height={16} />
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/linkedin.svg" alt="Linkedin icon" width={17} height={16} />
+                            <Image src="/images/social/linkedin.svg" alt="Linkedin icon" width={17} height={16} />
                         </Link>
                     </li>
                     <li>
                         <Link href="#">
-                            <Image src="images/social/instagram.svg" alt="Instagram icon" width={16} height={15} />
+                            <Image src="/images/social/instagram.svg" alt="Instagram icon" width={16} height={15} />
                         </Link>
                     </li>
                 </ul>
@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
         <div className="copyright-container">
             <p>
-                &copy; 2024 Copyright - All rights reserved by <span>YYC</span>
+                <span>&copy;</span> 2024 Copyright - All rights reserved by <span>YYC</span>
             </p>
         </div>
       </footer>
