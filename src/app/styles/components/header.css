@@ -29,7 +29,8 @@ header{
   header form{
     display: flex;
     justify-content: space-between;
-    width: 29rem;
+    /* width: 29rem; /* width with location field */
+    width: 17.5rem;
     margin-right:3.5dvw;
   }
   header form div.headerInputContainer{

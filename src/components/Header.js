@@ -12,9 +12,11 @@ const Header = () => {
         <div className='headerInputContainer'>
           <input id='inputSearchHeader' type='text' placeholder='Search Event' />
         </div>
+        {/* 
         <div className='headerInputContainer'>
           <input id='inputLocationHeader' type='text' placeholder='Calgary, AB' />
         </div>
+        */}
         <button></button>
       </form>
       <nav>
