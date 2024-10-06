@@ -34,19 +34,19 @@ export default function LogIn() {
                     />
                     <div className="frmCols">
                         <Checkbox className="inputCheckbox">Keep me logged in</Checkbox>
-                        <Link href={'#'}>Forgot Password</Link>
+                        <Link href={'/#'}>Forgot Password</Link>
                     </div>
                     <button type="submit">Log In</button>
                 </form>
                 
                 <p>or</p>
                 
-                <Link href={'#'} className="socialLoginButton"><Image src={'/images/social/google-color.svg'} width={18} height={18} alt="" /> Log in with Google </Link>
-                <Link href={'#'} className="socialLoginButton"><Image src={'/images/social/facebook-color.svg'} width={16} height={30} alt="" /> Log in with Facebook </Link>
-                <Link href={'#'} className="socialLoginButton"><Image src={'/images/social/linkedin-color.svg'} width={24} height={24} alt="" /> Log in with LinkedIn </Link>
+                <Link href={'/#'} className="socialLoginButton"><Image src={'/images/social/google-color.svg'} width={18} height={18} alt="" /> Log in with Google </Link>
+                <Link href={'/#'} className="socialLoginButton"><Image src={'/images/social/facebook-color.svg'} width={16} height={30} alt="" /> Log in with Facebook </Link>
+                <Link href={'/#'} className="socialLoginButton"><Image src={'/images/social/linkedin-color.svg'} width={24} height={24} alt="" /> Log in with LinkedIn </Link>
                 
                 <div className="changeForm">
-                    Don't have an account? <Link href={'/signup'}>Sign Up</Link>
+                    Don&apos;t have an account? <Link href={'/signup'}>Sign Up</Link>
                 </div>
             </section>
         </main>
