@@ -10,6 +10,16 @@ header{
     position: fixed;
     top:0;
     left: 0;
+    width: 100%;
+    height: fit-content;
+    background-color: #FFFFFF;
+    box-shadow: -6px 10px 50px -2px #BADBFF;
+    z-index: 10;
+  }
+  header .onlyMobile{
+    display: none;
+  }
+  header div.headerContainer{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,9 +27,6 @@ header{
     width: 100%;
     height: var(--header-height);
     padding: 3dvh 3.5dvw 3dvh 7dvw;
-    background-color: #FFFFFF;
-    box-shadow: -6px 10px 50px -2px #BADBFF;
-    z-index: 10;
   }
   header div img{
     width: 5.1rem;
@@ -147,4 +154,74 @@ header{
   }
   header nav ul li a.button:hover:after{
     width: 0;
+  }
+
+  /* MOBILE */
+  @media only screen and (max-width: 800px) {
+    header .onlyMobile{
+      display:inline-block;
+    }
+    header{
+      bottom:0;
+      height: var(--header-height-mobile);
+      overflow: hidden;
+      transition: .3s;
+    }
+    header div.headerContainer{
+      height: fit-content;
+      padding:1rem 3rem;
+    }
+    header form,
+    header nav ul{
+      flex-wrap: wrap;
+      margin-top:3rem;
+    }
+    header form,
+    header nav{
+      margin-right: 0;
+    }
+    header form,
+    header form div.headerInputContainer,
+    header form div.headerInputContainer input#inputSearchHeader,
+    header form button,
+    header nav,
+    header nav ul,
+    header nav ul li,
+    header nav ul li a{
+      width: 100%;
+    }
+    header button.toggleMenu{
+      background: none;
+    }
+    header button.toggleMenu,
+    header button.toggleMenu img{
+      margin:0;
+      padding:0;
+      height: 2rem;
+      width: auto;
+    }
+    header form div.headerInputContainer input{
+      font-size: 2rem;
+      background-size: 2rem;
+      padding-left: 3.25rem;
+    }
+    header form button{
+      padding: 2.25rem 0;
+      background-size: 2rem;
+      margin-top: .5rem;
+    }
+    header nav ul li{
+      text-align: center;
+      height: fit-content;
+      padding: 2rem 0;
+    }
+    header nav ul li a.button{
+      display: inline-block;
+      padding: .25rem 0;
+      width: 100%;
+    }
+    header nav ul li a,
+    header nav ul li a.button{
+      font-size: 2.5rem;
+    }
   }

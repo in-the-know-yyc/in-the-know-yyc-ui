@@ -83,3 +83,9 @@ section.hero div.hero-image{
     background-size: contain;
 }
     */
+
+
+/* MOBILE */
+@media only screen and (max-width: 800px) {
+    
+}
