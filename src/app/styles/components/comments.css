@@ -45,3 +45,17 @@ section.comments div.background-bottom{
     background-size: cover;
     z-index: 0;
 }
+
+
+/* MOBILE */
+@media only screen and (max-width: 800px) {
+    section.comments h2{
+        font-size: 1.125rem;
+    }
+    section.comments div.comments-container{
+        padding: 1rem 3rem;
+    }
+    section.comments div.comments-container h4{
+        font-size: 1rem;
+    }
+}
