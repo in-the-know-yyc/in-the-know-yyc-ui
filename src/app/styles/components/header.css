@@ -132,7 +132,7 @@ header{
   header nav ul li a:hover:after{
     width: 100%;
   }
-  header nav ul li button{
+  header nav ul li a.button{
     font-family: var(--font-montserrat);
     font-size: 1rem;
     border-radius:10px;
@@ -141,7 +141,10 @@ header{
     color:#FFFFFF;
     transition: .3s;
   }
-  header nav ul li button:hover{
+  header nav ul li a.button:hover{
     background-color: var(--cobalt-blue);
     border-color: var(--cobalt-blue);
+  }
+  header nav ul li a.button:hover:after{
+    width: 0;
   }
