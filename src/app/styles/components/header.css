@@ -224,4 +224,9 @@ header{
     header nav ul li a.button{
       font-size: 2.5rem;
     }
+
+    header.menuOpen{
+      height: 100dvh;
+      overflow: scroll;
+    }
   }

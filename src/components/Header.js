@@ -1,15 +1,45 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import "../app/styles/components/header.css";
 
+const useRemoveClassOnRouteChange = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const header = document.getElementById('mainMenuHeader');
+
+    if (header) {
+      header.classList.remove('menuOpen');
+    }
+
+    const handleRouteChange = () => {
+      if (header) {
+        header.classList.remove('menuOpen');
+      }
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
+}
+
+
 const Header = () => {
+
+  useRemoveClassOnRouteChange();
+
   return (
-    <header>
+    <header id="mainMenuHeader">
       <div className='headerContainer'>
         <div>
           <Image src='/images/logo.svg' alt="In The Know YYC - Logo" width={83} height={54} />
         </div>
-        <button className='onlyMobile toggleMenu'><Image src={'/images/icons/menu.svg'} width={37} height={27} alt='' /></button>
+        <button className='onlyMobile toggleMenu' id="toggleMobileMenu"><Image src={'/images/icons/menu.svg'} width={37} height={27} alt='' /></button>
         <form action='#' method='get'>
           <div className='headerInputContainer'>
             <input id='inputSearchHeader' type='text' placeholder='Search Event' />
@@ -32,6 +62,7 @@ const Header = () => {
           </ul>
         </nav>
       </div>
+      <script src="/scripts/mobileMenuToggle.js" />
     </header>
   );
 };
