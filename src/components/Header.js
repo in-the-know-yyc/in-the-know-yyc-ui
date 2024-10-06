@@ -1,37 +1,13 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import "../app/styles/components/header.css";
 
-const useRemoveClassOnRouteChange = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    const header = document.getElementById('mainMenuHeader');
-
-    if (header) {
-      header.classList.remove('menuOpen');
-    }
-
-    const handleRouteChange = () => {
-      if (header) {
-        header.classList.remove('menuOpen');
-      }
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router]);
-}
-
+// HOOK TO OPEN AND CLOSE THE MENU IN MOBILE VERSION
+import useMobileMenuToggle from '../hooks/useMobileMenuToggle';
 
 const Header = () => {
 
-  useRemoveClassOnRouteChange();
+  useMobileMenuToggle();
 
   return (
     <header id="mainMenuHeader">
@@ -62,7 +38,6 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      <script src="/scripts/mobileMenuToggle.js" />
     </header>
   );
 };
