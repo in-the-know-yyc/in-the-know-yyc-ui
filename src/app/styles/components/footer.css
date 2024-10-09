@@ -142,9 +142,48 @@ footer{
     font-size: 2rem;
     vertical-align: middle;
   }
-  footer div.copyright-container p span:last-child{
+  footer div.copyright-container p a{
+    width: fit-content;
+    text-decoration: none;
+    color:#FFFFFF;
     background-color: #81BEFF;
     border-radius: 4px;
     padding:.6rem;
     margin-left: .8rem;
   }
+  
+
+  /* MOBILE */
+@media only screen and (max-width: 800px) {
+  footer div.newsletter-container,
+  footer div.newsletter-container div form,
+  footer div.nav-container{
+    flex-direction: column;
+  }
+  footer div.newsletter-container div:first-child,
+  footer div.newsletter-container div:last-child,
+  footer div.nav-container div{
+    width: 100%;
+  }
+  footer div.newsletter-container div h3,
+  footer div.newsletter-container div p,
+  footer div.nav-container div ul{
+    margin-bottom: 1.5rem;
+  }
+  footer div.newsletter-container div form input,
+  footer div.newsletter-container div form button{
+    margin: 0 0 1rem 0;
+  }
+  footer div.nav-container div.social-container ul{
+    width: 100%;
+    justify-content: space-between;
+  }
+  footer div.nav-container div.social-container ul li a,
+  footer div.nav-container div.social-container ul li a img {
+    width: 2rem;
+    height: 2rem;
+  }
+  footer div.copyright-container p{
+    font-size: .75rem;
+  }
+}

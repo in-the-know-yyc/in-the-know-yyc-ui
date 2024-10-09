@@ -99,3 +99,28 @@ article.cardVertical ul li a{
     background-color: #FFFFFF;
     padding: .75rem 2rem;
 }
+
+
+  /* MOBILE */
+  @media only screen and (max-width: 800px) {
+    article.cardVertical{
+        width: calc(100dvw - 6rem);
+        margin-right: 3rem;
+        padding: 1.25rem;
+    }
+    article.cardVertical h3{
+        font-size: 1rem;
+    }
+    article.cardVertical p{
+        width: 100%;
+    }
+    article.cardVertical p,
+    article.cardVertical ul li,
+    article.cardVertical ul li a{
+        font-size:.5rem;
+    }
+    article.cardVertical ul li a{
+        position: relative;
+        padding: .37rem 1rem;
+    }
+  }

@@ -46,3 +46,19 @@
     line-height: 1.25rem;
     color:#000000;
 }
+
+
+  /* MOBILE */
+  @media only screen and (max-width: 800px) {
+    .textPage{
+        padding: 0 3rem;
+        margin-bottom: 3rem;
+    }
+    .textPage h1{
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+    .textPage p{
+        margin-top:0;
+    }
+  }

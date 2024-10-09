@@ -8,11 +8,11 @@ const Sponsors = () => {
     return (
         <div id='sponsors-container'>
 
-            {icons.map((icon) => {
+            {icons.map((icon, index) => {
                 const iconPath = 'images/sponsors/' + icon;
 
                 return (
-                    <Image key={icon} src={iconPath} alt={icon} width={0} height={0} />
+                    <Image key={icon+'_'+index} src={iconPath} alt={icon} width={0} height={0} />
                 );
             })}
         </div>

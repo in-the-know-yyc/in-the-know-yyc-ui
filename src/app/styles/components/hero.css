@@ -83,3 +83,59 @@ section.hero div.hero-image{
     background-size: contain;
 }
     */
+
+
+/* MOBILE */
+@media only screen and (max-width: 800px) {
+    section.hero{
+        padding: 0;
+    }
+    section.hero:after{
+        left:0;
+        background-size: 100%;
+    }
+    section.hero div.hero-content{
+        width:100%;
+    }
+    section.hero div.hero-content h1{
+        position: relative;
+        margin: 0;
+        padding: 0 3rem;
+        font-size: 2rem;
+        text-align: center;
+        background: #FFFFFF;
+        color: transparent;
+    }
+    section.hero div.hero-content h1:after{
+        content:'DISCOVER & ATTEND!';
+        position: absolute;
+        padding: 0 3rem;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        background: #03264B;
+        background: linear-gradient(to right, #03264B 0%, #692DD7 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    section.hero div.hero-content h2{
+        margin: 0;
+        font-size: 1rem;
+        text-align: center;
+        padding: 1rem 3rem;
+        background-color: #FFFFFF;
+        margin-top: -1px;
+    }
+    section.hero div.hero-content div.call-to-action{
+        width: calc(100% - 6rem);
+        margin: 250px auto 0 auto;
+        padding: 15px 66px;
+    }
+    section.hero div.hero-content div.call-to-action button{
+        width: 100%;
+        padding: 18px;
+        font-size: 1rem;
+    }
+}

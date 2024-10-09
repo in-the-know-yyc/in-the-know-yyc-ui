@@ -4,6 +4,7 @@
 
 :root {
   --header-height: 8.75rem;
+  --header-height-mobile:5.75rem;
   --cobalt-blue: #4362BE;
   --btn-blue-bkg: #007BFF;
 
@@ -47,4 +48,12 @@ button{
   flex-wrap: wrap;
   width:100%;
   padding:30px;
+}
+
+
+/* MOBILE */
+@media only screen and (max-width: 800px) {
+  #events-horizontal-container{
+    padding: 2rem 3rem;
+  }
 }
