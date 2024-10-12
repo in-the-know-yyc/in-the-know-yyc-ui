@@ -41,16 +41,26 @@ header{
     margin-right:3.5dvw;
   }
   header form div.headerInputContainer{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
     height: fit-content;
+  }
+  header form div.headerInputContainer div[data-slot=inner-wrapper]:has(input#inputSearchHeader){
     background: linear-gradient(90deg, #4362BE 0%, #9248FB 100%);
     border-radius:var(--input-border-radius);
     border:0;
     padding:1px;
   }
+  header form div.headerInputContainer div[data-slot=error-message]{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: red;
+  }
+
   header form div.headerInputContainer input{
     border-radius:var(--input-border-radius);
     border: 0;
