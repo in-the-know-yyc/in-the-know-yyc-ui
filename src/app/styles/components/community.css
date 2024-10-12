@@ -50,7 +50,8 @@ section.community div.col1 ul li{
 section.community div.col1 ul li img{
     margin-right: 10px;
 }
-section.community div.col1 button{
+section.community div.col1 a{
+    text-decoration: none;
     font-size: 1.5rem;
     color:#FFFFFF;
     background-color: var(--btn-blue-bkg);
@@ -92,7 +93,7 @@ section.community div.col2 img{
         font-size: 1rem;
         margin: 0 auto 1.6rem auto;
     }
-    section.community div.col1 button{
+    section.community div.col1 a{
         margin: 0 auto;
     }
     section.community div.col2{

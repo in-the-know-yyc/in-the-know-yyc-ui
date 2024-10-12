@@ -12,6 +12,7 @@ const Footer = () => {
             </div>
             <div>
                 <form>
+                    <div id="newsletterFormSpaced"></div>
                     <input type='text' placeholder='Enter your email' />
                     <button>Subscribe</button>
                 </form>

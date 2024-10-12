@@ -42,8 +42,15 @@ footer{
     padding:0;
   }
   footer div.newsletter-container div form{
+    position: relative;
     display: flex;
     width: 100%;
+  }
+  footer div.newsletter-container div form div#newsletterFormSpaced{
+    position: absolute;
+    width: 0;
+    height: 0;
+    top:calc(var(--header-height-neg) * 1.2) ;
   }
   footer div.newsletter-container div form input{
     border:none;
@@ -185,5 +192,8 @@ footer{
   }
   footer div.copyright-container p{
     font-size: .75rem;
+  }
+  footer div.newsletter-container div form div#newsletterFormSpaced{
+    top:calc(var(--header-height-mobile-neg) * 1.2) ;
   }
 }

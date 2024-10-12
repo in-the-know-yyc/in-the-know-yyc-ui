@@ -22,7 +22,7 @@ const Community = () => {
             User-Friendly Tools
           </li>
         </ul>
-        <button>Get Started</button>
+        <a href="#newsletterFormSpaced">Get Started</a>
       </div>
       <div className="col2">
         <Image src={`/images/community.png`} width={687} height={511} alt="Join Our Community | In The Know YYC" />
