@@ -13,7 +13,9 @@ const Header = () => {
     <header id="mainMenuHeader">
       <div className='headerContainer'>
         <div>
-          <Image src='/images/logo.svg' alt="In The Know YYC - Logo" width={83} height={54} />
+          <Link href="/">
+            <Image src='/images/logo.svg' alt="In The Know YYC - Logo" width={83} height={54} />
+          </Link>
         </div>
         <button className='onlyMobile toggleMenu' id="toggleMobileMenu"><Image src={'/images/icons/menu.svg'} width={37} height={27} alt='' /></button>
         <form action='#' method='get'>
