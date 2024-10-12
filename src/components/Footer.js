@@ -13,14 +13,16 @@ const Footer = () => {
             <div>
                 <form>
                     <div id="newsletterFormSpaced"></div>
-                    <input type='text' placeholder='Enter your email' />
+                    <input type='text' placeholder='Enter your email' id="newsletterForm" />
                     <button>Subscribe</button>
                 </form>
             </div>
         </div>
         <div className="nav-container">
             <div>
-                <Image src="/images/logo-white.svg" alt="In The Know YYC - Logo White" width={168} height={106} />
+                <Link href="/">
+                    <Image src="/images/logo-white.svg" alt="In The Know YYC - Logo White" width={168} height={106} />
+                </Link>
             </div>
             <div>
                 <h3>Your Account</h3>
@@ -39,8 +41,8 @@ const Footer = () => {
             <div>
                 <h3>Company</h3>
                 <ul>
-                    <li><Link href="#">Events</Link></li>
-                    <li><Link href="#">About Us</Link></li>
+                    <li><Link href="/events">Events</Link></li>
+                    <li><Link href="/about">About Us</Link></li>
                     <li><Link href="#">Contact Us</Link></li>
                     <li><Link href="/frequently-asked-questions">FAQ</Link></li>
                 </ul>
@@ -49,22 +51,22 @@ const Footer = () => {
                 <h3>Social Media (Follow Us)</h3>
                 <ul>
                     <li>
-                        <Link href="#">
+                        <Link href="https://x.com/INTHEKNOWYYC" target="_blank">
                             <Image src="/images/social/x.svg" alt="X icon" width={19} height={16} />
                         </Link>
                     </li>
                     <li>
-                        <Link href="#">
+                        <Link href="https://www.linkedin.com/company/in-the-know-yyc/posts/?feedView=all&viewAsMember=true" target="_blank">
                             <Image src="/images/social/facebook.svg" alt="Facebook icon" width={17} height={16} />
                         </Link>
                     </li>
                     <li>
-                        <Link href="#">
+                        <Link href="https://www.linkedin.com/company/in-the-know-yyc/posts/?feedView=all&viewAsMember=true" target="_blank">
                             <Image src="/images/social/linkedin.svg" alt="Linkedin icon" width={17} height={16} />
                         </Link>
                     </li>
                     <li>
-                        <Link href="#">
+                        <Link href="https://www.instagram.com/intheknowyyc/" target="_blank">
                             <Image src="/images/social/instagram.svg" alt="Instagram icon" width={16} height={15} />
                         </Link>
                     </li>
