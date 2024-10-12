@@ -18,9 +18,9 @@ const Header = () => {
           </Link>
         </div>
         <button className='onlyMobile toggleMenu' id="toggleMobileMenu"><Image src={'/images/icons/menu.svg'} width={37} height={27} alt='' /></button>
-        <form action='#' method='get'>
+        <form action='/events' method='get'>
           <div className='headerInputContainer'>
-            <input id='inputSearchHeader' type='text' placeholder='Search Event' />
+            <input id='inputSearchHeader' type='text' placeholder='Search Event' name='search' />
           </div>
           {/* 
         <div className='headerInputContainer'>
