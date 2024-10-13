@@ -225,4 +225,8 @@ footer{
   footer div.newsletter-container div form div#newsletterFormSpaced{
     top:calc(var(--header-height-mobile-neg) * 1.2) ;
   }
+  footer div.newsletter-container div form div[data-slot=error-message]{
+    position: relative;
+    padding-bottom: 1rem;
+  }
 }
