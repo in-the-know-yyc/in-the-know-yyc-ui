@@ -27,8 +27,9 @@ const LatestEvents = () => {
 
   return (
     <section className="latestEvents">
+      <div id="latestEventsSectionSpaced"></div>
       <h2>Latest events</h2>
-      <Link href={`#`}>View all events</Link>
+      <Link href={`/events`}>View all events</Link>
 
       <div className="latestEvents-container">
         <div className="slider-container">

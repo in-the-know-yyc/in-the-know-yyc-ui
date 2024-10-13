@@ -51,6 +51,11 @@ section.hero div.hero-content h2 span{
     color:var(--btn-lightblue-bkg);
 }
 section.hero div.hero-content div.call-to-action{
+    margin-top: 2.56rem;
+}
+/*
+    THIS ADDS THE WHITE BACKGROUND WITH SHADOW FOR MANY BUTTOS
+section.hero div.hero-content div.call-to-action{
     position:relative;
     padding: 2.8rem 3.3rem;
     background-color: #FFFFFF;
@@ -66,9 +71,11 @@ section.hero div.hero-content div.call-to-action:before{
     bottom:0;
     box-shadow: -8px 0px 33.3px -5px #007BFF33;
 }
-section.hero div.hero-content div.call-to-action button{
+*/
+section.hero div.hero-content div.call-to-action a{
     position: relative;
     width:fit-content;
+    text-decoration: none;
     font-size:1.5rem;
     background-color: var(--btn-blue-bkg);
     color: #FFFFFF;
