@@ -6,6 +6,7 @@ section.latestEvents {
     position: relative;
     width: 100%;
     padding: 1.4rem 0;
+    overflow: hidden;
 }
 
 section.latestEvents div#latestEventsSectionSpaced {
