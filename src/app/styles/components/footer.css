@@ -41,6 +41,13 @@ footer{
     margin: 0;
     padding:0;
   }
+  footer div.newsletter-container div h3.successMessage{
+    text-align: center;
+    color: #15B097;
+    box-shadow: 0px 0px 5px 0px white;
+    border-radius: 10px;
+    padding: 10px;
+  }
   footer div.newsletter-container div form{
     position: relative;
     display: flex;
@@ -59,7 +66,20 @@ footer{
     margin: 0 2px;
     background-color: var(--bkg-light);
     flex-grow: 1;
+    transition: .3s;
   }
+  footer div.newsletter-container div form div[data-slot=error-message]{
+    position: absolute;
+    color:red;
+  }
+  /*
+  footer div.newsletter-container div form div[data-slot=description]{
+    position: absolute;
+    color:#15B097;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  */
   footer div.newsletter-container div form button{
     border: none;
     font-size: 1rem;
@@ -67,6 +87,11 @@ footer{
     color: #FFFFFF;
     padding: 1.5rem;
     margin-left: .3rem;
+    transition: .3s;
+  }
+  footer div.newsletter-container div form button:disabled{
+    background-color: #9F9C9C;
+    cursor: not-allowed;
   }
   /* Navigation */
   footer div.nav-container{
@@ -196,4 +221,11 @@ footer{
   footer div.newsletter-container div form div#newsletterFormSpaced{
     top:calc(var(--header-height-mobile-neg) * 1.2) ;
   }
+}
+
+
+
+.testEffect{
+  box-shadow: 0px 0px 10px 8px var(--btn-blue-bkg);
+  scale: 1.05;
 }
