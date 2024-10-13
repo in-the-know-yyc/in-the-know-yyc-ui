@@ -53,13 +53,13 @@ const Footer = () => {
                         <Image src="/images/logo-white.svg" alt="In The Know YYC - Logo White" width={168} height={106} />
                     </Link>
                 </div>
-                <div>
+                {/* <div>
                     <h3>Your Account</h3>
                     <ul>
                         <li><Link href="#">Log In</Link></li>
                         <li><Link href="#">Sign Up</Link></li>
                     </ul>
-                </div>
+                </div> */}
                 <div>
                     <h3>Legal</h3>
                     <ul>

@@ -54,8 +54,10 @@ const Header = () => {
             <li><Link href="/events">All Events</Link></li>
             <li><Link href="/about">About Us</Link></li>
             <li><Link href="/contact">Contact</Link></li>
+            {/*
             <li><Link href="/login">Log In</Link></li>
             <li><Link href="/signup" className='button'>Sign Up</Link></li>
+            */}
           </ul>
         </nav>
       </div>
