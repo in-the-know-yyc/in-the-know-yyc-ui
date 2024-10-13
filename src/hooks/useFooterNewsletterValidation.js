@@ -35,7 +35,7 @@ const useHeaderSearchValidation = (setIsInvalid, setIsDisabled, setErrorMessage,
         }
 
         if(newsletterInput){
-            newsletterInput.addEventListener('keypress', () => {
+            newsletterInput.addEventListener('keyup', () => {
                 if(emailRegex.test(newsletterInput.value)){
                     setErrorMessage('');
                     setIsDisabled(false);
