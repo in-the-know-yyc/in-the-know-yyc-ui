@@ -17,12 +17,10 @@ const useHeaderSearchValidation = (setIsInvalid, setIsDisabled, setErrorMessage,
                 
                 if (newsletterInput.value.length === 0) {
                     // Validate not empty value
-                    console.log('empty value');
                     emptyValue(setIsInvalid, setIsDisabled, setErrorMessage);
                     return;
                 }else if(!emailRegex.test(newsletterInput.value)){
                     // Validate email format
-                    console.log('wrong format');
                     wrongFormat(setIsInvalid, setIsDisabled, setErrorMessage);
                     return;
                 }
@@ -39,8 +37,10 @@ const useHeaderSearchValidation = (setIsInvalid, setIsDisabled, setErrorMessage,
         if(newsletterInput){
             newsletterInput.addEventListener('keypress', () => {
                 if(emailRegex.test(newsletterInput.value)){
+                    setErrorMessage('');
                     setIsDisabled(false);
                 }else{
+                    wrongFormat(setIsInvalid, setIsDisabled, setErrorMessage);
                     setIsDisabled(true);
                 }
             })
