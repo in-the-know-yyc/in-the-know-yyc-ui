@@ -1,0 +1,77 @@
+name: Deploy Next.js application
+
+env:
+  SELF_HOSTED_RUNNER: none
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+
+on: [ push, pull_request ]
+
+jobs:
+
+  prepare-env:
+    name: Prepare environment variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set env vars (develop)
+        if: endsWith(github.ref, '/develop')
+        run: |
+          echo 'env: dev'
+          echo  "SELF_HOSTED_RUNNER=aws-ec2-dev" >> $GITHUB_ENV
+          echo  "NAME=dev" >> $GITHUB_ENV
+      - name: Set env vars (prod)
+        if: endsWith(github.ref, '/prod')
+        run: |
+          echo 'env: prod'
+          echo  "SELF_HOSTED_RUNNER=aws-ec2-prod" >> $GITHUB_ENV
+          echo  "NAME=prod" >> $GITHUB_ENV
+      - name: Set env vars (test)
+        if: ${{ !endsWith(github.ref, '/prod') && !endsWith(github.ref, '/develop') }}
+        run: |
+          echo 'env: test'
+          echo  "SELF_HOSTED_RUNNER=aws-ec2-dev" >> $GITHUB_ENV
+          echo  "NAME=dev" >> $GITHUB_ENV
+    outputs:
+      runner: ${{ env.SELF_HOSTED_RUNNER }}
+      env: ${{ env.NAME }}
+      brunch: ${{ env.BRUNCH_NAME }}
+
+  build:
+    name: Building
+    needs: prepare-env
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current branch from GitHub
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare-env.outputs.brunch }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build docker image
+        run: docker build -t intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }} .
+
+      - name: Publish image to Docker Hub
+        run: docker push intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}:latest
+
+  deploy:
+    name: Deployment
+    needs: [ prepare-env, build ]
+    runs-on: ${{ needs.prepare-env.outputs.runner }}
+
+    steps:
+      - name: Pull Image from Docker Hub
+        run: docker pull intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}:latest
+
+      - name: Delete old container
+        run: |
+          docker rm -f in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}-container
+          docker system prune --all -f
+
+      - name: Run docker container
+        run: docker run -d -p 3000:3000 --name in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}-container intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}
