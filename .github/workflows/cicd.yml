@@ -69,7 +69,9 @@ jobs:
         run: docker pull intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}:latest
 
       - name: Delete old container
-        run: docker rm -f in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}-container
+        run: |
+          docker rm -f in-the-know-yyc-api-${{ needs.prepare-env.outputs.env }}-container
+          docker system prune --all -f
 
       - name: Run docker container
         run: docker run -d -p 3000:3000 --name in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}-container intheknowyyc/in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}
