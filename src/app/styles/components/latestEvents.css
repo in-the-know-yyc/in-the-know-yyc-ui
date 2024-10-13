@@ -2,32 +2,40 @@
 /* ------- LATEST EVENTS ------- */
 /* ----------------------------- */
 
-section.latestEvents{
+section.latestEvents {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
     width: 100%;
     padding: 1.4rem 0;
 }
-section.latestEvents div#latestEventsSectionSpaced{
+
+section.latestEvents div#latestEventsSectionSpaced {
     position: absolute;
     width: 0;
     height: 0;
-    top:calc(var(--header-height-neg) * 1.2) ;
+    top: var(--header-height-neg);
 }
-section.latestEvents h2{
-    margin: 0 0 0 7dvw;
+
+section.latestEvents header#latestEventsHeader {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0 7dvw;
+    box-shadow: none;
+}
+
+section.latestEvents header#latestEventsHeader h2 {
     padding: 0;
     font-size: 2.5rem;
     font-weight: 700;
     color: #151515;
     text-align: left;
 }
-section.latestEvents a{
+
+section.latestEvents header#latestEventsHeader a {
     width: fit-content;
-    margin: 0 7dvw 0 0;
     padding: 0;
     font-size: 1.5rem;
     text-align: right;
@@ -35,40 +43,72 @@ section.latestEvents a{
     color: #151515;
     font-weight: 600;
 }
-section.latestEvents div.latestEvents-container{
-    display: flex;
-    justify-content: space-between;
+
+section.latestEvents div.latestEvents-container {
     width: 100%;
-    padding: 22px 41px 42.6px 7dvw;
+    padding: 22px calc(7dvw - 60px) 42.6px calc(7dvw - 12px);
     overflow: hidden;
 }
-section.latestEvents div.latestEvents-container div.slider-container{
-    display: flex;
+
+section.latestEvents div.latestEvents-container .slick-list {
+    padding: 30px 50px 55px 12px;
 }
 
+section.latestEvents div.latestEvents-container button.slick-arrow {
+    width: 64px;
+    height: 64px;
+    transition: .3s;
+}
+section.latestEvents div.latestEvents-container button.slick-arrow:hover {
+    scale:1.1;
+}
+section.latestEvents div.latestEvents-container button.slick-arrow:before {
+    content: none;
+}
+section.latestEvents div.latestEvents-container button.slick-arrow.slick-disabled{
+    opacity: 0.5;
+}
+section.latestEvents div.latestEvents-container button.slick-arrow.slick-disabled:hover{
+    cursor: not-allowed;
+    scale: 1;
+}
 
-  /* MOBILE */
-  @media only screen and (max-width: 800px) {
-    section.latestEvents{
+section.latestEvents div.latestEvents-container button.slick-arrow.slick-prev {
+    left: -74px;
+    background-image: url('/images/icons/carousel-arrow-left.svg');
+}
+
+section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
+    right: -74px;
+    background-image: url('/images/icons/carousel-arrow-right.svg');
+}
+
+/* MOBILE */
+@media only screen and (max-width: 800px) {
+    section.latestEvents {
         position: relative;
         padding-bottom: 3rem;
     }
-    section.latestEvents div.latestEvents-container{
-        padding:1rem 3rem;
+
+    section.latestEvents div.latestEvents-container {
+        padding: 1rem 3rem;
     }
-    section.latestEvents h2{
+
+    section.latestEvents h2 {
         width: 100%;
         text-align: center;
         font-size: 1.125rem;
     }
-    section.latestEvents a{
+
+    section.latestEvents a {
         font-size: .75rem;
         position: absolute;
         bottom: 1rem;
         width: 100%;
         text-align: center;
     }
-    section.latestEvents div#latestEventsSectionSpaced{
-        top:calc(var(--header-height-mobile-neg) * 1.2) ;
+
+    section.latestEvents div#latestEventsSectionSpaced {
+        top: calc(var(--header-height-mobile-neg) * 1.2);
     }
-  }
+}
