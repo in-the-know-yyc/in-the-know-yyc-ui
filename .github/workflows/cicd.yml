@@ -70,7 +70,7 @@ jobs:
 
       - name: Delete old container
         run: |
-          docker rm -f in-the-know-yyc-api-${{ needs.prepare-env.outputs.env }}-container
+          docker rm -f in-the-know-yyc-ui-${{ needs.prepare-env.outputs.env }}-container
           docker system prune --all -f
 
       - name: Run docker container
