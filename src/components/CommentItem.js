@@ -1,10 +1,9 @@
+import { useState, useEffect, useRef } from 'react';
 import "../app/styles/components/commentItem.css";
 
-const CommentItem = ({comment}) => {
-
+const CommentItem = ({ comment, id }) => {
   return (
-
-    <div className="comment">
+    <div className={`comment`} id={id}>
       <div className="photo" style={{ backgroundImage: `url(${comment.photoPath})` }}>
       </div>
       <div className="text">
