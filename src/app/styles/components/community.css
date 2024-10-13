@@ -28,7 +28,7 @@ section.community div.col1 p{
     width: 100%;
     font-size: 1.5rem;
     line-height: 1.75rem;
-    margin:0;
+    margin:3rem 0;
     padding:0;
 }
 section.community div.col1 ul{
@@ -52,6 +52,9 @@ section.community div.col1 ul li img{
 }
 section.community div.col1 a{
     text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
     color:#FFFFFF;
     background-color: var(--btn-blue-bkg);
@@ -103,3 +106,5 @@ section.community div.col2 img{
         border-radius: 0px;
     }
   }
+
+

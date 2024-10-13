@@ -1,11 +1,19 @@
 import Image from "next/image";
 import "../app/styles/components/community.css";
+import Link from "next/link";
+import useHighlightNewsletterInput from "../hooks/useHighlightNewsletterInput";
 
 const Community = () => {
-
+  
+  useHighlightNewsletterInput();
+  
   return (
     <section className="community">
       <div className="col1">
+      <h2>Join Our Community</h2>
+        <p></p>
+        
+        {/* 
         <h2>Join Our Community</h2>
         <p>Sign-Up now to create your own event and be part of a global event network.</p>
         <ul>
@@ -22,7 +30,8 @@ const Community = () => {
             User-Friendly Tools
           </li>
         </ul>
-        <a href="#newsletterFormSpaced">Get Started</a>
+        */}
+        <Link href={"#newsletterFormSpaced"} id="communityGetStartedButton">Get Started</Link>
       </div>
       <div className="col2">
         <Image src={`/images/community.png`} width={687} height={511} alt="Join Our Community | In The Know YYC" />

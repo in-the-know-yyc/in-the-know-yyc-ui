@@ -68,6 +68,10 @@ footer{
     flex-grow: 1;
     transition: .3s;
   }
+  footer div.newsletter-container div form input.highlighted{
+    box-shadow: 0px 0px 10px 8px var(--btn-blue-bkg);
+    scale: 1.05;
+  }
   footer div.newsletter-container div form div[data-slot=error-message]{
     position: absolute;
     color:red;
@@ -221,11 +225,4 @@ footer{
   footer div.newsletter-container div form div#newsletterFormSpaced{
     top:calc(var(--header-height-mobile-neg) * 1.2) ;
   }
-}
-
-
-
-.testEffect{
-  box-shadow: 0px 0px 10px 8px var(--btn-blue-bkg);
-  scale: 1.05;
 }
