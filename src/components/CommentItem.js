@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react';
 import "../app/styles/components/commentItem.css";
 
 const CommentItem = ({ comment, id }) => {
