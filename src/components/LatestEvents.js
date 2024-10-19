@@ -63,7 +63,7 @@ const LatestEvents = () => {
 
       
         <h2>Latest events</h2>
-        <Link href={`/events`}>View all events</Link>
+        <Link href={`/events`} className="all-events-link">View all events</Link>
 
       <div className="latestEvents-container">
         <div className="slider-container">

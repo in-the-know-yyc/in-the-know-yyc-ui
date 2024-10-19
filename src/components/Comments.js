@@ -11,7 +11,7 @@ const Comments = () => {
     <section className="comments">
       <h2>What People are Saying</h2>
       <div className={`comments-container comments-container-odd`}>
-        <h4>Discover what our event facilitators and <br /> attendees are saying about their experience <br /> with the events we put out</h4>
+        <h4>Discover what people have been<br/>saying about various events and<br/>IN THE KNOWS YYC</h4>
 
         {currentSlotData.map((comment, index) => (
           <CommentItem 

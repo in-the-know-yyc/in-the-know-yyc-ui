@@ -27,7 +27,7 @@ section.latestEvents h2 {
     margin-left: 7dvw;
 }
 
-section.latestEvents a {
+section.latestEvents a.all-events-link {
     float: right;
     width: fit-content;
     padding: 0;
@@ -44,9 +44,9 @@ section.latestEvents a {
 
 section.latestEvents div.latestEvents-container {
     width: 100%;
-    padding: 22px calc(7dvw - 60px) 42.6px calc(7dvw - 12px);
-    overflow: hidden;
+    padding: 0;
 }
+
 
 /* MOBILE */
 @media only screen and (max-width: 800px) {
@@ -63,11 +63,13 @@ section.latestEvents div.latestEvents-container {
         width: 100%;
         text-align: center;
         font-size: 1.125rem;
+        margin-left: 0;
     }
 
-    section.latestEvents a {
-        font-size: .75rem;
+    section.latestEvents a.all-events-link {
         position: absolute;
+        left: 0;
+        font-size: .75rem;
         bottom: .5rem;
         width: 100%;
         text-align: center;

@@ -5,32 +5,26 @@
 section.hero{
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    padding: 107px 7dvw;
+    padding: 148px 7dvw;
 }
-section.hero:after{
-    content:'';
+section.hero div.hero-image{
     position:absolute;
+    width: 805px;
+    height: 664px;
     top:0;
-    left:calc(7dvw + 40rem);
     right:0;
     bottom: 0;
-    background-image: url('/images/hero/hero0.jpg');
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
-    z-index: -1;
+    overflow: hidden;
 }
-section.hero div.hero-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 42.3rem;
-    border-radius:3px;
+section.hero div.hero-image img{
+    width:100%;
+    height:auto;
 }
-section.hero div.hero-content h1{
+section.hero h1{
     margin:0 0 1.5rem 0;
     padding:0;
     font-size: 5.6rem;
@@ -41,16 +35,16 @@ section.hero div.hero-content h1{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-section.hero div.hero-content h2{
+section.hero h2{
     margin:0;
     padding:0;
     font-size: 1.5rem;
     font-weight: 400;
 }
-section.hero div.hero-content h2 span{
+section.hero h2 span{
     color:var(--btn-lightblue-bkg);
 }
-section.hero div.hero-content div.call-to-action{
+section.hero div.call-to-action{
     margin-top: 2.56rem;
 }
 /*
@@ -72,7 +66,7 @@ section.hero div.hero-content div.call-to-action:before{
     box-shadow: -8px 0px 33.3px -5px #007BFF33;
 }
 */
-section.hero div.hero-content div.call-to-action a{
+section.hero div.call-to-action a{
     position: relative;
     width:fit-content;
     text-decoration: none;
@@ -82,30 +76,20 @@ section.hero div.hero-content div.call-to-action a{
     border-radius:10px;
     padding: 1rem 2.75rem;
 }
-/*
-section.hero div.hero-image{
-    background-image: url('/images/hero/hero0.jpg');
-    background-repeat: no-repeat;
-    background-position: top right;
-    background-size: contain;
-}
-    */
 
 
 /* MOBILE */
 @media only screen and (max-width: 800px) {
     section.hero{
-        padding: 0;
+        padding: 0 0 2rem 0;
     }
-    section.hero:after{
+    section.hero img.hero-image{
         left:0;
         background-size: 100%;
     }
-    section.hero div.hero-content{
-        width:100%;
-    }
-    section.hero div.hero-content h1{
+    section.hero h1{
         position: relative;
+        width: 100%;
         margin: 0;
         padding: 0 3rem;
         font-size: 2rem;
@@ -113,7 +97,7 @@ section.hero div.hero-image{
         background: #FFFFFF;
         color: transparent;
     }
-    section.hero div.hero-content h1:after{
+    section.hero h1:after{
         content:'DISCOVER & ATTEND!';
         position: absolute;
         padding: 0 3rem;
@@ -127,7 +111,7 @@ section.hero div.hero-image{
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    section.hero div.hero-content h2{
+    section.hero h2{
         margin: 0;
         font-size: 1rem;
         text-align: center;
@@ -135,11 +119,21 @@ section.hero div.hero-image{
         background-color: #FFFFFF;
         margin-top: -1px;
     }
-    section.hero div.hero-content div.call-to-action{
-        margin: 250px auto 0 auto;
-        padding: 15px 0;
+    section.hero div.hero-image{
+        position: relative;
+        width: 100%;
+        height: auto;
     }
-    section.hero div.hero-content div.call-to-action button{
+    section.hero div.call-to-action{
+        position: absolute;
+        width: fit-content;
+        padding: 15px 0;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    section.hero div.call-to-action button{
         width: 100%;
         padding: 18px;
         font-size: 1rem;

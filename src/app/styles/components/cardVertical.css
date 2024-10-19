@@ -2,13 +2,26 @@
 /* ------- CARDS | VERTICAL ------- */
 /* -------------------------------- */
 
+a.cardVerticalContainer{
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    padding: 21px 25px 41px 28px;
+    overflow: hidden;
+    display: block;
+    width: fit-content;
+    transition: .3s;
+}
+a.cardVerticalContainer:hover{
+    scale:1.08;
+    z-index: 3;
+}
 article.cardVertical{
     position:relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width:27.7dvw;
-    margin-right:1dvw;
+    /* width:27.7dvw; */
     padding:1.4dvw 1dvw;
     background:#FFFFFF;
     box-shadow: 21px 40px 41.6px -27px #A5B5FF80;
@@ -88,7 +101,7 @@ article.cardVertical ul li img{
     margin-right: .4rem;
     vertical-align: middle;
 }
-article.cardVertical ul li a{
+article.cardVertical ul li.price{
     display: inline-block;
     margin: 0;
     font-size: .75rem;
@@ -104,8 +117,6 @@ article.cardVertical ul li a{
   /* MOBILE */
   @media only screen and (max-width: 800px) {
     article.cardVertical{
-        width: calc(100dvw - 6rem);
-        margin-right: 3rem;
         padding: 1.25rem;
     }
     article.cardVertical h3{

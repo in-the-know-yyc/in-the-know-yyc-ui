@@ -11,7 +11,7 @@ const Community = () => {
     <section className="community">
       <div className="col1">
       <h2>Join Our Community</h2>
-        <p></p>
+        <p>To be In The Know!</p>
         
         {/* 
         <h2>Join Our Community</h2>

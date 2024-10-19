@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Banner from '../../components/Banner';
 import CardHorizontal from '../../components/CardHorizontal'
 
@@ -35,6 +36,9 @@ export default function AllEvents() {
               <CardHorizontal key={`event_id_${index}`} content={content} />
             );
           })}
+      </div>
+      <div id='loadingSpinner'>
+        <Image src='/images/icons/loading.gif' alt='' width={200} height={200} />
       </div>
     </>
   );

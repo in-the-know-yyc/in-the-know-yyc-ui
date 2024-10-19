@@ -3,7 +3,15 @@
 /* ---------------------------------------- */
 
 section.latestEvents div.latestEvents-container .slick-list {
-    padding: 30px 50px 55px 12px;
+    /*
+    padding: 28px 55px;
+    width: 86dvw;
+    margin: 0 0 0 calc(7dvw - 82px);
+    */
+    width: 86dvw;
+    margin: 0 auto;
+    padding: 28px 0;
+    overflow: visible;
 }
 
 section.latestEvents div.latestEvents-container button.slick-arrow {
@@ -27,12 +35,12 @@ section.latestEvents div.latestEvents-container button.slick-arrow.slick-disable
 }
 
 section.latestEvents div.latestEvents-container button.slick-arrow.slick-prev {
-    left: -74px;
+    left: 32px;
     background-image: url('/images/icons/carousel-arrow-left.svg');
 }
 
 section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
-    right: -74px;
+    right: 32px;
     background-image: url('/images/icons/carousel-arrow-right.svg');
 }
 
@@ -47,8 +55,7 @@ section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
         right: 0;
     }
     section.latestEvents div.latestEvents-container .slick-list {
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
+        width: 100%;
     }
     .slick-initialized .slick-slide{
         transition: .3s;

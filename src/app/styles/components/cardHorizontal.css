@@ -1,7 +1,8 @@
 /* ---------------------------------- */
 /* ------- CARDS | HORIZONTAL ------- */
 /* ---------------------------------- */
-a{
+a.linkCardHorizontal{
+    position: relative;
     display: flex;
     width: 49.6%;
     margin:0;
@@ -9,16 +10,24 @@ a{
     text-decoration: none;
     margin-bottom: 1rem;
     transition: .3s;
+    box-shadow: 21px 40px 41.6px -27px #A5B5FF80;
 }
-a:hover{
+a.linkCardHorizontal::after{
+    content: '';
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left:0;
+    box-shadow: -8px 0px 33.3px -5px #7C91ED80;
+}
+a.linkCardHorizontal:hover{
     scale:1.01;
 }
 article.cardHorizontal{
     display: flex;
     width: 100%;
     justify-content: space-between;
-    border-bottom:solid 1px #000000;
-    border-radius:10px;
     background-color: #FFFFFF;
     padding:35px 41px;
     box-shadow: 19px 4px 9.1px 0px #F5F5F540;
