@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Input } from "@nextui-org/input";
-import { Checkbox } from "@nextui-org/checkbox";
-import { Button } from "@nextui-org/button"
 import { DatePicker } from "@nextui-org/date-picker";
-import { Select, SelectSection, SelectItem } from "@nextui-org/select";
+import { Select, SelectItem } from "@nextui-org/select";
 import SearchEventInput from './SearchEventInput'
 import "../app/styles/components/eventsFilter.css";
 
 const EventsFilter = () => {
 
-  const [dateDescription, setDateDescription] = React.useState('Date')
+  const [dateDescription, setDateDescription] = useState('Date')
 
   return (
     <section className="eventsFilter">
@@ -31,7 +26,7 @@ const EventsFilter = () => {
             description={dateDescription}
             onChange={
               // this hides the "Date" placeholder to show the selected date
-              (e) => { setDateDescription('') }
+              () => { setDateDescription('') }
             }
             onKeyDown={
               // this prevents user input to avoid format errors
