@@ -11,36 +11,39 @@ import useFooterNewsletterValidation from '../hooks/useFooterNewsletterValidatio
 const Footer = () => {
 
     // Data validation in newsletter form
-    const [isInvalid, setIsInvalid] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
-    useFooterNewsletterValidation(setIsInvalid, setIsDisabled, setErrorMessage, setSuccessMessage);
+    useFooterNewsletterValidation(setIsDisabled, setErrorMessage, setSuccessMessage);
     // USAR DESCRIPTION PARA OCULTAR FORM DESPUES DE SUBMITEAR??
     return (
         <footer>
             <div className="newsletter-container">
-                <div>
+                <div className='col1'>
                     <h3>Subscribe to our Newsletter!</h3>
                     <p>Get information about all the Tech events happening around you</p>
                 </div>
-                <div>
+                <div className='col2'>
                     {(successMessage !== '') ? <h3 className='successMessage'>{successMessage}</h3> :
                         <form action="#" method="post" id="footerNewsletterForm">
                             <div id="newsletterFormSpaced"></div>
                             <Input
                                 id='inputNewsletterFooter'
+                                className='inputNewsletterFooter'
                                 name="newsletter_subscription"
-                                label=""
+                                label="Enter your email"
                                 labelPlacement={'inside'}
-                                placeholder="Enter your email"
                                 type="text"
                                 isRequired={true}
-                                isInvalid={isInvalid}
-                                errorMessage={errorMessage}
+                                isInvalid={false}
                                 maxLength={256}
-                                description={successMessage}
+                                description={errorMessage}
+                                classNames={{
+                                    helperWrapper: "inputNewsletterFooter-helperWrapper",
+                                    inputWrapper: "inputNewsletterFooter-inputWrapper",
+                                    description: "inputNewsletterFooter-descriptionMessage"
+                                }}
                             />
                             <Button type="submit" id='buttonNewsletterFooter' isDisabled={isDisabled}>Subscribe</Button>
                         </form>

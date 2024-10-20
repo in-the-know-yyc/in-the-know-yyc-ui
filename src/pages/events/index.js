@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Banner from '../../components/Banner';
+import EventsFilter from '../../components/EventsFilter';
 import CardHorizontal from '../../components/CardHorizontal'
 
 
@@ -30,6 +31,7 @@ export default function AllEvents() {
   return (
     <>
         <Banner />
+        <EventsFilter />
         <div id="events-horizontal-container">
           {eventsContentTest.map((content, index) => {
             return (

@@ -19,13 +19,13 @@ footer{
     padding: 0;
     margin: 02rem 0 0 0;
   }
-  footer div.newsletter-container div:first-child{
+  footer div.newsletter-container div.col1{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 35dvw;
   }
-  footer div.newsletter-container div:last-child{
+  footer div.newsletter-container div.col2{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -59,37 +59,33 @@ footer{
     height: 0;
     top:calc(var(--header-height-neg) * 1.2) ;
   }
-  footer div.newsletter-container div form input{
-    border:none;
-    font-size: 1rem;
-    padding: 1.5rem;
-    margin: 0 2px;
-    background-color: var(--bkg-light);
-    flex-grow: 1;
+  footer div.newsletter-container div form div.inputNewsletterFooter{
     transition: .3s;
+    background: white;
+    z-index: 1;
   }
-  footer div.newsletter-container div form input.highlighted{
+  footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-inputWrapper{
+    border-radius: 0;
+  }
+  footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-helperWrapper{
+    padding: 0;
+    margin: 0;
+  }
+  footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-descriptionMessage{
+    position: absolute;
+    color: red;
+  }
+  footer div.newsletter-container div form div.highlighted{
     box-shadow: 0px 0px 10px 8px var(--btn-blue-bkg);
     scale: 1.05;
   }
-  footer div.newsletter-container div form div[data-slot=error-message]{
-    position: absolute;
-    color:red;
-  }
-  /*
-  footer div.newsletter-container div form div[data-slot=description]{
-    position: absolute;
-    color:#15B097;
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-  */
   footer div.newsletter-container div form button{
+    height: auto;
     border: none;
+    border-radius:0;
     font-size: 1rem;
     background-color: var(--btn-blue-bkg);
     color: #FFFFFF;
-    padding: 1.5rem;
     margin-left: .3rem;
     transition: .3s;
   }
@@ -97,6 +93,8 @@ footer{
     background-color: #9F9C9C;
     cursor: not-allowed;
   }
+
+
   /* Navigation */
   footer div.nav-container{
     display: flex;
@@ -160,6 +158,8 @@ footer{
     margin:0;
     padding:0;
   }
+
+
   /* Copyright */
   footer div.copyright-container{
     display: flex;
@@ -206,9 +206,9 @@ footer{
   footer div.nav-container div ul{
     margin-bottom: 1.5rem;
   }
-  footer div.newsletter-container div form input,
   footer div.newsletter-container div form button{
-    margin: 0 0 1rem 0;
+    padding:1rem 0;
+    margin:1.3rem 0 0 0;
   }
   footer div.nav-container div.social-container ul{
     width: 100%;

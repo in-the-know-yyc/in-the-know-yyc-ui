@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 
 // Set event listener "submit" in the form
-const useHeaderSearchValidation = (setIsInvalid) => {
+const useHeaderSearchValidation = (setErrorMessage, formId) => {
     useEffect(() => {
-        const searchForm = document.getElementById('headerEventSearchForm');
+        const searchForm = document.getElementById(formId);
 
         if (searchForm) {
             searchForm.addEventListener('submit', (event) => {
                 event.preventDefault();
                 const searchInput = document.getElementById('inputSearchHeader');
                 if (searchInput.value.length === 0) {
-                    setIsInvalid(true);
+                    setErrorMessage('This field is required');
                   } else {
-                    setIsInvalid(false);
+                    setErrorMessage('');
                     searchForm.submit();
                   }
             });

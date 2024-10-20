@@ -150,7 +150,7 @@ article.cardHorizontal div.content div.location span{
 
   /* MOBILE */
   @media only screen and (max-width: 800px) {
-    a{
+    a.linkCardHorizontal{
         width: 100%;
     }
     article.cardHorizontal{

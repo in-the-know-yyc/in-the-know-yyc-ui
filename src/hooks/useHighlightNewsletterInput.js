@@ -4,17 +4,19 @@ import { useEffect } from 'react';
 const useHighlightNewsletterInput = () => {
     useEffect(() => {
         const communityButton = document.getElementById('communityGetStartedButton');
+        const newsletterWrapper = document.querySelector('div.inputNewsletterFooter');
         const newsletterInput = document.getElementById('inputNewsletterFooter');
         
         if (communityButton) {
             communityButton.addEventListener('click', () => {
                 // Add class to highlight input after scrolling is done
                 setTimeout(() => {
-                    newsletterInput.classList.add('highlighted');
+                    newsletterWrapper.classList.add('highlighted');
                 },300);
-                // Remove class to highlight input
+                // Remove class to highlight input and focus
                 setTimeout(() => {
-                    newsletterInput.classList.remove('highlighted');
+                    newsletterWrapper.classList.remove('highlighted');
+                    newsletterInput.focus()
                 },1000);
             });
         }

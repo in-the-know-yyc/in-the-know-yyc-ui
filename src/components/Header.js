@@ -1,22 +1,18 @@
-import { useState } from 'react';
 import React from "react";
 import Link from 'next/link';
 import Image from 'next/image';
-import {Input} from "@nextui-org/input";
-import {Button} from "@nextui-org/button"
+import SearchEventInput from './SearchEventInput'
 import "../app/styles/components/header.css";
 
 // HOOK TO OPEN AND CLOSE THE MENU IN MOBILE VERSION
 import useMobileMenuToggle from '../hooks/useMobileMenuToggle';
-import useHeaderSearchValidation from '../hooks/useHeaderSearchValidation';
+
 
 const Header = () => {
   // Functionality for main menu in responsive version
   useMobileMenuToggle();
 
-  // Data validation in search form
-  const [isInvalid, setIsInvalid] = useState(false);
-  useHeaderSearchValidation(setIsInvalid);
+  
 
   return (
     <header id="mainMenuHeader">
@@ -28,25 +24,7 @@ const Header = () => {
         </div>
         <button className='onlyMobile toggleMenu' id="toggleMobileMenu"><Image src={'/images/icons/menu.svg'} width={37} height={27} alt='' /></button>
         <form action='/events' method='get' id="headerEventSearchForm">
-          <div className='headerInputContainer'>
-            <Input 
-              id='inputSearchHeader' 
-              name="search" 
-              label="" 
-              labelPlacement={'inside'} 
-              placeholder="Search Event" 
-              type="text" 
-              isRequired={true}
-              isInvalid={isInvalid}
-              errorMessage="This is a required field"
-            />
-          </div>
-          {/* 
-        <div className='headerInputContainer'>
-          <input id='inputLocationHeader' type='text' placeholder='Calgary, AB' />
-        </div>
-        */}
-          <Button type="submit"></Button>
+          <SearchEventInput inputId={'inputSearchHeader'} formId={'headerEventSearchForm'} />
         </form>
         <nav>
           <ul>

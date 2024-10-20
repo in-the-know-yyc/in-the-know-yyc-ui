@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 // Set event listener "submit" in the form
-const useHeaderSearchValidation = (setIsInvalid, setIsDisabled, setErrorMessage, setSuccessMessage) => {
+const useHeaderSearchValidation = (setIsDisabled, setErrorMessage, setSuccessMessage) => {
     useEffect(() => {
         const newsletterForm = document.getElementById('footerNewsletterForm');
         const newsletterInput = document.getElementById('inputNewsletterFooter');
@@ -17,11 +17,11 @@ const useHeaderSearchValidation = (setIsInvalid, setIsDisabled, setErrorMessage,
                 
                 if (newsletterInput.value.length === 0) {
                     // Validate not empty value
-                    emptyValue(setIsInvalid, setIsDisabled, setErrorMessage);
+                    emptyValue(setIsDisabled, setErrorMessage);
                     return;
                 }else if(!emailRegex.test(newsletterInput.value)){
                     // Validate email format
-                    wrongFormat(setIsInvalid, setIsDisabled, setErrorMessage);
+                    wrongFormat(setIsDisabled, setErrorMessage);
                     return;
                 }
 
@@ -40,7 +40,13 @@ const useHeaderSearchValidation = (setIsInvalid, setIsDisabled, setErrorMessage,
                     setErrorMessage('');
                     setIsDisabled(false);
                 }else{
-                    wrongFormat(setIsInvalid, setIsDisabled, setErrorMessage);
+                    wrongFormat(setIsDisabled, setErrorMessage);
+                    setIsDisabled(true);
+                }
+            })
+            newsletterInput.addEventListener('blur', () => {
+                if(newsletterInput.value === ''){
+                    setErrorMessage('');
                     setIsDisabled(true);
                 }
             })
@@ -48,14 +54,12 @@ const useHeaderSearchValidation = (setIsInvalid, setIsDisabled, setErrorMessage,
     });
 };
 
-const emptyValue = (setIsInvalid, setIsDisabled, setErrorMessage) => {
-    setIsInvalid(true);
+const emptyValue = (setIsDisabled, setErrorMessage) => {
     setErrorMessage('This field is required');
     setIsDisabled(true);
 }
 
-const wrongFormat = (setIsInvalid, setIsDisabled, setErrorMessage) => {
-    setIsInvalid(true);
+const wrongFormat = (setIsDisabled, setErrorMessage) => {
     setErrorMessage('Please enter a valid email address');
     setIsDisabled(true);
 }
