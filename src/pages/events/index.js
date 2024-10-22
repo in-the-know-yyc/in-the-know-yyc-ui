@@ -1,41 +1,21 @@
 import Image from 'next/image';
 import Banner from '../../components/Banner';
 import EventsFilter from '../../components/EventsFilter';
-import CardHorizontal from '../../components/CardHorizontal'
+import CardHorizontal from '../../components/CardHorizontal';
+import { getFilteredEvents } from '../../api/events';
 
 
-export default function AllEvents() {
-
-  // This constant is only simulating a response from the API to show any quantity of events
-  const eventsContentTest = [
-    {
-      id: 1,
-      imagePath: '/images/events/evt2.png',
-      date: 'WEDS, SEP 10 2024, 9AM MDT',
-      title: 'Tech Innovators Meetup:',
-      description: 'Unlocking Success in the Digital World',
-      host: 'Edmonton Unlimited',
-      categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],
-      location: 'James mowatt T6W 5N4',
-      entrance: ['general']
-    },
-    {id: 2,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 3,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 4,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 5,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 6,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 7,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 8,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-  ];
+export default function AllEvents({ events }) {
 
   return (
     <>
         <Banner />
         <EventsFilter />
-        <div id="events-horizontal-container">
-          {eventsContentTest.map((content, index) => {
+        <div id="events-horizontal-container">        
+          {Object.entries(events).map((evt) => {
+            const eventContent = evt[1];
             return (
-              <CardHorizontal key={`event_id_${index}`} content={content} />
+              <CardHorizontal key={`event_id_${eventContent.id}`} content={eventContent} />
             );
           })}
       </div>
@@ -44,4 +24,10 @@ export default function AllEvents() {
       </div>
     </>
   );
+}
+
+
+export async function getServerSideProps() {
+  const events = await getFilteredEvents();
+  return {props: {events: events.content} };
 }

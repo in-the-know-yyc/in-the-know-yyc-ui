@@ -10,14 +10,14 @@ const CardHorizontal = ({ content }) => {
 
         <div className="content">
           {/* DATE | REQUIRED*/}
-          <h4>{content.date}</h4>
+          <h4>{content.eventDate}</h4>
 
           <div className="name">
             {/* TITLE | REQUIRED*/}
-            <h3>{content.title}</h3>
+            <h3>{content.eventName}</h3>
 
             {/* DESCRIPTION | OPTIONAL */}
-            {content.description && content.description !== '' && (<p>{content.description}</p>)}
+            {content.eventDescription && content.eventDescription !== '' && (<p>{content.eventDescription}</p>)}
           </div>
 
           <ul>
@@ -31,9 +31,7 @@ const CardHorizontal = ({ content }) => {
 
             {/* CATEGORIES | OPTIONAL */}
             <li className="categories">
-              {content.categories.map((category, index) => {
-                return <span key={`category_id_${content.id}_${index}`} style={{ color: category.color }}>{category.name}</span>
-              })}
+                <span>{content.eventType}</span>
             </li>
           </ul>
 
@@ -42,9 +40,7 @@ const CardHorizontal = ({ content }) => {
             <label>{content.location}</label>
 
             {/* ENTRANCE | REQUIRED */}
-            {content.entrance.map((entrance, index) => {
-              return <span key={`entrance_id_${content.id}_${index}`}>{entrance}</span>
-            })}
+            <span>{content.freeEvent ? 'Free' : '$'+content.cost}</span>
           </div>
 
         </div>
