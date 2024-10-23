@@ -21,7 +21,7 @@ const Hero = () => {
     waitForAnimate: false,
     autoplay: true,
     speed: 2000,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 10000,
     pauseOnHover: true,
     arrows: false
   };
