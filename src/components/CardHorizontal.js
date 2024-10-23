@@ -1,7 +1,9 @@
 import Link from "next/link";
 import "../app/styles/components/cardHorizontal.css";
+import moment from "moment/moment";
 
 const CardHorizontal = ({ content }) => {
+  const dateTime = moment(content.eventDate)
   return (
     <Link href={`/events/${content.id}`} className="linkCardHorizontal">
       <article className="cardHorizontal">
@@ -10,7 +12,7 @@ const CardHorizontal = ({ content }) => {
 
         <div className="content">
           {/* DATE | REQUIRED*/}
-          <h4>{content.eventDate}</h4>
+          <h4>{dateTime.format('ddd, MMM DD YYYY, h:mm a z')}</h4>
 
           <div className="name">
             {/* TITLE | REQUIRED*/}

@@ -2,11 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import "../../app/styles/components/eventInfo.css";
 import { getEventById } from '../../api/events';
+import moment from "moment/moment";
 
 
 export default function EventInfo({ eventInformation }) {
-
     
+    const dateTime = moment(eventInformation.eventDate);
+
+    console.log('DATE & TIME: ', dateTime);
+    
+
     return (
         <section className="eventInformation">
             <div className="row-1">
@@ -44,8 +49,8 @@ export default function EventInfo({ eventInformation }) {
                 {/* {eventInformation.speakers.map((speaker, index) => {
                     return <label className="speaker" key={`speaker_${index}`}>{speaker}</label>
                 })} */}
-                <label className="date">{eventInformation.eventDate}</label>
-                <label className="time">{eventInformation.eventDate}</label>
+                <label className="date">{dateTime.format('MMMM D, YYYY')}</label>
+                <label className="time">{dateTime.format('h:mm a z')}</label>
                 {/* <label className="location">{eventInformation.location}</label> */}
 
                 <label className="admission"><b>Admission:</b> {(eventInformation.freeEvent) ? 'Free' : eventInformation.eventCost}</label>
