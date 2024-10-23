@@ -8,7 +8,8 @@ const CardHorizontal = ({ content }) => {
     <Link href={`/events/${content.id}`} className="linkCardHorizontal">
       <article className="cardHorizontal">
         {/* IMAGE | REQUIRED */}
-        <div className="img" style={{ backgroundImage: `url(${content.imagePath})` }}></div>
+        <div className="img"></div>
+        {/* <div className="img" style={{ backgroundImage: `url(${content.imagePath})` }}></div> */}
 
         <div className="content">
           {/* DATE | REQUIRED*/}
