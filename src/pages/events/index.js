@@ -7,8 +7,8 @@ import CardHorizontal from '../../components/CardHorizontal';
 import { getFilteredEvents } from '../../api/events';
 
 export default function AllEvents({ eventsList }) {
-  const [events, setEvents] = useState(eventsList); // Initialize state
-  const [currentPage, setCurrentPage] = useState(1); // Initialize state for current page
+  const [events] = useState(eventsList); // Initialize state
+  //const [currentPage, setCurrentPage] = useState(1); // Initialize state for current page
   const eventsHorizontalContainerRef = useRef(null);
 
   useEffect(() => {
@@ -28,11 +28,18 @@ export default function AllEvents({ eventsList }) {
   }, [eventsHorizontalContainerRef]);
 
   const fetchMoreEvents = async () => {
-    setCurrentPage(currentPage + 1); // Update current page
-    const newEvents = await getFilteredEvents();
-    console.log('FETCHEANDO EVENTOS:');
-    console.log('EVENTS:', events);
-    console.log('NEW EVENTS:', newEvents);
+
+    /* - - - - - - - - - - - - - - - - * * * * * * * - - - - - - - - - - - - - - - - */
+    /*  - - - - - - -  |  THIS ONE NEEDS CORS ENABLED ON API SIDE  |  - - - - - - -  */
+    /* - - - - - - - - - - - - - - - - * * * * * * * - - - - - - - - - - - - - - - - */
+    
+    //setCurrentPage(currentPage + 1); // Update current page
+    
+    //const newEvents = await getFilteredEvents();
+    
+    //console.log('FETCHEANDO EVENTOS:');
+    //console.log('EVENTS:', events);
+    //console.log('NEW EVENTS:', newEvents);
     //setEvents([...events, ...newEvents.content]); // Append new events
   };
 

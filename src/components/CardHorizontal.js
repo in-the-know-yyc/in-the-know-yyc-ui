@@ -3,13 +3,15 @@ import "../app/styles/components/cardHorizontal.css";
 import moment from "moment/moment";
 
 const CardHorizontal = ({ content }) => {
+  
   const dateTime = moment(content.eventDate)
+  const eventImage = content.eventImage || '/images/events/evt2.png';
+  
   return (
     <Link href={`/events/${content.id}`} className="linkCardHorizontal">
       <article className="cardHorizontal">
         {/* IMAGE | REQUIRED */}
-        <div className="img"></div>
-        {/* <div className="img" style={{ backgroundImage: `url(${content.imagePath})` }}></div> */}
+        <div className="img" style={{ backgroundImage: `url(${eventImage})` }}></div>
 
         <div className="content">
           {/* DATE | REQUIRED*/}
@@ -32,9 +34,10 @@ const CardHorizontal = ({ content }) => {
               </li>
             )}
 
-            {/* CATEGORIES | OPTIONAL */}
+            {/* CATEGORIES (TYPES) & INDUSTRY | OPTIONAL */}
             <li className="categories">
-                <span>{content.eventType}</span>
+                {content.industry && content.industry !== '' && (<span>{content.industry}</span>)}
+                {content.eventType && content.eventType !== '' && (<span>{content.eventType}</span>)}
             </li>
           </ul>
 
@@ -43,7 +46,7 @@ const CardHorizontal = ({ content }) => {
             <label>{content.location}</label>
 
             {/* ENTRANCE | REQUIRED */}
-            <span>{content.freeEvent ? 'Free' : '$'+content.cost}</span>
+            <span>{content.freeEvent ? 'General' : '$'+content.cost}</span>
           </div>
 
         </div>
