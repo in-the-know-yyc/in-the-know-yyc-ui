@@ -5,7 +5,7 @@ import { Select, SelectItem } from "@nextui-org/select";
 import SearchEventInput from './SearchEventInput'
 import "../app/styles/components/eventsFilter.css";
 
-const EventsFilter = () => {
+const EventsFilter = ({searchText}) => {
 
   const [dateDescription, setDateDescription] = useState('Date')
 
@@ -13,7 +13,7 @@ const EventsFilter = () => {
     <section className="eventsFilter">
       <form action='/events' method='get' id="eventListSearchForm">
         <div className='searchContainer'>
-          <SearchEventInput inputId={'inputSearchHeader'} formId={'eventListSearchForm'} />
+          <SearchEventInput inputId={'inputSearchEventsFilter'} formId={'eventListSearchForm'} searchText={searchText} />
         </div>
         <div className='filtersContainer'>
           <DatePicker 
@@ -26,7 +26,10 @@ const EventsFilter = () => {
             description={dateDescription}
             onChange={
               // this hides the "Date" placeholder to show the selected date
-              () => { setDateDescription('') }
+              () => { 
+                setDateDescription('') 
+                
+              }
             }
             onKeyDown={
               // this prevents user input to avoid format errors

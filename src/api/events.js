@@ -3,25 +3,24 @@ import moment from "moment/moment";
 
 const api_endpoint = process.env.API_ENDPOINT || process.env.NEXT_PUBLIC_API_ENDPOINT;
 
-export async function getFilteredEvents(params = null){
-  //const api_endpoint = process.env.API_ENDPOINT || process.env.NEXT_PUBLIC_API_ENDPOINT;
+export async function getFilteredEvents(filters = null) {
+  //NOTE: filters: searchText | startDate | eventType (industry)
 
-  console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-  console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-  console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-  
-  console.log('LLEGA GET-FILTERED-EVENTS ( - - - 2 - - - )');
-  console.log(' - params:',params);
-  console.log(' - endpoint:', api_endpoint);
-  console.log('.ENV - SSR:', process.env.API_ENDPOINT);
-  console.log('.ENV - CSR:', process.env.NEXT_PUBLIC_API_ENDPOINT);
-  
-  console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-  console.log('- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
-  console.log(' - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ');
+  const params = {
+    searchText: (filters && filters.search) ? filters.search : '',
+    startDate: (filters && filters.date) ? moment(filters.date).format('YYYY-MM-DDTHH:mm:ss') : '',
+    eventType: (filters && filters.industry) ? filters.industry : '',
+    page: (filters && filters.page) ? filters.page : 0,
+    sortField: 'eventDate',
+    sortDirection: 'asc',
+    size: 2
+  }
+
   try {
-    const response = await axios.get(`${api_endpoint}/events`);
-    return response.data;
+    const response = await axios.get(`${api_endpoint}/events`, { params });
+    console.log('FILTERED EVENTS - PARMAS:', params)
+    console.log('FILTERED EVENTS - RESPONSE:', response.data)
+    return {params: {...params, page:params.page+1}, data: response.data};
   } catch (error) {
     console.error('Error fetching events:', error);
     return null;
@@ -29,7 +28,7 @@ export async function getFilteredEvents(params = null){
 }
 
 export async function getEventById(id = null) {
-  
+
   try {
     const response = await axios.get(`${api_endpoint}/events/${id}`);
     return response.data;
@@ -40,8 +39,8 @@ export async function getEventById(id = null) {
 
 }
 
-export async function getNextEvents(){
-  
+export async function getNextEvents() { // LATEST EVENTS | HOME
+  // ONLY DURING TESTING, THIS WILL CHANGE TO NOW TO SHOW REAL RESULTS
   const dateForTestingWithResults = '2024-10-23';
 
   const dateTimeNow = moment(dateForTestingWithResults).format('YYYY-MM-DDTHH:mm:ss');
@@ -50,12 +49,13 @@ export async function getNextEvents(){
     const params = {
       sortField: 'eventDate',
       sortDirection: 'asc',
-      size:6,
-      startDate: dateTimeNow
+      size: 6,
+      startDate: dateTimeNow,
+      searchText: ''
     }
-    
-    const response = await axios.get(`${api_endpoint}/events`, {params});
-    
+
+    const response = await axios.get(`${api_endpoint}/events`, { params });
+
     return response.data.content;
 
   } catch (error) {

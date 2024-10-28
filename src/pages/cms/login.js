@@ -5,7 +5,7 @@ import {Input} from "@nextui-org/input";
 import {Checkbox} from "@nextui-org/checkbox";
 
 
-import "../app/styles/pages/signInUp.css";
+import "../../app/styles/cms/signInUp.css";
 
 export default function LogIn() {
     

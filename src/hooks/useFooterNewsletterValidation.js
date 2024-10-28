@@ -1,25 +1,26 @@
 import { useEffect } from 'react';
+import sendEmailSubscription from '../api/newsletter'
 
 // Set event listener "submit" in the form
-const useHeaderSearchValidation = (setIsDisabled, setErrorMessage, setSuccessMessage) => {
+const useFooterNewsletterValidation = (setIsDisabled, setErrorMessage, setSuccessMessage) => {
     useEffect(() => {
         const newsletterForm = document.getElementById('footerNewsletterForm');
         const newsletterInput = document.getElementById('inputNewsletterFooter');
-        
+
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        
-        
+
+
         // FORM VALIDATION AND LISTENER
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', (event) => {
                 event.preventDefault();
 
-                
+
                 if (newsletterInput.value.length === 0) {
                     // Validate not empty value
                     emptyValue(setIsDisabled, setErrorMessage);
                     return;
-                }else if(!emailRegex.test(newsletterInput.value)){
+                } else if (!emailRegex.test(newsletterInput.value)) {
                     // Validate email format
                     wrongFormat(setIsDisabled, setErrorMessage);
                     return;
@@ -27,25 +28,24 @@ const useHeaderSearchValidation = (setIsDisabled, setErrorMessage, setSuccessMes
 
                 // VALIDATIONS PASSED
 
-                // SUBMIT STOPPED DURING TESTING
-                //newsletterForm.submit();
-                setSuccessMessage('Thank you for subscribing to In The Know YYC newsletters.');
-                return;
+                // NO FORM SUBMIT, ONLY MESSAGE
+                sendSubscription(newsletterInput.value, setErrorMessage, setSuccessMessage);
+                
             });
         }
 
-        if(newsletterInput){
+        if (newsletterInput) {
             newsletterInput.addEventListener('keyup', () => {
-                if(emailRegex.test(newsletterInput.value)){
+                if (emailRegex.test(newsletterInput.value)) {
                     setErrorMessage('');
                     setIsDisabled(false);
-                }else{
+                } else {
                     wrongFormat(setIsDisabled, setErrorMessage);
                     setIsDisabled(true);
                 }
             })
             newsletterInput.addEventListener('blur', () => {
-                if(newsletterInput.value === ''){
+                if (newsletterInput.value === '') {
                     setErrorMessage('');
                     setIsDisabled(true);
                 }
@@ -64,5 +64,14 @@ const wrongFormat = (setIsDisabled, setErrorMessage) => {
     setIsDisabled(true);
 }
 
+const sendSubscription = async (email, setErrorMessage, setSuccessMessage) => {
+    const rs = await sendEmailSubscription(email);
+    if(rs.type === 'error'){
+        setErrorMessage(rs.message);
+    }
+    if(rs.type === 'success'){
+        setSuccessMessage(rs.message);
+    }
+}
 
-export default useHeaderSearchValidation;
+export default useFooterNewsletterValidation;
