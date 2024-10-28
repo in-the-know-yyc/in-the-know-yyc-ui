@@ -2,8 +2,6 @@ import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
 import "../app/styles/globals.css";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import CmsLayout from '../layouts/cmsLayout'
 import PublicLayout from '../layouts/publicLayout'
 

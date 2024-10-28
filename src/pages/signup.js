@@ -4,7 +4,7 @@ import Link from "next/link";
 import {Input} from "@nextui-org/input";
 
 
-import "../app/styles/pages/signInUp.css";
+import "../app/styles/cms/signInUp.css";
 
 export default function LogIn() {
     
