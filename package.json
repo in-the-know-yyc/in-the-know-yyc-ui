@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 80",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 80",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@ant-design/react-slick": "^1.1.2",
+    "@internationalized/date": "^3.5.6",
     "@nextui-org/button": "^2.0.38",
     "@nextui-org/checkbox": "^2.1.5",
     "@nextui-org/date-picker": "^2.1.8",
@@ -23,6 +24,7 @@
     "next": "14.2.11",
     "react": "^18",
     "react-dom": "^18",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.30.2",
     "sharp": "^0.33.5",

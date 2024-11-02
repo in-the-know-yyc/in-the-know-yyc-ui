@@ -1,0 +1,41 @@
+div#events-horizontal-container {
+    width: 100%;
+    padding: 30px 7dvw;
+}
+
+div#events-horizontal-container div.infinite-scroll-component {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+div#loadingSpinner {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+div#loadingSpinner img {
+    margin: 0 auto;
+    width: 2rem;
+    height: 2rem;
+}
+
+.endMessage{
+    width: 100%;
+    margin-top: 2rem;
+    border-top: solid 1px #151515;
+    padding-top: 1rem;
+    color: #151515;
+    text-align: center;
+}
+
+
+/* MOBILE */
+@media only screen and (max-width: 800px) {
+    div#events-horizontal-container {
+        padding: 2rem 3rem;
+    }
+}

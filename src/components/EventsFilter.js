@@ -1,19 +1,28 @@
 import { useState } from 'react';
 import React from "react";
 import { DatePicker } from "@nextui-org/date-picker";
+import { parseDate } from "@internationalized/date";
 import { Select, SelectItem } from "@nextui-org/select";
 import SearchEventInput from './SearchEventInput'
 import "../app/styles/components/eventsFilter.css";
 
-const EventsFilter = ({searchText}) => {
+const EventsFilter = ({filters}) => {
 
-  const [dateDescription, setDateDescription] = useState('Date')
-
+  // PARSING DATE FROM FILTERS (IF EXISTS)
+  const filteredDate = (filters && filters.startDate) ? filters.startDate.substring(0, 10) : null; 
+  // PARSING DATE FOR DATEPICKER VALUE
+  const initialDate = (filteredDate) ? parseDate(filteredDate) : null;
+  // SETTING DATEPICKER DESCRIPTION TO SHOW A DATE OR A PLACEHOLDER "DATE"
+  const [dateDescription, setDateDescription] = useState(filteredDate || 'Date')
+  
+  
+  
   return (
     <section className="eventsFilter">
       <form action='/events' method='get' id="eventListSearchForm">
+        <input type="hidden" id="dateValue" name="date" value={initialDate || ''} />
         <div className='searchContainer'>
-          <SearchEventInput inputId={'inputSearchEventsFilter'} formId={'eventListSearchForm'} searchText={searchText} />
+          <SearchEventInput inputId={'inputSearchEventsFilter'} formId={'eventListSearchForm'} searchText={filters.searchText} />
         </div>
         <div className='filtersContainer'>
           <DatePicker 
@@ -24,11 +33,14 @@ const EventsFilter = ({searchText}) => {
             aria-label="Date"
             showMonthAndYearPickers
             description={dateDescription}
+            defaultValue={initialDate}
             onChange={
               // this hides the "Date" placeholder to show the selected date
-              () => { 
+              (e) => {
+                const dateValue = `${e.year}-${e.month}-${e.day}`;
+                document.getElementById('dateValue').value = dateValue;
+                document.getElementById('eventListSearchForm').submit();
                 setDateDescription('') 
-                
               }
             }
             onKeyDown={

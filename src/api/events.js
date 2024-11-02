@@ -6,9 +6,13 @@ const api_endpoint = process.env.API_ENDPOINT || process.env.NEXT_PUBLIC_API_END
 export async function getFilteredEvents(filters = null) {
   //NOTE: filters: searchText | startDate | eventType (industry)
 
+  // PARAMS NOTE: 
+  //    SSR uses different params to keep the URL user-friendly. 
+  //    CSR uses the API required params to maintain the state variables
+
   const params = {
-    searchText: (filters && filters.search) ? filters.search : '',
-    startDate: (filters && filters.date) ? moment(filters.date).format('YYYY-MM-DDTHH:mm:ss') : '',
+    searchText: (filters && filters.search) ? filters.search : (filters && filters.searchText) ? filters.searchText : '',
+    startDate: (filters && filters.date) ? moment(filters.date).format('YYYY-MM-DDTHH:mm:ss') : (filters && filters.startDate) ? moment(filters.startDate).format('YYYY-MM-DDTHH:mm:ss') : '',
     eventType: (filters && filters.industry) ? filters.industry : '',
     page: (filters && filters.page) ? filters.page : 0,
     sortField: 'eventDate',
@@ -16,10 +20,10 @@ export async function getFilteredEvents(filters = null) {
     size: 2
   }
 
+
   try {
     const response = await axios.get(`${api_endpoint}/events`, { params });
-    console.log('FILTERED EVENTS - PARMAS:', params)
-    console.log('FILTERED EVENTS - RESPONSE:', response.data)
+    console.log('PARAMS RETURN:', params)
     return {params: {...params, page:params.page+1}, data: response.data};
   } catch (error) {
     console.error('Error fetching events:', error);
