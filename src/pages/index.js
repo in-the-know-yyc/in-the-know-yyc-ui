@@ -6,6 +6,7 @@ import Sponsors from '../components/Sponsors';
 
 // FETCHING NEXT 6 EVENTS EVENTS
 import { getNextEvents } from '../api/events';
+import { getSecret } from '../api/secrets';
 
 
 export default function Home({ latestEvents }) {
@@ -22,6 +23,14 @@ export default function Home({ latestEvents }) {
 
 
 export async function getServerSideProps() {
+
+  
+    const secret = await getSecret('dev/api/Mailchimp');
+    console.log("SECRETS:",secret.yourSecretKey,secret);
+  
+
+
+
 
   const latestEvents = await getNextEvents();
 
