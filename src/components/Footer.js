@@ -62,7 +62,7 @@ const Footer = () => {
                                     description: "inputNewsletterFooter-descriptionMessage"
                                 }}
                             />
-                            <Button type="submit" id='buttonNewsletterFooter' isDisabled={isDisabled}>Subscribe</Button>
+                            <Button type="submit" id='buttonNewsletterFooter'>Subscribe</Button>
                         </form>
                     }
                 </div>
