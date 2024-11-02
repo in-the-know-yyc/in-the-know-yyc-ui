@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 80",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 80",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@ant-design/react-slick": "^1.1.2",
+    "@aws-sdk/client-secrets-manager": "^3.682.0",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@nextui-org/button": "^2.0.38",
     "@nextui-org/checkbox": "^2.1.5",
     "@nextui-org/date-picker": "^2.1.8",
@@ -17,6 +19,7 @@
     "@nextui-org/select": "^2.2.7",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
+    "aws-sdk": "^2.1691.0",
     "axios": "^1.7.7",
     "framer-motion": "^11.11.9",
     "moment": "^2.30.1",

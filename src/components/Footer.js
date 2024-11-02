@@ -7,6 +7,7 @@ import { Button } from "@nextui-org/button";
 import "../app/styles/components/footer.css";
 
 import useFooterNewsletterValidation from '../hooks/useFooterNewsletterValidation';
+import sendEmailSubscription from "@/api/newsletter";
 
 const Footer = () => {
 
@@ -16,6 +17,22 @@ const Footer = () => {
     const [successMessage, setSuccessMessage] = useState('');
 
     useFooterNewsletterValidation(setIsDisabled, setErrorMessage, setSuccessMessage);
+
+    /**
+     * Handles the newsletter subscription form submission.
+     * @param {Event} event - The form submission event.
+     */
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const email = event.target.elements.newsletter_subscription.value;
+        const response = await sendEmailSubscription(email);
+        if (response.type === 'success') {
+            setSuccessMessage(response.message);
+        } else {
+            setErrorMessage(response.message);
+        }
+    };
+
     // USAR DESCRIPTION PARA OCULTAR FORM DESPUES DE SUBMITEAR??
     return (
         <footer>
@@ -26,7 +43,7 @@ const Footer = () => {
                 </div>
                 <div className='col2'>
                     {(successMessage !== '') ? <h3 className='successMessage'>{successMessage}</h3> :
-                        <form action="#" method="post" id="footerNewsletterForm">
+                        <form id="footerNewsletterForm" onSubmit={handleSubmit}>
                             <div id="newsletterFormSpaced"></div>
                             <Input
                                 id='inputNewsletterFooter'
