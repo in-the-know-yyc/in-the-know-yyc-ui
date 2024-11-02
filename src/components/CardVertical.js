@@ -6,9 +6,12 @@ import "../app/styles/components/cardVertical.css";
 
 const CardVertical = ({content}) => {
 
+  console.log('VALIDATOR CARD VERTICAL:',validator)
+
   // NEEDS DEFINITION FOR IMAGE FULL PATH!
   //const image = (validator.isURL(content.eventImage)) ? content.eventImage : '/images/events/evt1.png';
-  const image = (validator.isURL(content.eventImage)) ? '/images/events/evt1.png' : '/images/events/evt1.png';
+  const imagePath = (content && typeof content.eventImage === 'string') ? `/images/events/${content.eventImage}` : '/images/events/evt1.png';
+  const image = (validator.isURL(imagePath)) ? imagePath : '/images/events/evt1.png';
   
 
   const date = moment(content.eventDate).format('MMM DD, YYYY');
