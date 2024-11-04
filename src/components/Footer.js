@@ -26,6 +26,7 @@ const Footer = () => {
         event.preventDefault();
         const email = event.target.elements.newsletter_subscription.value;
         const response = await sendEmailSubscription(email);
+        console.log('ENVIO MAIL FRONT:', email, response)
         if (response.type === 'success') {
             setSuccessMessage(response.message);
         } else {
@@ -62,7 +63,7 @@ const Footer = () => {
                                     description: "inputNewsletterFooter-descriptionMessage"
                                 }}
                             />
-                            <Button type="submit" id='buttonNewsletterFooter'>Subscribe</Button>
+                            <Button type="submit" id='buttonNewsletterFooter' isDisabled={isDisabled}>Subscribe</Button>
                         </form>
                     }
                 </div>
