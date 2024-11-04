@@ -1,47 +1,63 @@
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useState } from 'react';
 import Image from 'next/image';
 import Banner from '../../components/Banner';
 import EventsFilter from '../../components/EventsFilter';
-import CardHorizontal from '../../components/CardHorizontal'
+import CardHorizontal from '../../components/CardHorizontal';
+
+import "../../app/styles/pages/events.css";
+
+import { getFilteredEvents } from '../../api/events';
 
 
-export default function AllEvents() {
+export default function AllEvents({ eventsList, searchParams }) {
+  const [events, setEvents] = useState(eventsList);
+  const [params, setParams] = useState(searchParams);
+  const [moreEventsAvailable, setMoreEventsAvailable] = useState(true);
 
-  // This constant is only simulating a response from the API to show any quantity of events
-  const eventsContentTest = [
-    {
-      id: 1,
-      imagePath: '/images/events/evt2.png',
-      date: 'WEDS, SEP 10 2024, 9AM MDT',
-      title: 'Tech Innovators Meetup:',
-      description: 'Unlocking Success in the Digital World',
-      host: 'Edmonton Unlimited',
-      categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],
-      location: 'James mowatt T6W 5N4',
-      entrance: ['general']
-    },
-    {id: 2,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 3,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 4,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 5,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 6,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 7,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-    {id: 8,imagePath: '/images/events/evt2.png',date: 'WEDS, SEP 10 2024, 9AM MDT',title: 'Tech Innovators Meetup:',description: 'Unlocking Success in the Digital World',host: 'Edmonton Unlimited',categories: [{name: 'Free', color: '#007BFF'}, {name: 'Tech', color: '#151515'}],location: 'James mowatt T6W 5N4',entrance: ['general']},
-  ];
+  // CSR RENDERING (ALL THE EVENTS ON INFINITE SCROLL)
+  const fetchMoreEvents = async () => {
+    setParams((prevParams) => ({
+      ...prevParams,
+      page: (prevParams.page + 1),
+    }));
+
+    if (moreEventsAvailable) {
+      try {
+        const newEvents = await getFilteredEvents(params);
+        setEvents((prevEvents) => [...prevEvents, ...newEvents.data.content]);
+        setMoreEventsAvailable((newEvents.data.totalPages > newEvents.data.number));
+      } catch (error) {
+        console.error('Error fetching events in fetchMoreEvents CSR:', error);
+      }
+    }
+  };
 
   return (
     <>
-        <Banner />
-        <EventsFilter />
-        <div id="events-horizontal-container">
-          {eventsContentTest.map((content, index) => {
-            return (
-              <CardHorizontal key={`event_id_${index}`} content={content} />
-            );
-          })}
-      </div>
-      <div id='loadingSpinner'>
-        <Image src='/images/icons/loading.gif' alt='' width={200} height={200} />
+      <Banner />
+      <EventsFilter filters={params} />
+      <div id="events-horizontal-container">
+        <InfiniteScroll
+          dataLength={events.length}
+          next={fetchMoreEvents}
+          hasMore={moreEventsAvailable}
+          loader={<div id='loadingSpinner'><Image src="/images/icons/loading.gif" alt="" width={200} height={200} /></div>}
+          endMessage={<p className='endMessage'>There are no more results for this search criteria</p>}
+        >
+          {events.map((eventContent, index) => (
+            <CardHorizontal key={`event_id_${eventContent.id}-${index}`} content={eventContent} />
+          ))}
+        </InfiniteScroll>
       </div>
     </>
   );
 }
+
+// SSR RENDERING (ONLY FIRST BATCH OF EVENTS)
+export async function getServerSideProps(context) {
+  const events = await getFilteredEvents(context.query);
+  return { props: { eventsList: events.data.content, searchParams: events.params } };
+}
+
+

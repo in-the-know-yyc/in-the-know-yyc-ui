@@ -12,6 +12,7 @@ const Header = () => {
   // Functionality for main menu in responsive version
   useMobileMenuToggle();
 
+  const eventRedirectWithFullRefresh = () => {window.location.href = "/events"}
   
 
   return (
@@ -19,7 +20,7 @@ const Header = () => {
       <div className='headerContainer'>
         <div>
           <Link href="/">
-            <Image src='/images/logo.svg' alt="In The Know YYC - Logo" width={83} height={54} />
+            <Image src='/images/logo.png' alt="In The Know YYC - Logo" width={160} height={52} />
           </Link>
         </div>
         <button className='onlyMobile toggleMenu' id="toggleMobileMenu"><Image src={'/images/icons/menu.svg'} width={37} height={27} alt='' /></button>
@@ -29,7 +30,7 @@ const Header = () => {
         <nav>
           <ul>
             <li><Link href="/">Home</Link></li>
-            <li><Link href="/events">All Events</Link></li>
+            <li><Link href="/events" onClick={eventRedirectWithFullRefresh}>All Events</Link></li>
             <li><Link href="/about">About Us</Link></li>
             <li><Link href="/contact">Contact</Link></li>
             {/*

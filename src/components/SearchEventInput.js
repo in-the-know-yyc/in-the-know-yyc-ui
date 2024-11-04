@@ -5,11 +5,11 @@ import "../app/styles/components/searchInputButton.css";
 
 import useHeaderSearchValidation from '../hooks/useHeaderSearchValidation';
 
-const SearchEventInput = ({ inputId, formId }) => {
+const SearchEventInput = ({ inputId, formId, searchText }) => {
 
   // Data validation in search form
   const [errorMessage, setErrorMessage] = useState('');
-  useHeaderSearchValidation(setErrorMessage, formId);
+  useHeaderSearchValidation(setErrorMessage, formId, inputId);
 
 
   return (
@@ -23,6 +23,7 @@ const SearchEventInput = ({ inputId, formId }) => {
           labelPlacement={'inside'}
           placeholder="Search Event"
           type="text"
+          defaultValue={searchText || ''}
           isRequired={true}
           description={errorMessage}
           classNames={{

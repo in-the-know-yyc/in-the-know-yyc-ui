@@ -1,39 +1,68 @@
-/*
 import axios from 'axios';
+import moment from "moment/moment";
 
-export default async function fetchEvents() {
+const api_endpoint = process.env.API_ENDPOINT || process.env.NEXT_PUBLIC_API_ENDPOINT;
+
+export async function getFilteredEvents(filters = null) {
+  //NOTE: filters: searchText | startDate | eventType (industry)
+
+  // PARAMS NOTE: 
+  //    SSR uses different params to keep the URL user-friendly. 
+  //    CSR uses the API required params to maintain the state variables
+
+  const params = {
+    searchText: (filters && filters.search) ? filters.search : (filters && filters.searchText) ? filters.searchText : '',
+    startDate: (filters && filters.date) ? moment(filters.date).format('YYYY-MM-DDTHH:mm:ss') : (filters && filters.startDate) ? moment(filters.startDate).format('YYYY-MM-DDTHH:mm:ss') : '',
+    eventType: (filters && filters.industry) ? filters.industry : '',
+    page: (filters && filters.page) ? filters.page : 0,
+    sortField: 'eventDate',
+    sortDirection: 'asc',
+    size: 2
+  }
+
+
   try {
-    const response = await axios.get(`${process.env.API_ENDPOINT}events/id`);
-    return response.data;
+    const response = await axios.get(`${api_endpoint}/events`, { params });
+    return {params: {...params, page:params.page+1}, data: response.data};
   } catch (error) {
     console.error('Error fetching events:', error);
     return null;
   }
 }
-*/
 
+export async function getEventById(id = null) {
 
-
-export async function getEventById(id) {
   try {
-    const response = {
-      id: id,
-      imagePath: '/images/events/evt2.png',
-      title_short: 'Tech Innovators Meetup',
-      host: 'Edmonton Unlimited',
-      title_long: 'Tech Innovators Meetup: Unlocking Success in the Digital World',
-      description: "Join us for an exciting evening of learning, networking, and inspiration at the Tech Innovators Meetup in Toronto. Whether you're a tech enthusiast, budding entrepreneur, or seasoned professional, this event is perfect for anyone eager to expand their knowledge and skills in the tech industry. Our panel of leading tech entrepreneurs, developers, and innovators will share their expertise on topics such as emerging technologies, product development, and growth strategies.",
-      type: 'general',
-      industry: 'Tech',
-      speakers: ['Alex Mitchell, Founder & CEO at TechWave'],
-      date: 'September 12, 2024',
-      time: '9:00am MDT',
-      location: 'MaRS Discovery District, Toronto',
-      price: 0
-    }
-    return response;
+    const response = await axios.get(`${api_endpoint}/events/${id}`);
+    return response.data;
   } catch (error) {
-    console.error('Error fetching event:', error);
+    console.error(`Error fetching event with id = ${id}:`, error);
+    return null;
+  }
+
+}
+
+export async function getNextEvents() { // LATEST EVENTS | HOME
+  // ONLY DURING TESTING, THIS WILL CHANGE TO NOW TO SHOW REAL RESULTS
+  const dateForTestingWithResults = '2024-10-23';
+
+  const dateTimeNow = moment(dateForTestingWithResults).format('YYYY-MM-DDTHH:mm:ss');
+
+  try {
+    const params = {
+      sortField: 'eventDate',
+      sortDirection: 'asc',
+      size: 6,
+      startDate: dateTimeNow,
+      searchText: ''
+    }
+
+    const response = await axios.get(`${api_endpoint}/events`, { params });
+
+    return response.data.content;
+
+  } catch (error) {
+    console.error('Error fetching next events:', error.message);
     return null;
   }
 }

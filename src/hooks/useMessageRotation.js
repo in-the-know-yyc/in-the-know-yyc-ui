@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 // Set messages rotation
 const useMessageRotation = () => {
@@ -6,7 +6,7 @@ const useMessageRotation = () => {
     const [isHovered, setIsHovered] = useState(false);
     const rotationTime = 20000;
 
-    const commentsContent = [
+    const commentsContent = useMemo(() => [
         [
             { photoPath: '/images/comments/c1.png', name: '1Munachi Cheks', position: 'CEO Tech-x', comment: 'Attending the Tech Innovators Summit was a game-changer for me! The event was incredibly well-organized, with insightful speakers who are true leaders in the tech industry. I gained valuable knowledge on the latest trends and future technologies, and the networking opportunities were fantastic' },
             { photoPath: '/images/comments/c2.png', name: '2Munachi Cheks', position: 'CEO Tech-x', comment: 'Attending the Tech Innovators Summit was a game-changer for me! The event was incredibly well-organized, with insightful speakers who are true leaders in the tech industry. I gained valuable knowledge on the latest trends and future technologies, and the networking opportunities were fantastic' },
@@ -32,7 +32,7 @@ const useMessageRotation = () => {
             { photoPath: '/images/comments/c2.png', name: '17Munachi Cheks', position: 'CEO Tech-x', comment: 'Attending the Tech Innovators Summit was a game-changer for me! The event was incredibly well-organized, with insightful speakers who are true leaders in the tech industry. I gained valuable knowledge on the latest trends and future technologies, and the networking opportunities were fantastic' },
             { photoPath: '/images/comments/c1.png', name: '18Munachi Cheks', position: 'CEO Tech-x', comment: 'Attending the Tech Innovators Summit was a game-changer for me! The event was incredibly well-organized, with insightful speakers who are true leaders in the tech industry. I gained valuable knowledge on the latest trends and future technologies, and the networking opportunities were fantastic' }
         ],
-    ];
+    ], []);
 
 
 
@@ -52,7 +52,7 @@ const useMessageRotation = () => {
         }, rotationTime); 
 
         return () => clearInterval(rotationInterval);
-    }, [commentsContent]);
+    }, [commentsContent, isHovered]);
 
     const currentSlotData = commentsContent[currentSlotIndex];
 
