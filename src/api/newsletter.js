@@ -4,13 +4,11 @@ export async function sendEmailSubscription(email) {
     const api_endpoint = process.env.API_ENDPOINT || process.env.NEXT_PUBLIC_API_ENDPOINT;
     try {
         const response = await axios.post(`${api_endpoint}/subscribe`, {email_address: email}, {headers: { 'Content-Type': 'application/json' }});
-        console.log('API ENDPOINT:', api_endpoint)
-        console.log('MAIL:',email)
-        console.log('RESPONSE:',response)
-        return true;
+        return (response.data.status === "subscribed") ? {type: 'success',message:'Thank you for subscribing to In The Know YYC newsletters.'} : {type: 'error',message:'There was an error in the subscription. Please, try again later.'}
     } catch (error) {
         console.error('Error sending email:', error);
-        return null;
+        const message = (error.response.data.message) ? error.response.data.message : 'There was an error in the subscription. Please, try again later.';
+        return {type: 'error', message: message};
     }
 }
 
