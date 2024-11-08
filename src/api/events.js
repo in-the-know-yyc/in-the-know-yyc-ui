@@ -44,9 +44,11 @@ export async function getEventById(id = null) {
 
 export async function getNextEvents() { // LATEST EVENTS | HOME
   // ONLY DURING TESTING, THIS WILL CHANGE TO NOW TO SHOW REAL RESULTS
-  const dateForTestingWithResults = '2024-10-23';
+  const dateNow = new Date();
 
-  const dateTimeNow = moment(dateForTestingWithResults).format('YYYY-MM-DDTHH:mm:ss');
+  //console.log('DATENOW:',dateNow)
+
+  const dateTimeNow = moment(dateNow).format('YYYY-MM-DDTHH:mm:ss');
 
   try {
     const params = {
