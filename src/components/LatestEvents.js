@@ -50,6 +50,7 @@ export default function LatestEvents({latestEvents}) {
 
       <div className="latestEvents-container">
         <div className="slider-container">
+          {(!latestEvents || latestEvents.length === 0 ) ? <p align="center">No upcoming events</p> : 
           <Slider {...slideSettings}>
 
 
@@ -61,6 +62,7 @@ export default function LatestEvents({latestEvents}) {
 
 
           </Slider>
+          }
         </div>
       </div>
     </section>

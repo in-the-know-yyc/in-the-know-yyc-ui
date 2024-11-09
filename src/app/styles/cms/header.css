@@ -1,16 +1,6 @@
+body{
+    padding-top:0;
+}
 header#cmsHeader{
-
-}
-
-header#cmsHeader ul{
-    display: flex;
-    margin:0;
-    padding:0;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-}
-header#cmsHeader ul li{
-    padding:0;
-    margin:0;
+    position: relative;
 }
