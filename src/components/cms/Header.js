@@ -2,7 +2,7 @@
 import Link from "next/link";
 import "../../app/styles/cms/header.css";
 import Image from "next/image";
-import * as Flowbite from "flowbite-react"
+//import   from "flowbite-react"
 
 export default function cmsHome() {
   return (
