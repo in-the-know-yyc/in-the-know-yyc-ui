@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation';
 import axios from 'axios';
 
 const AxiosInstance = axios.create({

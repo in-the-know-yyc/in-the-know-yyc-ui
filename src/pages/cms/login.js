@@ -1,5 +1,4 @@
 import axios from "axios";
-import { redirect } from "next/navigation";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,9 +14,6 @@ import "../../app/styles/cms/signInUp.css";
 export default function LogIn() {
 
     const router = useRouter();
-    const [user, setUser] = useState('');
-    const [pass, setPass] = useState('');
-    const [token, setToken] = useState(null);
 
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
