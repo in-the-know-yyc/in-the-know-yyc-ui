@@ -4,10 +4,11 @@ import { Chip } from "@nextui-org/react";
 import {Card, CardHeader, CardBody} from "@nextui-org/card";
 import {Divider} from "@nextui-org/divider";
 
-export default function ModalEventsContent({ type, event = null, onClose }) {
+
+export default function ModalEventsContent({ type, event = null, onClose, handleEventDeletion }) {
 
     console.log(event)
-    const HeaderTitle = ({eventName, type}) => {
+    const HeaderTitle = ({type}) => {
         
         const modalHeaderStyles = "flex items-center justify-center gap-1";
         
@@ -25,16 +26,17 @@ export default function ModalEventsContent({ type, event = null, onClose }) {
         switch(type){
             case 'new': return (<ModalFooter>{CancelButton}<Button color="primary">Create event</Button></ModalFooter>);
             case 'edit': return (<ModalFooter>{CancelButton}<Button color="warning">Save changes</Button></ModalFooter>);
-            case 'delete': return(<ModalFooter>{CancelButton}<Button color="danger">Delete event</Button></ModalFooter>);
+            case 'delete': return(<ModalFooter>{CancelButton}<Button color="danger" onPress={() => {handleEventDeletion(event.id, onClose)}}>Delete event</Button></ModalFooter>);
             default: return (<ModalFooter>{CancelButton}</ModalFooter>);
         }
     }
 
     const BodyHandler = ({type, event}) => {
-        return (type === 'delete') ? <BodyDelete type={type} event={event} /> : <BodyForm type={type} event={event} />;
+        return (type === 'delete') ? <BodyDelete event={event} /> : <BodyForm type={type} event={event} />;
     }
 
-    const BodyDelete = ({type, event}) => {
+    const BodyDelete = ({event}) => {
+        
         return(
             <ModalBody>
                 <Card>
@@ -77,7 +79,7 @@ export default function ModalEventsContent({ type, event = null, onClose }) {
         )
     }
 
-    const BodyForm = ({type, event}) => {
+    const BodyForm = ({event}) => {
         return(
             <ModalBody>
                 <Card>
@@ -98,11 +100,11 @@ export default function ModalEventsContent({ type, event = null, onClose }) {
 
     return (
         <>
-            <HeaderTitle eventName={event.eventName || null} type={type} />
+            <HeaderTitle type={type} />
             
             <BodyHandler event={event || null}  type={type} />
             
-            <FooterButtons type={type} onClose={onClose} />
+            <FooterButtons type={type} onClose={onClose}  />
 
         </>
     );

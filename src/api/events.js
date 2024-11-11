@@ -65,3 +65,28 @@ export async function getNextEvents() { // LATEST EVENTS | HOME
     return null;
   }
 }
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+/* - - - - - - - EVENTS CRUD (API) - - - - - - - */
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+
+export async function switchEventStatus(id, status){
+  try {
+    const s = (status === 'approved') ? 'approve' : 'reject';
+    const response = await axios.patch(`${api_endpoint}/events/${id}/${s}`);
+    return {type: 'success', response};
+  } catch (error) {
+    console.error('Error switching events status:', error);
+    return {type: 'error', error}
+  }
+}
+export async function deleteEvent(id){
+  try {
+    const response = await axios.delete(`${api_endpoint}/events/${id}`);
+    return {type: 'success', response};
+  } catch (error) {
+    console.error('Error switching events status:', error);
+    return {type: 'error', error}
+  }
+}

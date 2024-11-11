@@ -1,22 +1,28 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import moment from "moment/moment";
 
+// API
+import { switchEventStatus, deleteEvent } from '../../../api/events';
+
+// HOOKS
 import { getFilteredEvents } from '../../../api/events';
 
-
-import { Toaster } from '@nextui-org/react';
+// NextUI Components
 import { Chip } from "@nextui-org/chip";
 import { Spacer } from "@nextui-org/spacer";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import { Avatar, Badge, Tooltip, Tabs, Tab, Spinner, Card, CardBody } from '@nextui-org/react';
-import {Switch} from "@nextui-org/switch";
-import {Button, ButtonGroup} from "@nextui-org/button";
+import { Tooltip, Tabs, Tab, Spinner, Avatar } from '@nextui-org/react';
+import { Switch } from "@nextui-org/switch";
+import { Button } from "@nextui-org/button";
+
+// TOAST MESSAGES
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // MODAL
-//import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/react";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@nextui-org/modal";
+import { Modal, ModalContent, useDisclosure } from "@nextui-org/modal";
 import ModalEventsContent from '../../../components/cms/ModalEventsContent';
 
 export default function AllEvents({ eventsList, searchParams }) {
@@ -51,6 +57,20 @@ export default function AllEvents({ eventsList, searchParams }) {
       }
     }
   };
+  
+
+  // MODAL
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [modalType, setModalType] = useState('new');
+  const [modalEvent, setModalEvent] = useState();
+  const handleModal = (type, ev) => {
+    setModalType(type);
+    setModalEvent(ev);
+    onOpen();
+  }
+  
+
+  // EVENTS CRUD
   const missingInfo = (ev) => {
     const missingInfo = [
       (!ev.eventDate || ev.eventDate === 'undefined' || ev.eventDate === null) ? 'Date' : '',
@@ -66,7 +86,7 @@ export default function AllEvents({ eventsList, searchParams }) {
       (!ev.industry || ev.industry === 'undefined' || ev.industry === null) ? 'Industry' : '',
       (!ev.industry || ev.speakers.length === 0) ? 'Speakers' : '',
     ].filter(i => i !== '');
-
+  
     if (missingInfo.length === 0) {
       return (<Tooltip content={'There is no mising information for this event'} color='success'><Avatar size='sm' src='#' className='bg-success-200' /></Tooltip>);
     } else {
@@ -77,37 +97,42 @@ export default function AllEvents({ eventsList, searchParams }) {
     }
   }
 
-  // MODAL
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [modalType, setModalType] = useState('new');
-  const [modalEvent, setModalEvent] = useState();
-  const handleModal = (type, ev) => {
-    setModalType(type);
-    setModalEvent(ev);
-    onOpen();
-  }
-  
-
-  // EVENTS CRUD
-  const handleEventPublication = (eventId) => {
-    console.log('SWITCHED EVENT:', eventId);
-    Toaster.success('Action successful!');
+  const handleEventPublication = async (eventId) => {
     const updatedEvents = [...events]; // COPY EVENTS ARRAY TO PREVENT MUTATION OF ORIGNAL ONE
     const index = updatedEvents.findIndex(e => e.id === eventId); // FIND THE EVENT IN THE NEW ARRAY
     if (index !== -1) {
       // If the event is found, set the new status: [ pending | approved | rejected ]
       const newStatus = (updatedEvents[index].status === 'pending') ? 'approved' : 'pending';
-      if(switchEventStatus(eventId)){
+      const changeStatus = await switchEventStatus(eventId, newStatus);
+      console.log('EVENT STATUS CHANGE:',changeStatus)
+      if(changeStatus.type === 'success'){
         updatedEvents[index].status = newStatus;
         setEvents(updatedEvents);
-      }      
+        const statusText = (newStatus === 'approved') ? 'published' : 'unpublished';
+        toast.success(`The event is now ${statusText}!`,{theme:'colored'});
+      }else{
+        toast.error('There was an error switching the status. Please, try again later.',{theme:'colored'});
+      }
     }
+  };
 
+
+  const handleEventDeletion = async (eventId, onClose) => {
+    const eventDeleted = await deleteEvent(eventId);
+    console.log('EVENT DELETED:',eventDeleted);
+    if(eventDeleted.type === 'success'){
+      const updatedEvents = events.filter(event => event.id !== eventId);
+      setEvents(updatedEvents)
+      toast.success('The event has been successfully removed!',{theme:'colored'});
+    }else{
+      toast.error('There was an error removing the event. Please, try again later.',{theme:'colored'});
+    }
+    onClose();
   }
-
-
+  
   return (
     <main>
+      <ToastContainer />
       <InfiniteScroll
         dataLength={events.length}
         next={fetchMoreEvents}
@@ -146,8 +171,8 @@ export default function AllEvents({ eventsList, searchParams }) {
                     <p><b>Industry: </b>{(ev.industry) ? ev.industry : <Chip color='warning'>No industry</Chip>}</p>
                     <p><b>Organization: </b>{(ev.organizationName) ? ev.organizationName : <Chip color='warning'>No Organization</Chip>}</p>
                     <p><b>Speakers: </b>{
-                      (ev.speakers.length === 0) ? <Chip color='warning'>No speakers</Chip> : ev.speakers.map(speaker => {
-                        return(<div>{speaker.name} ({speaker.company})</div>)
+                      (ev.speakers.length === 0) ? <Chip color='warning'>No speakers</Chip> : ev.speakers.map((speaker, index) => {
+                        return(<div key={`speaker_${ev.id}_${index}`}>{speaker.name} ({speaker.company})</div>)
                       })
                     }</p>
                   </Tab>
@@ -167,7 +192,7 @@ export default function AllEvents({ eventsList, searchParams }) {
                       </Button>
                     </div>
                     <div className='flex items-center justify-between'>
-                      <span>Publish event: </span>
+                      <span>Published event: </span>
                       <Spacer x={4} />
                       <Tooltip content={(ev.status === 'approved') ? 'Published event' : 'This event is NOT published yet '} color={(ev.status === 'approved') ? 'success' : 'danger'}>
                         <Switch defaultSelected={(ev.status === 'approved') ? true : false}  aria-label="Publish event" onChange={() => handleEventPublication(ev.id)}  />
@@ -185,7 +210,7 @@ export default function AllEvents({ eventsList, searchParams }) {
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop='blur'>
         <ModalContent>
           {(onClose) => (
-            <ModalEventsContent type={modalType} event={modalEvent} onClose={onClose} />
+            <ModalEventsContent type={modalType} event={modalEvent} onClose={onClose} handleEventDeletion={handleEventDeletion} />
           )}
         </ModalContent>
       </Modal>

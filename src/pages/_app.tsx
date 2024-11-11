@@ -5,7 +5,7 @@ import "../app/styles/globals.css";
 import CmsLayout from '../layouts/cmsLayout'
 import PublicLayout from '../layouts/publicLayout'
 
-import {NextUIProvider} from "@nextui-org/react";
+
 
 
 const montserrat = localFont({
