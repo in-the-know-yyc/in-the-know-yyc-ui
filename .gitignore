@@ -36,7 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 # preventing actions on every push for this branch (api)
-.github
+/.github/
 
 #intellij idea
 .idea
