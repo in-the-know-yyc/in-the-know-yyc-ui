@@ -17,7 +17,7 @@ export async function getFilteredEvents(filters = null) {
     page: (filters && filters.page) ? filters.page : 0,
     sortField: 'eventDate',
     sortDirection: 'asc',
-    size: 2
+    size: (filters && filters.size) ? filters.size : 2,
   }
 
 
@@ -43,10 +43,7 @@ export async function getEventById(id = null) {
 }
 
 export async function getNextEvents() { // LATEST EVENTS | HOME
-  // ONLY DURING TESTING, THIS WILL CHANGE TO NOW TO SHOW REAL RESULTS
   const dateNow = new Date();
-
-  //console.log('DATENOW:',dateNow)
 
   const dateTimeNow = moment(dateNow).format('YYYY-MM-DDTHH:mm:ss');
 

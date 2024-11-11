@@ -2,7 +2,7 @@
 /* ------- CARDS | VERTICAL ------- */
 /* -------------------------------- */
 
-a.cardVerticalContainer{
+div#publicLayout a.cardVerticalContainer{
     position: relative;
     text-decoration: none;
     color: inherit;
@@ -12,11 +12,11 @@ a.cardVerticalContainer{
     width: fit-content;
     transition: .3s;
 }
-a.cardVerticalContainer:hover{
+div#publicLayout a.cardVerticalContainer:hover{
     scale:1.08;
     z-index: 3;
 }
-article.cardVertical{
+div#publicLayout article.cardVertical{
     position:relative;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ article.cardVertical{
     box-shadow: 21px 40px 41.6px -27px #A5B5FF80;
     z-index: 1;
 }
-article.cardVertical:before{
+div#publicLayout article.cardVertical:before{
     content:'';
     position:absolute;
     top:0;
@@ -37,22 +37,22 @@ article.cardVertical:before{
     box-shadow: -8px 0px 33.3px -5px #7C91ED80;
     z-index: 0;
 }
-article.cardVertical > *{
+div#publicLayout article.cardVertical > *{
     position: relative;
     z-index: 1;
 }
-article.cardVertical img{
+div#publicLayout article.cardVertical img{
     width: 100%;
     height: auto;
 }
-article.cardVertical h3{
+div#publicLayout article.cardVertical h3{
     font-family: var(--font-sarabun);
     font-size:1.5rem;
     color:#000000;
     margin: .6rem 0 0 0;
     padding: 0;
 }
-article.cardVertical p{
+div#publicLayout article.cardVertical p{
     font-family: var(--font-sarabun);
     width:23.3dvw;
     font-size: .75rem;
@@ -61,7 +61,7 @@ article.cardVertical p{
     margin: .6rem 0 0 0;
     padding: 0;
 }
-article.cardVertical ul{
+div#publicLayout article.cardVertical ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,7 +70,7 @@ article.cardVertical ul{
     padding: 0;
     list-style: none;
 }
-article.cardVertical ul li{
+div#publicLayout article.cardVertical ul li{
     width: fit-content;
     max-width: 16rem;
     margin:0;
@@ -82,26 +82,26 @@ article.cardVertical ul li{
     background-repeat: no-repeat;
     background-size: 1rem;
 }
-article.cardVertical ul li.location{ background-image: url('/images/icons/location-black.svg'); }
-article.cardVertical ul li.calendar{ background-image: url('/images/icons/calendar.svg'); }
-article.cardVertical ul li.speaker{ background-image: url('/images/icons/microphone.svg'); }
-article.cardVertical ul li.attendants{
+div#publicLayout article.cardVertical ul li.location{ background-image: url('/images/icons/location-black.svg'); }
+div#publicLayout article.cardVertical ul li.calendar{ background-image: url('/images/icons/calendar.svg'); }
+div#publicLayout article.cardVertical ul li.speaker{ background-image: url('/images/icons/microphone.svg'); }
+div#publicLayout article.cardVertical ul li.attendants{
     background-image: url('/images/icons/seat.svg');
     color: var(--cobalt-blue);
 }
-article.cardVertical ul li.line-break{
+div#publicLayout article.cardVertical ul li.line-break{
     width:100%;
     max-width:100%;
     margin:0;
     padding:0;
 }
-article.cardVertical ul li img{
+div#publicLayout article.cardVertical ul li img{
     width:auto;
     height: 1rem;
     margin-right: .4rem;
     vertical-align: middle;
 }
-article.cardVertical ul li.price{
+div#publicLayout article.cardVertical ul li.price{
     display: inline-block;
     margin: 0;
     font-size: .75rem;
@@ -116,21 +116,21 @@ article.cardVertical ul li.price{
 
   /* MOBILE */
   @media only screen and (max-width: 800px) {
-    article.cardVertical{
+    div#publicLayout article.cardVertical{
         padding: 1.25rem;
     }
-    article.cardVertical h3{
+    div#publicLayout article.cardVertical h3{
         font-size: 1rem;
     }
-    article.cardVertical p{
+    div#publicLayout article.cardVertical p{
         width: 100%;
     }
-    article.cardVertical p,
-    article.cardVertical ul li,
-    article.cardVertical ul li a{
+    div#publicLayout article.cardVertical p,
+    div#publicLayout article.cardVertical ul li,
+    div#publicLayout article.cardVertical ul li a{
         font-size:.5rem;
     }
-    article.cardVertical ul li a{
+    div#publicLayout article.cardVertical ul li a{
         position: relative;
         padding: .37rem 1rem;
     }

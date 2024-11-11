@@ -2,21 +2,21 @@
 /* ------- LATEST EVENTS ------- */
 /* ----------------------------- */
 
-section.latestEvents {
+div#publicLayout section.latestEvents {
     position: relative;
     width: 100%;
     padding: 1.4rem 0;
     overflow: hidden;
 }
 
-section.latestEvents div#latestEventsSectionSpaced {
+div#publicLayout section.latestEvents div#latestEventsSectionSpaced {
     position: absolute;
     width: 0;
     height: 0;
     top: var(--header-height-neg);
 }
 
-section.latestEvents h2 {
+div#publicLayout section.latestEvents h2 {
     display: inline-block;
     width: fit-content;
     padding: 0;
@@ -27,7 +27,7 @@ section.latestEvents h2 {
     margin-left: 7dvw;
 }
 
-section.latestEvents a.all-events-link {
+div#publicLayout section.latestEvents a.all-events-link {
     float: right;
     width: fit-content;
     padding: 0;
@@ -40,7 +40,7 @@ section.latestEvents a.all-events-link {
     line-height: 5rem;
 }
 
-section.latestEvents div.latestEvents-container {
+div#publicLayout section.latestEvents div.latestEvents-container {
     width: 100%;
     padding: 0;
 }
@@ -48,23 +48,23 @@ section.latestEvents div.latestEvents-container {
 
 /* MOBILE */
 @media only screen and (max-width: 800px) {
-    section.latestEvents {
+    div#publicLayout section.latestEvents {
         position: relative;
         padding-bottom: 3rem;
     }
 
-    section.latestEvents div.latestEvents-container {
+    div#publicLayout section.latestEvents div.latestEvents-container {
         padding: 1rem 0;
     }
 
-    section.latestEvents h2 {
+    div#publicLayout section.latestEvents h2 {
         width: 100%;
         text-align: center;
         font-size: 1.125rem;
         margin-left: 0;
     }
 
-    section.latestEvents a.all-events-link {
+    div#publicLayout section.latestEvents a.all-events-link {
         position: absolute;
         left: 0;
         font-size: .75rem;
@@ -76,7 +76,7 @@ section.latestEvents div.latestEvents-container {
         align-items: center;
     }
 
-    section.latestEvents div#latestEventsSectionSpaced {
+    div#publicLayout section.latestEvents div#latestEventsSectionSpaced {
         top: calc(var(--header-height-mobile-neg) * 1.2);
     }
 }

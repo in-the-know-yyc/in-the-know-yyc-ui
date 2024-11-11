@@ -1,7 +1,7 @@
 /* ---------------------------------- */
 /* ------- CARDS | HORIZONTAL ------- */
 /* ---------------------------------- */
-a.linkCardHorizontal{
+div#publicLayout a.linkCardHorizontal{
     position: relative;
     display: flex;
     width: 49.6%;
@@ -12,7 +12,7 @@ a.linkCardHorizontal{
     transition: .3s;
     box-shadow: 21px 40px 41.6px -27px #A5B5FF80;
 }
-a.linkCardHorizontal::after{
+div#publicLayout a.linkCardHorizontal::after{
     content: '';
     position: absolute;
     top:0;
@@ -21,10 +21,10 @@ a.linkCardHorizontal::after{
     left:0;
     box-shadow: -8px 0px 33.3px -5px #7C91ED80;
 }
-a.linkCardHorizontal:hover{
+div#publicLayout a.linkCardHorizontal:hover{
     scale:1.01;
 }
-article.cardHorizontal{
+div#publicLayout article.cardHorizontal{
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -32,19 +32,19 @@ article.cardHorizontal{
     padding:35px 41px;
     box-shadow: 19px 4px 9.1px 0px #F5F5F540;
 }
-article.cardHorizontal div.img{
+div#publicLayout article.cardHorizontal div.img{
     width:40.5%;
     background-size: cover;
     background-position: center center;
 }
-article.cardHorizontal div.content{
+div#publicLayout article.cardHorizontal div.content{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex-grow: 1;
     padding-left: .75rem;
 }
-article.cardHorizontal div.content h4{
+div#publicLayout article.cardHorizontal div.content h4{
     margin: 0;
     padding: 0;
     font-size:1.5rem;
@@ -53,10 +53,10 @@ article.cardHorizontal div.content h4{
     color:#151515;
     font-weight:400;
 }
-article.cardHorizontal div.content div.name{
+div#publicLayout article.cardHorizontal div.content div.name{
     margin-top:1.25rem;
 }
-article.cardHorizontal div.content div.name h3{
+div#publicLayout article.cardHorizontal div.content div.name h3{
     margin:0;
     padding:0;
     font-family: var(--font-sarabun);
@@ -65,7 +65,7 @@ article.cardHorizontal div.content div.name h3{
     line-height: 1.25rem;
     color:#151515;
 }
-article.cardHorizontal div.content div.name p{
+div#publicLayout article.cardHorizontal div.content div.name p{
     margin:0;
     padding:0;
     font-family: var(--font-sarabun);
@@ -74,19 +74,19 @@ article.cardHorizontal div.content div.name p{
     line-height: 1.25rem;
     color:#151515;
 }
-article.cardHorizontal div.content ul{
+div#publicLayout article.cardHorizontal div.content ul{
     display: flex;
     justify-content: space-between;
     margin: 1.25rem 0 0 0;
     padding: 0;
     list-style: none;
 }
-article.cardHorizontal div.content ul li{
+div#publicLayout article.cardHorizontal div.content ul li{
     width: fit-content;
     padding:0;
     margin:0;
 }
-article.cardHorizontal div.content ul li label{
+div#publicLayout article.cardHorizontal div.content ul li label{
     margin:0;
     padding:0;
     font-family: var(--font-sarabun);
@@ -95,7 +95,7 @@ article.cardHorizontal div.content ul li label{
     line-height: 1.25rem;
     color:#151515;
 }
-article.cardHorizontal div.content ul li p{
+div#publicLayout article.cardHorizontal div.content ul li p{
     margin:0;
     padding:0;
     font-family: var(--font-sarabun);
@@ -104,14 +104,14 @@ article.cardHorizontal div.content ul li p{
     line-height: 1.25rem;
     color:#151515;
 }
-article.cardHorizontal div.content ul li.categories{
+div#publicLayout article.cardHorizontal div.content ul li.categories{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     flex-grow: 1;
 }
-article.cardHorizontal div.content ul li.categories span{
+div#publicLayout article.cardHorizontal div.content ul li.categories span{
     background: #EFEDED;
     padding: 2px 9px;
     border-radius:5px;
@@ -121,7 +121,7 @@ article.cardHorizontal div.content ul li.categories span{
     line-height: 1.25rem;
     margin-left: 1rem;
 }
-article.cardHorizontal div.content div.location{
+div#publicLayout article.cardHorizontal div.content div.location{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -133,7 +133,7 @@ article.cardHorizontal div.content div.location{
     line-height: 1.25rem;
     margin-top: 3rem;
 }
-article.cardHorizontal div.content div.location label{
+div#publicLayout article.cardHorizontal div.content div.location label{
     background-image: url('/images/icons/location-black.svg');
     background-repeat: no-repeat;
     background-position: center left;
@@ -142,7 +142,7 @@ article.cardHorizontal div.content div.location label{
     font-family: var(--font-sarabun);
     color:#151515;
 }
-article.cardHorizontal div.content div.location span{
+div#publicLayout article.cardHorizontal div.content div.location span{
     font-family: var(--font-sarabun);
     color:#E51414;
 }
@@ -150,46 +150,46 @@ article.cardHorizontal div.content div.location span{
 
   /* MOBILE */
   @media only screen and (max-width: 800px) {
-    a.linkCardHorizontal{
+    div#publicLayout a.linkCardHorizontal{
         width: 100%;
     }
-    article.cardHorizontal{
+    div#publicLayout article.cardHorizontal{
         flex-direction: column;
         padding: 0;
         overflow: hidden;
     }
-    article.cardHorizontal div.img{
+    div#publicLayout article.cardHorizontal div.img{
         width: 100%;
         height: 200px;
     }
-    article.cardHorizontal div.content{
+    div#publicLayout article.cardHorizontal div.content{
         padding: 1rem;
     }
-    article.cardHorizontal div.content h4{
+    div#publicLayout article.cardHorizontal div.content h4{
         font-size: 1rem;
     }
-    article.cardHorizontal div.content div.name h3,
-    article.cardHorizontal div.content div.name p,
-    article.cardHorizontal div.content ul li label,
-    article.cardHorizontal div.content ul li p,
-    article.cardHorizontal div.content ul li.categories span,
-    article.cardHorizontal div.content div.location label,
-    article.cardHorizontal div.content div.location span{
+    div#publicLayout article.cardHorizontal div.content div.name h3,
+    div#publicLayout article.cardHorizontal div.content div.name p,
+    div#publicLayout article.cardHorizontal div.content ul li label,
+    div#publicLayout article.cardHorizontal div.content ul li p,
+    div#publicLayout article.cardHorizontal div.content ul li.categories span,
+    div#publicLayout article.cardHorizontal div.content div.location label,
+    div#publicLayout article.cardHorizontal div.content div.location span{
         font-size: .75rem;
     }
-    article.cardHorizontal div.content ul{
+    div#publicLayout article.cardHorizontal div.content ul{
         flex-direction: column;
     }
-    article.cardHorizontal div.content ul li{
+    div#publicLayout article.cardHorizontal div.content ul li{
         width: 100%;
     }
-    article.cardHorizontal div.content ul li.categories{
+    div#publicLayout article.cardHorizontal div.content ul li.categories{
         padding-top: 1rem;
         justify-content: space-evenly;
     }
-    article.cardHorizontal div.content div.name,
-    article.cardHorizontal div.content ul,
-    article.cardHorizontal div.content div.location{
+    div#publicLayout article.cardHorizontal div.content div.name,
+    div#publicLayout article.cardHorizontal div.content ul,
+    div#publicLayout article.cardHorizontal div.content div.location{
         margin-top: 1rem;
     }
   }

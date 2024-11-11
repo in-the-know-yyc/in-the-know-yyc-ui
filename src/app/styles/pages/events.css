@@ -1,9 +1,9 @@
-div#events-horizontal-container {
+div#publicLayout div#events-horizontal-container {
     width: 100%;
     padding: 30px 7dvw;
 }
 
-div#events-horizontal-container div.infinite-scroll-component {
+div#publicLayout div#events-horizontal-container div.infinite-scroll-component {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -11,19 +11,19 @@ div#events-horizontal-container div.infinite-scroll-component {
 
 
 
-div#loadingSpinner {
+div#publicLayout div#loadingSpinner {
     width: 100%;
     text-align: center;
     padding: 2rem 0;
 }
 
-div#loadingSpinner img {
+div#publicLayout div#loadingSpinner img {
     margin: 0 auto;
     width: 2rem;
     height: 2rem;
 }
 
-.endMessage{
+div#publicLayout .endMessage{
     width: 100%;
     margin-top: 2rem;
     border-top: solid 1px #151515;
@@ -35,7 +35,7 @@ div#loadingSpinner img {
 
 /* MOBILE */
 @media only screen and (max-width: 800px) {
-    div#events-horizontal-container {
+    div#publicLayout div#events-horizontal-container {
         padding: 2rem 3rem;
     }
 }

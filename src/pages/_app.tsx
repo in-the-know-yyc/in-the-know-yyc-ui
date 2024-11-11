@@ -5,6 +5,9 @@ import "../app/styles/globals.css";
 import CmsLayout from '../layouts/cmsLayout'
 import PublicLayout from '../layouts/publicLayout'
 
+import {NextUIProvider} from "@nextui-org/react";
+
+
 const montserrat = localFont({
   src: "../app/fonts/montserrat/Montserrat-VariableFont_wght.ttf",
   variable: "--font-montserrat",
@@ -25,16 +28,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
       {currentPage.startsWith('/cms') ? (
         // ONLY FOR CMS
-        <CmsLayout>
-          <Component {...pageProps} />
-        </CmsLayout>
+        
+          <CmsLayout>
+            <Component {...pageProps} />
+          </CmsLayout>
+        
       ) : (
         // PUBLIC WEBSITE
-        <>
-          <PublicLayout>
-            <Component {...pageProps} />
-          </PublicLayout>
-        </>
+        <PublicLayout>
+          <Component {...pageProps} />
+        </PublicLayout>
       )}
 
 
