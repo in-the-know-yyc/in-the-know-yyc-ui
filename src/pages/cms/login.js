@@ -36,7 +36,7 @@ export default function LogIn() {
         }
 
         try {
-            const response = await axios.post('/cms/login', { email: user, password: pass });
+            const response = await axios.post('/api/cms/login', { email: user, password: pass });
             console.log('RESPONSE:', response);
 
             if (response.data.token) {
