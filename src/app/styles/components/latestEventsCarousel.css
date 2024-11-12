@@ -2,44 +2,39 @@
 /* ------- LATEST EVENTS - CAROUSEL ------- */
 /* ---------------------------------------- */
 
-section.latestEvents div.latestEvents-container .slick-list {
-    /*
-    padding: 28px 55px;
-    width: 86dvw;
-    margin: 0 0 0 calc(7dvw - 82px);
-    */
+div#publicLayout section.latestEvents div.latestEvents-container .slick-list {
     width: 86dvw;
     margin: 0 auto;
     padding: 28px 0;
     overflow: visible;
 }
 
-section.latestEvents div.latestEvents-container button.slick-arrow {
+div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow {
     width: 64px;
     height: 64px;
     transition: .3s;
     z-index: 10;
 }
-section.latestEvents div.latestEvents-container button.slick-arrow:hover {
+div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow:hover {
     scale:1.1;
 }
-section.latestEvents div.latestEvents-container button.slick-arrow:before {
+div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow:before {
     content: none;
 }
-section.latestEvents div.latestEvents-container button.slick-arrow.slick-disabled{
+div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow.slick-disabled{
     opacity: 0.5;
 }
-section.latestEvents div.latestEvents-container button.slick-arrow.slick-disabled:hover{
+div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow.slick-disabled:hover{
     cursor: not-allowed;
     scale: 1;
 }
 
-section.latestEvents div.latestEvents-container button.slick-arrow.slick-prev {
+div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow.slick-prev {
     left: 32px;
     background-image: url('/images/icons/carousel-arrow-left.svg');
 }
 
-section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
+div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
     right: 32px;
     background-image: url('/images/icons/carousel-arrow-right.svg');
 }
@@ -47,20 +42,20 @@ section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
 /* MOBILE */
 @media only screen and (max-width: 800px) {
     
-    section.latestEvents div.latestEvents-container button.slick-arrow.slick-prev {
+    div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow.slick-prev {
         left: 0;
     }
     
-    section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
+    div#publicLayout section.latestEvents div.latestEvents-container button.slick-arrow.slick-next {
         right: 0;
     }
-    section.latestEvents div.latestEvents-container .slick-list {
+    div#publicLayout section.latestEvents div.latestEvents-container .slick-list {
         width: 100%;
     }
-    .slick-initialized .slick-slide{
+    div#publicLayout .slick-initialized .slick-slide{
         transition: .3s;
     }
-    .slick-initialized .slick-slide.slick-active{
+    div#publicLayout .slick-initialized .slick-slide.slick-active{
         position: relative;
         scale: 1.1;
         z-index: 10;

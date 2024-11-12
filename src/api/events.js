@@ -1,3 +1,4 @@
+import axiosInstance from '../utils/axiosInstance';
 import axios from 'axios';
 import moment from "moment/moment";
 
@@ -17,7 +18,7 @@ export async function getFilteredEvents(filters = null) {
     page: (filters && filters.page) ? filters.page : 0,
     sortField: 'eventDate',
     sortDirection: 'asc',
-    size: 2
+    size: (filters && filters.size) ? filters.size : 2,
   }
 
 
@@ -43,10 +44,7 @@ export async function getEventById(id = null) {
 }
 
 export async function getNextEvents() { // LATEST EVENTS | HOME
-  // ONLY DURING TESTING, THIS WILL CHANGE TO NOW TO SHOW REAL RESULTS
   const dateNow = new Date();
-
-  //console.log('DATENOW:',dateNow)
 
   const dateTimeNow = moment(dateNow).format('YYYY-MM-DDTHH:mm:ss');
 
@@ -66,5 +64,30 @@ export async function getNextEvents() { // LATEST EVENTS | HOME
   } catch (error) {
     console.error('Error fetching next events:', error.message);
     return null;
+  }
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+/* - - - - - - - EVENTS CRUD (API) - - - - - - - */
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+
+export async function switchEventStatus(id, status){
+  try {
+    const s = (status === 'approved') ? 'approve' : 'reject';
+    const response = await axiosInstance.patch(`${api_endpoint}/events/${id}/${s}`);
+    return {type: 'success', response};
+  } catch (error) {
+    console.error('Error switching events status:', error);
+    return {type: 'error', error}
+  }
+}
+export async function deleteEvent(id){
+  try {
+    const response = await axiosInstance.delete(`${api_endpoint}/events/${id}`);
+    return {type: 'success', response};
+  } catch (error) {
+    console.error('Error switching events status:', error);
+    return {type: 'error', error}
   }
 }

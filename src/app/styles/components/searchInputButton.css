@@ -1,4 +1,4 @@
-div.searchEventInputContainer{
+div#publicLayout div.searchEventInputContainer{
     position: relative;
     display: flex;
     justify-content: center;
@@ -9,11 +9,11 @@ div.searchEventInputContainer{
     border-radius: 13px;
     padding: 1px;
 }
-div.searchEventInputContainer div.searchEventInput{}
-div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-inputWrapper{
+div#publicLayout div.searchEventInputContainer div.searchEventInput{}
+div#publicLayout div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-inputWrapper{
     padding: 0;
 }
-div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-inputWrapper div.inputSearchEvent-innerWrapper{
+div#publicLayout div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-inputWrapper div.inputSearchEvent-innerWrapper{
     min-width: 14rem;
     background-image: url(/images/icons/search-gray.svg);
     background-position: center left 1rem;
@@ -21,62 +21,20 @@ div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-inputWra
     background-size: 1rem;
     padding-left: 2.3rem;
 }
-div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-inputWrapper div.inputSearchEvent-innerWrapper input{
+div#publicLayout div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-inputWrapper div.inputSearchEvent-innerWrapper input{
     font-size: 1rem;
 }
-div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-helperWrapper{
+div#publicLayout div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-helperWrapper{
     position: absolute;
     bottom: -1.5rem;
 }
-div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-helperWrapper div.inputSearchEvent-descriptionMessage{
+div#publicLayout div.searchEventInputContainer div.searchEventInput div.inputSearchEvent-helperWrapper div.inputSearchEvent-descriptionMessage{
     color:red;
 }
 
 
-/*
-
-div.searchEventInputContainer div[data-slot=inner-wrapper]:has(input) {
-    border-radius: var(--input-border-radius);
-    border: 0;
-    padding: 1px;
-}
-
-div.searchEventInputContainer div[data-slot=error-message] {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    color: red;
-}
-
-div.searchEventInputContainer input {
-    border-radius: var(--input-border-radius);
-    border: 0;
-    padding: 1rem 1rem 1rem 2.25rem;
-    margin: 0;
-    font-size: .75rem;
-    color: #4362BE;
-    background-color: #FFFFFF;
-    background-repeat: no-repeat;
-    background-position: center left 1rem;
-    background-size: 1rem;
-}
-
-div.searchEventInputContainer input:focus {
-    outline: none;
-}
-
-div.searchEventInputContainer input::placeholder {
-    color: #4362BE80;
-}
-
-div.searchEventInputContainer div.searchEventInput input {
-    width: 14rem;
-    background-image: url('/images/icons/search-gray.svg');
-}
-*/
-
 /* BUTTON */
-button.searchEventButton {
+div#publicLayout button.searchEventButton {
     width: 3rem;
     min-width: 0;
     /* height: 3rem; */
@@ -92,7 +50,7 @@ button.searchEventButton {
     margin-left: .25rem;
 }
 
-button.searchEventButton:hover {
+div#publicLayout button.searchEventButton:hover {
     background-color: var(--cobalt-blue);
     border-color: var(--cobalt-blue);
 }
@@ -100,19 +58,19 @@ button.searchEventButton:hover {
 
 @media only screen and (max-width: 800px) {
 
-    div.searchEventInputContainer,
-    div.searchEventInputContainer div.searchEventInput input,
-    button.searchEventButton {
+    div#publicLayout div.searchEventInputContainer,
+    div#publicLayout div.searchEventInputContainer div.searchEventInput input,
+    div#publicLayout button.searchEventButton {
         width: 100%;
     }
 
-    div.searchEventInputContainer input {
+    div#publicLayout div.searchEventInputContainer input {
         font-size: 2rem;
         background-size: 2rem;
         padding-left: 3.25rem;
     }
 
-    button.searchEventButton {
+    div#publicLayout button.searchEventButton {
         padding: 1.5rem 0;
         background-size: 2rem;
         margin-top: 1.3rem;

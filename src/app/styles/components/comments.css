@@ -2,7 +2,7 @@
 /* ------- COMMENTS ------- */
 /* ------------------------ */
 
-section.comments{
+div#publicLayout section.comments{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@ section.comments{
     align-items: center;
     width: 100%;
 }
-section.comments h2{
+div#publicLayout section.comments h2{
     width: 100%;
     margin: 0;
     padding: var(--site-space);
@@ -18,7 +18,7 @@ section.comments h2{
     background-color: #FFFFFF;
     text-align: center;
 }
-section.comments div.comments-container{
+div#publicLayout section.comments div.comments-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -27,7 +27,7 @@ section.comments div.comments-container{
     padding: var(--site-space);
     background-color: #E4F1FF;
 }
-section.comments div.comments-container h4{
+div#publicLayout section.comments div.comments-container h4{
     width:100%;
     text-align: center;
     font-weight: normal;
@@ -35,7 +35,7 @@ section.comments div.comments-container h4{
     padding:0;
     font-size: 1.5rem;
 }
-section.comments div.background-bottom{
+div#publicLayout section.comments div.background-bottom{
     position: absolute;
     left: 0;
     right: 0;
@@ -49,13 +49,13 @@ section.comments div.background-bottom{
 
 /* MOBILE */
 @media only screen and (max-width: 800px) {
-    section.comments h2{
+    div#publicLayout section.comments h2{
         font-size: 1.125rem;
     }
-    section.comments div.comments-container{
+    div#publicLayout section.comments div.comments-container{
         padding: 1rem 3rem;
     }
-    section.comments div.comments-container h4{
+    div#publicLayout section.comments div.comments-container h4{
         font-size: 1rem;
     }
 }

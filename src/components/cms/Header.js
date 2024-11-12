@@ -1,18 +1,65 @@
+import { useState } from "react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import Image from "next/image";
 import Link from "next/link";
-import "../../app/styles/cms/header.css";
 
-export default function cmsHome() {
-    return (
-      <>
-        <header id="cmsHeader">
-          <ul>
-          <li><Link href='/cms/events'>Events</Link></li>
-          <li><Link href='/cms/newsletters'>Newsletter</Link></li>
-          <li><Link href='/cms/users'>Users</Link></li>
-          <li><Link href='/cms/messages'>Messages</Link></li>
-          <li><Link href='/cms/login'>Log out</Link></li>
-          </ul>
-        </header>
-      </>
-    );
-  }
+export default function CmsHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // const menuItems = [
+  //   { name: 'HOME', href: '/cms' },
+  //   { name: 'Events', href: '/cms/events' },
+  //   { name: 'Messages', href: '/cms/messages' },
+  //   { name: 'Users', href: '/cms/users' }
+  // ];
+
+
+  return (
+    <Navbar onMenuOpenChange={setIsMenuOpen} id="cmsHeader">
+      <NavbarContent>
+        <NavbarBrand>
+          <Image src={'/images/logo.png'} width={160} height={52} alt="In The Know YYC | Logo" />
+        </NavbarBrand>
+      </NavbarContent>
+      <NavbarContent justify="end">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
+          id="CmsResponsiveMenuToggle"
+        />
+      </NavbarContent>
+
+      {/* PC MENU */}
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem><Link href='/cms' className="block py-2 px-3">HOME</Link></NavbarItem>
+        <NavbarItem><Link href='/cms/events' className="block py-2 px-3">Events</Link></NavbarItem>
+        <NavbarItem><Link href='/#' className="block py-2 px-3">Messages</Link></NavbarItem>
+        <NavbarItem><Link href='/#' className="block py-2 px-3">Users</Link></NavbarItem>
+        {/*menuItems.map((item, index) => {
+          return (
+            <NavbarItem key={index}>
+              <Link href={item.href} className="block py-2 px-3">{item.name}</Link>
+            </NavbarItem>
+          );
+        })*/}
+      </NavbarContent>
+
+      {/* MOBILE MENU */}
+      <NavbarMenu id="cmsNavbarMenu">
+        <NavbarMenuItem><Link href='/cms' className="block py-2 px-3">HOME</Link></NavbarMenuItem>
+        <NavbarMenuItem><Link href='/cms/events' className="block py-2 px-3">Events</Link></NavbarMenuItem>
+        <NavbarMenuItem><Link href='/#' className="block py-2 px-3">Messages</Link></NavbarMenuItem>
+        <NavbarMenuItem><Link href='/#' className="block py-2 px-3">Users</Link></NavbarMenuItem>
+
+        {/*menuItems.map((item, index) => {
+          return(
+            <NavbarMenuItem key={index}>
+              <Link href={item.href} className="block py-2 px-3">{item.name}</Link>
+            </NavbarMenuItem>
+          );
+        })*/}
+
+      </NavbarMenu>
+    </Navbar>
+  );
+}

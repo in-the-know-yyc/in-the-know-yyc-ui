@@ -1,7 +1,7 @@
 /** ---------------------- **/
 /** ------- FOOTER ------- **/
 /** ---------------------- **/
-footer{
+div#publicLayout footer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12,74 +12,74 @@ footer{
     color: #FFFFFF;
   }
   /* Newsletter */
-  footer div.newsletter-container{
+  div#publicLayout footer div.newsletter-container{
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     padding: 0;
     margin: 02rem 0 0 0;
   }
-  footer div.newsletter-container div.col1{
+  div#publicLayout footer div.newsletter-container div.col1{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 35dvw;
   }
-  footer div.newsletter-container div.col2{
+  div#publicLayout footer div.newsletter-container div.col2{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 31dvw;
   }
-  footer div.newsletter-container div h3{
+  div#publicLayout footer div.newsletter-container div h3{
     font-size: 1.5rem;
     padding:0;
     margin:0;
   }
-  footer div.newsletter-container div p{
+  div#publicLayout footer div.newsletter-container div p{
     font-size:1rem;
     margin: 0;
     padding:0;
   }
-  footer div.newsletter-container div h3.successMessage{
+  div#publicLayout footer div.newsletter-container div h3.successMessage{
     text-align: center;
     color: #15B097;
     box-shadow: 0px 0px 5px 0px white;
     border-radius: 10px;
     padding: 10px;
   }
-  footer div.newsletter-container div form{
+  div#publicLayout footer div.newsletter-container div form{
     position: relative;
     display: flex;
     width: 100%;
   }
-  footer div.newsletter-container div form div#newsletterFormSpaced{
+  div#publicLayout footer div.newsletter-container div form div#newsletterFormSpaced{
     position: absolute;
     width: 0;
     height: 0;
     top:calc(var(--header-height-neg) * 1.2) ;
   }
-  footer div.newsletter-container div form div.inputNewsletterFooter{
+  div#publicLayout footer div.newsletter-container div form div.inputNewsletterFooter{
     transition: .3s;
     background: white;
     z-index: 1;
   }
-  footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-inputWrapper{
+  div#publicLayout footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-inputWrapper{
     border-radius: 0;
   }
-  footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-helperWrapper{
+  div#publicLayout footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-helperWrapper{
     padding: 0;
     margin: 0;
   }
-  footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-descriptionMessage{
+  div#publicLayout footer div.newsletter-container div form div.inputNewsletterFooter div.inputNewsletterFooter-descriptionMessage{
     position: absolute;
     color: red;
   }
-  footer div.newsletter-container div form div.highlighted{
+  div#publicLayout footer div.newsletter-container div form div.highlighted{
     box-shadow: 0px 0px 10px 8px var(--btn-blue-bkg);
     scale: 1.05;
   }
-  footer div.newsletter-container div form button{
+  div#publicLayout footer div.newsletter-container div form button{
     height: auto;
     border: none;
     border-radius:0;
@@ -89,14 +89,14 @@ footer{
     margin-left: .3rem;
     transition: .3s;
   }
-  footer div.newsletter-container div form button:disabled{
+  div#publicLayout footer div.newsletter-container div form button:disabled{
     background-color: #9F9C9C;
     cursor: not-allowed;
   }
 
 
   /* Navigation */
-  footer div.nav-container{
+  div#publicLayout footer div.nav-container{
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -106,34 +106,34 @@ footer{
     padding: 2.2rem 0 5.2rem 0;
     margin: 2.2rem 0 2.5rem 0;
   }
-  footer div.nav-container div h3{
+  div#publicLayout footer div.nav-container div h3{
     padding-top: var(--site-space-vertical);
     font-size: 1rem;
     font-weight:700;
     margin: 0;
   }
-  footer div.nav-container div ul{
+  div#publicLayout footer div.nav-container div ul{
     margin: 0;
     padding:0;
     list-style: none;
   }
-  footer div.nav-container div ul li{
+  div#publicLayout footer div.nav-container div ul li{
     padding: 1.5rem 0 0 0;
   }
-  footer div.nav-container div ul li a{
+  div#publicLayout footer div.nav-container div ul li a{
     width: fit-content;
     text-decoration: none;
     font-size:1rem;
     color:#FFFFFF;
     font-weight: 400;
   }
-  footer div.nav-container div.social-container ul{
+  div#publicLayout footer div.nav-container div.social-container ul{
     display: flex;
     margin: 1.5rem 0 0 0;
     padding:0;
     list-style: none;
   }
-  footer div.nav-container div.social-container ul li{
+  div#publicLayout footer div.nav-container div.social-container ul li{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,17 +142,17 @@ footer{
     padding: .6rem;
     margin-right: .6rem;
   }
-  footer div.nav-container div.social-container ul li:last-child{
+  div#publicLayout footer div.nav-container div.social-container ul li:last-child{
     margin-right: 0;
   }
-  footer div.nav-container div.social-container ul li a{
+  div#publicLayout footer div.nav-container div.social-container ul li a{
     text-decoration:none;
     width:1rem;
     height:1rem;
     margin:0;
     padding:0;
   }
-  footer div.nav-container div.social-container ul li a img{
+  div#publicLayout footer div.nav-container div.social-container ul li a img{
     width:1rem;
     height:1rem;
     margin:0;
@@ -161,7 +161,7 @@ footer{
 
 
   /* Copyright */
-  footer div.copyright-container{
+  div#publicLayout footer div.copyright-container{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -169,16 +169,16 @@ footer{
     padding: 0 0 2.5rem 0;
     margin: 0;
   }
-  footer div.copyright-container p{
+  div#publicLayout footer div.copyright-container p{
     font-size: 1rem;
     margin:0;
     padding:0;
   }
-  footer div.copyright-container p span:first-child{
+  div#publicLayout footer div.copyright-container p span:first-child{
     font-size: 2rem;
     vertical-align: middle;
   }
-  footer div.copyright-container p a{
+  div#publicLayout footer div.copyright-container p a{
     width: fit-content;
     text-decoration: none;
     color:#FFFFFF;
@@ -191,41 +191,41 @@ footer{
 
   /* MOBILE */
 @media only screen and (max-width: 800px) {
-  footer div.newsletter-container,
-  footer div.newsletter-container div form,
-  footer div.nav-container{
+  div#publicLayout footer div.newsletter-container,
+  div#publicLayout footer div.newsletter-container div form,
+  div#publicLayout footer div.nav-container{
     flex-direction: column;
   }
-  footer div.newsletter-container div:first-child,
-  footer div.newsletter-container div:last-child,
-  footer div.nav-container div{
+  div#publicLayout footer div.newsletter-container div:first-child,
+  div#publicLayout footer div.newsletter-container div:last-child,
+  div#publicLayout footer div.nav-container div{
     width: 100%;
   }
-  footer div.newsletter-container div h3,
-  footer div.newsletter-container div p,
-  footer div.nav-container div ul{
+  div#publicLayout footer div.newsletter-container div h3,
+  div#publicLayout footer div.newsletter-container div p,
+  div#publicLayout footer div.nav-container div ul{
     margin-bottom: 1.5rem;
   }
-  footer div.newsletter-container div form button{
+  div#publicLayout footer div.newsletter-container div form button{
     padding:1rem 0;
     margin:1.3rem 0 0 0;
   }
-  footer div.nav-container div.social-container ul{
+  div#publicLayout footer div.nav-container div.social-container ul{
     width: 100%;
     justify-content: space-between;
   }
-  footer div.nav-container div.social-container ul li a,
-  footer div.nav-container div.social-container ul li a img {
+  div#publicLayout footer div.nav-container div.social-container ul li a,
+  div#publicLayout footer div.nav-container div.social-container ul li a img {
     width: 2rem;
     height: 2rem;
   }
-  footer div.copyright-container p{
+  div#publicLayout footer div.copyright-container p{
     font-size: .75rem;
   }
-  footer div.newsletter-container div form div#newsletterFormSpaced{
+  div#publicLayout footer div.newsletter-container div form div#newsletterFormSpaced{
     top:calc(var(--header-height-mobile-neg) * 1.2) ;
   }
-  footer div.newsletter-container div form div[data-slot=error-message]{
+  div#publicLayout footer div.newsletter-container div form div[data-slot=error-message]{
     position: relative;
     padding-bottom: 1rem;
   }

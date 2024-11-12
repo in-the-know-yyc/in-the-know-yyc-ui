@@ -1,12 +1,12 @@
 /** ---------------------- **/
-/** ------- HEADER ------- **/
+/** ------- header ------- **/
 /** ---------------------- **/
 
 :root {
   --input-border-radius: 10px;
 }
 
-header {
+div#publicLayout header#mainMenuHeader {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,11 +17,11 @@ header {
   z-index: 10;
 }
 
-header .onlyMobile {
+div#publicLayout header#mainMenuHeader .onlyMobile {
   display: none;
 }
 
-header div.headerContainer {
+div#publicLayout header#mainMenuHeader div.headerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,13 +31,13 @@ header div.headerContainer {
   padding: 3dvh 7dvw;
 }
 
-header div img {
+div#publicLayout header#mainMenuHeader div img {
   width: 10rem;
   height: 3.25rem;
   margin-right: 3.75dvw;
 }
 
-header form {
+div#publicLayout header#mainMenuHeader form {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -45,11 +45,11 @@ header form {
   margin: 0;
 }
 
-header nav {
+div#publicLayout header#mainMenuHeader nav {
   flex-grow: 1;
 }
 
-header nav ul {
+div#publicLayout header#mainMenuHeader nav ul {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -58,21 +58,21 @@ header nav ul {
   padding: 0;
 }
 
-header nav ul li {
+div#publicLayout header#mainMenuHeader nav ul li {
   position: relative;
   padding: .5rem;
   margin-left: 52px;
 }
 
-header nav ul li:first-child {
+div#publicLayout header#mainMenuHeader nav ul li:first-child {
   padding-left: 0;
 }
 
-header nav ul li:last-child {
+div#publicLayout header#mainMenuHeader nav ul li:last-child {
   padding-right: 0;
 }
 
-header nav ul li a {
+div#publicLayout header#mainMenuHeader nav ul li a {
   position: relative;
   width: fit-content;
   font-size: 1rem;
@@ -81,7 +81,7 @@ header nav ul li a {
   transition: .3s;
 }
 
-header nav ul li a:after {
+div#publicLayout header#mainMenuHeader nav ul li a:after {
   content: '';
   position: absolute;
   background: var(--cobalt-blue);
@@ -92,15 +92,15 @@ header nav ul li a:after {
   transition: .3s;
 }
 
-header nav ul li a:hover {
+div#publicLayout header#mainMenuHeader nav ul li a:hover {
   color: var(--cobalt-blue);
 }
 
-header nav ul li a:hover:after {
+div#publicLayout header#mainMenuHeader nav ul li a:hover:after {
   width: 100%;
 }
 
-header nav ul li a.button {
+div#publicLayout header#mainMenuHeader nav ul li a.button {
   font-family: var(--font-montserrat);
   font-size: 1rem;
   border-radius: 10px;
@@ -110,83 +110,83 @@ header nav ul li a.button {
   transition: .3s;
 }
 
-header nav ul li a.button:hover {
+div#publicLayout header#mainMenuHeader nav ul li a.button:hover {
   background-color: var(--cobalt-blue);
   border-color: var(--cobalt-blue);
 }
 
-header nav ul li a.button:hover:after {
+div#publicLayout header#mainMenuHeader nav ul li a.button:hover:after {
   width: 0;
 }
 
 /* MOBILE */
 @media only screen and (max-width: 800px) {
-  header .onlyMobile {
+  div#publicLayout header#mainMenuHeader .onlyMobile {
     display: inline-block;
   }
 
-  header {
+  div#publicLayout header#mainMenuHeader {
     bottom: 0;
     height: var(--header-height-mobile);
     overflow: hidden;
     transition: .3s;
   }
 
-  header div.headerContainer {
+  div#publicLayout header#mainMenuHeader div.headerContainer {
     height: fit-content;
     padding: 1rem 3rem;
   }
 
-  header form,
-  header nav ul {
+  div#publicLayout header#mainMenuHeader form,
+  div#publicLayout header#mainMenuHeader nav ul {
     flex-wrap: wrap;
     margin-top: 3rem;
   }
 
-  header form,
-  header nav {
+  div#publicLayout header#mainMenuHeader form,
+  div#publicLayout header#mainMenuHeader nav {
     margin-right: 0;
   }
 
-  header form,
-  header nav,
-  header nav ul,
-  header nav ul li,
-  header nav ul li a {
+  div#publicLayout header#mainMenuHeader form,
+  div#publicLayout header#mainMenuHeader nav,
+  div#publicLayout header#mainMenuHeader nav ul,
+  div#publicLayout header#mainMenuHeader nav ul li,
+  div#publicLayout header#mainMenuHeader nav ul li a {
     width: 100%;
   }
 
-  header button.toggleMenu {
+  div#publicLayout header#mainMenuHeader button.toggleMenu {
     background: none;
   }
 
-  header button.toggleMenu,
-  header button.toggleMenu img {
+  div#publicLayout header#mainMenuHeader button.toggleMenu,
+  div#publicLayout header#mainMenuHeader button.toggleMenu img {
     margin: 0;
     padding: 0;
     height: 2rem;
     width: auto;
   }
 
-  header nav ul li {
+  div#publicLayout header#mainMenuHeader nav ul li {
     text-align: center;
     height: fit-content;
     padding: 2rem 0;
     margin: 0;
   }
 
-  header nav ul li a.button {
+  div#publicLayout header#mainMenuHeader nav ul li a.button {
     display: inline-block;
     padding: .25rem 0;
     width: 100%;
   }
 
-  header nav ul li a,
-  header nav ul li a.button {
+  div#publicLayout header#mainMenuHeader nav ul li a,
+  div#publicLayout header#mainMenuHeader nav ul li a.button {
     font-size: 2.5rem;
   }
 
-  header.menuOpen {
+  div#publicLayout header#mainMenuHeader.menuOpen {
     height: 100dvh;
     overflow: scroll;
   }

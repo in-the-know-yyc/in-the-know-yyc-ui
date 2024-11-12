@@ -1,7 +1,7 @@
 /** ------------------------ **/
 /** ------- SPONSORS ------- **/
 /** ------------------------ **/
-#sponsors-container{
+div#publicLayout #sponsors-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,17 +10,17 @@
     padding:var(--site-space-vertical) 1dvw;
     border-bottom:solid 1dvh white;
   }
-  #sponsors-container img{
+  div#publicLayout #sponsors-container img{
     width:auto;
     height:5dvh;
   }
 
   /* MOBILE */
   @media only screen and (max-width: 800px) {
-    #sponsors-container{
+    div#publicLayout #sponsors-container{
       flex-wrap: wrap;
     }
-    #sponsors-container img{
+    div#publicLayout #sponsors-container img{
       height: 3dvh;
       margin:1rem;
     }

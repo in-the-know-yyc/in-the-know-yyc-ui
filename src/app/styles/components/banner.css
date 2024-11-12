@@ -2,13 +2,13 @@
 /* ------- BANNER ------- */
 /* ---------------------- */
 
-section.banner{
+div#publicLayout section.banner{
     position: relative;
     width: 100%;
     padding: 0 7dvw;
     background: #012244CC;
 }
-section.banner:after{
+div#publicLayout section.banner:after{
     content:'';
     position:absolute;
     top:0;
@@ -21,7 +21,7 @@ section.banner:after{
     background-size: cover;
     z-index: -1;
 }
-section.banner h1{
+div#publicLayout section.banner h1{
     margin:0;
     padding:69px 0 14px 0;
     font-size: 2.5rem;
@@ -30,7 +30,7 @@ section.banner h1{
     color:#FFFFFF;
     font-family: var(--font-sarabun);
 }
-section.banner h2{
+div#publicLayout section.banner h2{
     margin:0;
     padding:0 0 80px 0;
     font-size: 1.5rem;
@@ -42,22 +42,22 @@ section.banner h2{
 
   /* MOBILE */
   @media only screen and (max-width: 800px) {
-    section.banner{
+    div#publicLayout section.banner{
         padding: 3rem;
     }
-    section.banner h1{
+    div#publicLayout section.banner h1{
         width: 100%;
         text-align: center;
         font-size: 2rem;
         padding: 0;
     }
-    section.banner h2{
+    div#publicLayout section.banner h2{
         width: 100%;
         text-align: center;
         font-size: 1rem;
         padding: 1rem 0 0 0;
     }
-    section.banner h2 br{
+    div#publicLayout section.banner h2 br{
         display: none;
     }
   }
