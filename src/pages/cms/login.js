@@ -7,13 +7,13 @@ import { Checkbox } from "@nextui-org/checkbox";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
-import { useRouter } from 'next/router';
+//import { useRouter } from 'next/router';
 
 import "../../app/styles/cms/signInUp.css";
 
 export default function LogIn() {
 
-    const router = useRouter();
+    //const router = useRouter();
 
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
@@ -42,7 +42,7 @@ export default function LogIn() {
             if (response.data.token) {
                 localStorage.setItem('authToken', response.data.token);
                 toast.success('Login successful!');
-                router.push('/cms'); // Redirect to protected route
+                //router.push('/cms'); // Redirect to protected route
             } else {
                 toast.error('Invalid credentials. Please try again.');
             }
@@ -61,7 +61,7 @@ export default function LogIn() {
                     <Image src="/images/logo-black.svg" alt="In The Know YYC - Logo Black" width={100} height={100} />
                 </div>
                 <h1>Log In</h1>
-                <form action="/cms/login" onSubmit={handleSubmit}>
+                <form action="/#" onSubmit={handleSubmit}>
                     <Input label="Email" labelPlacement={'outside'} placeholder="Enter your email" type="email" id="userEmail" />
                     <Input label="Password" labelPlacement={'outside'} placeholder="Enter your password" id="userPassword" type={isVisible ? "text" : "password"}
                         endContent={
