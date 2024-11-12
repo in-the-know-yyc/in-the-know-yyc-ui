@@ -7,15 +7,17 @@ const AxiosInstance = axios.create({
 AxiosInstance.interceptors.request.use(
   (config) => {
       const token = localStorage.getItem('authToken');
-      const accessToken = JSON.parse(token);
 
       // If token is present, add it to request's Authorization Header
       if (accessToken) {
-          if (config.headers) config.headers.token = accessToken;
+          if (config.headers) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
       }
       return config;
   },
   (error) => {
+      console.error('ERROR ON AXIOS INTERCEPTOR:',error)
       // Handle request errors here
       return Promise.reject(error);
   }

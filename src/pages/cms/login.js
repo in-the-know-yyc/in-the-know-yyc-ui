@@ -48,7 +48,7 @@ export default function LogIn() {
             }
         } catch (error) {
             console.error('LOGIN ERROR:', error);
-            toast.error('There was an error during login. Please try again later.');
+            toast.error(error.response.data.error);
         }
     }
 

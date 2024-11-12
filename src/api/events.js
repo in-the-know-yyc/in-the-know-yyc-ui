@@ -23,7 +23,7 @@ export async function getFilteredEvents(filters = null) {
 
 
   try {
-    const response = await axios.get(`${api_endpoint}/events`, { params });
+    const response = await axiosInstance.get(`${api_endpoint}/events`, { params });
     return {params: {...params, page:params.page+1}, data: response.data};
   } catch (error) {
     console.error('Error fetching events:', error);
