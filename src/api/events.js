@@ -1,4 +1,4 @@
-//import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '../utils/axiosInstance';
 import axios from 'axios';
 import moment from "moment/moment";
 
@@ -75,7 +75,7 @@ export async function getNextEvents() { // LATEST EVENTS | HOME
 export async function switchEventStatus(id, status){
   try {
     const s = (status === 'approved') ? 'approve' : 'reject';
-    const response = await axios.patch(`${api_endpoint}/events/${id}/${s}`);
+    const response = await axiosInstance.patch(`${api_endpoint}/events/${id}/${s}`);
     return {type: 'success', response};
   } catch (error) {
     console.error('Error switching events status:', error);
@@ -84,7 +84,7 @@ export async function switchEventStatus(id, status){
 }
 export async function deleteEvent(id){
   try {
-    const response = await axios.delete(`${api_endpoint}/events/${id}`);
+    const response = await axiosInstance.delete(`${api_endpoint}/events/${id}`);
     return {type: 'success', response};
   } catch (error) {
     console.error('Error switching events status:', error);
