@@ -6,7 +6,7 @@ import { Input } from "@nextui-org/input";
 import { Checkbox } from "@nextui-org/checkbox";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from 'next/router';
 
 import "../../app/styles/cms/signInUp.css";
@@ -18,11 +18,6 @@ export default function LogIn() {
     const [isVisible, setIsVisible] = useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
 
-
-    useEffect(() => {
-        const storedToken = localStorage.getItem('authToken');
-        setToken(storedToken);
-    }, []);
 
 
 
@@ -46,7 +41,6 @@ export default function LogIn() {
 
             if (response.data.token) {
                 localStorage.setItem('authToken', response.data.token);
-                setToken(response.data.token); // Update state for token persistence
                 toast.success('Login successful!');
                 router.push('/cms'); // Redirect to protected route
             } else {
