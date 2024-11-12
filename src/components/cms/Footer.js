@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export default function cmsHome() {
   const year = new Date().getFullYear();
-  const siteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || process.env.WEBSITE_URL;
+  //const siteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || process.env.WEBSITE_URL;
+  const siteUrl = 'http://intheknowyyc.ca';
   return (
 
 
