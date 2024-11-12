@@ -34,7 +34,7 @@ export async function getFilteredEvents(filters = null) {
 export async function getEventById(id = null) {
 
   try {
-    const response = await axios.get(`${api_endpoint}/events/${id}`);
+    const response = await axiosInstance.get(`${api_endpoint}/events/${id}`);
     return response.data;
   } catch (error) {
     console.error(`Error fetching event with id = ${id}:`, error);
