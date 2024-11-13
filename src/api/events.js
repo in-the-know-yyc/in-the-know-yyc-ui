@@ -4,14 +4,14 @@ import moment from "moment/moment";
 
 const api_endpoint = process.env.API_ENDPOINT || process.env.NEXT_PUBLIC_API_ENDPOINT;
 
-export async function getFilteredEvents(filters = null) {
+const buildParams = (filters) => {
   //NOTE: filters: searchText | startDate | eventType (industry)
 
   // PARAMS NOTE: 
   //    SSR uses different params to keep the URL user-friendly. 
   //    CSR uses the API required params to maintain the state variables
 
-  const params = {
+  return ({
     searchText: (filters && filters.search) ? filters.search : (filters && filters.searchText) ? filters.searchText : '',
     startDate: (filters && filters.date) ? moment(filters.date).format('YYYY-MM-DDTHH:mm:ss') : (filters && filters.startDate) ? moment(filters.startDate).format('YYYY-MM-DDTHH:mm:ss') : '',
     eventType: (filters && filters.industry) ? filters.industry : '',
@@ -19,11 +19,15 @@ export async function getFilteredEvents(filters = null) {
     sortField: 'eventDate',
     sortDirection: 'asc',
     size: (filters && filters.size) ? filters.size : 2,
-  }
+  });
+}
 
+export async function getFilteredEvents(filters = null) {
+ 
+  const params = buildParams(filters);
 
   try {
-    const response = await axiosInstance.get(`${api_endpoint}/events`, { params });
+    const response = await axios.get(`${api_endpoint}/events`, { params });
     return {params: {...params, page:params.page+1}, data: response.data};
   } catch (error) {
     console.error('Error fetching events:', error);
@@ -34,7 +38,7 @@ export async function getFilteredEvents(filters = null) {
 export async function getEventById(id = null) {
 
   try {
-    const response = await axiosInstance.get(`${api_endpoint}/events/${id}`);
+    const response = await axios.get(`${api_endpoint}/events/${id}`);
     return response.data;
   } catch (error) {
     console.error(`Error fetching event with id = ${id}:`, error);
@@ -71,6 +75,19 @@ export async function getNextEvents() { // LATEST EVENTS | HOME
 /* - - - - - - - - - - - - - - - - - - - - - - - */
 /* - - - - - - - EVENTS CRUD (API) - - - - - - - */
 /* - - - - - - - - - - - - - - - - - - - - - - - */
+
+export async function getAllEvents(filters = null) {
+
+  const params = buildParams(filters);
+
+  try {
+    const response = await axiosInstance.get(`${api_endpoint}/events`, { params });
+    return {params: {...params, page:params.page+1}, data: response.data};
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return null;
+  }
+}
 
 export async function switchEventStatus(id, status){
   try {

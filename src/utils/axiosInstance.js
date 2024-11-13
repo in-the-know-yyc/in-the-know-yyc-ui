@@ -9,7 +9,7 @@ AxiosInstance.interceptors.request.use(
       const token = localStorage.getItem('authToken');
 
       // If token is present, add it to request's Authorization Header
-      if (accessToken) {
+      if (token) {
           if (config.headers) {
             config.headers.Authorization = `Bearer ${token}`;
           }
