@@ -136,7 +136,7 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
             </ModalBody>
             <ModalFooter>
                 {CancelButton}
-                {(type === 'new') ? <Button color="primary">Create event</Button> : '' }
+                {(type === 'new') ? <Button color="primary" onPress={() => {handleFormSubmit(type, evt, onClose)}}>Create event</Button> : '' }
                 {(type === 'edit') ? <Button color="warning" onPress={() => {handleFormSubmit(type, evt, onClose)}}>Save changes</Button> : ''}
             </ModalFooter>
             </>
