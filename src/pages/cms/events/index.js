@@ -169,6 +169,11 @@ export default function AllEvents({ eventsList, searchParams }) {
   return (
     <main>
       <ToastContainer />
+      <Tooltip color='primary' content='Create an event'>
+        <Button onPress={() => {handleModal('new')}} color='primary' className='rounded-full w-16 h-16 fixed bottom-14 right-14'>
+          <Image src={'/images/icons/add-white.svg'} width={50} height={50} alt='Create new event' />
+        </Button>
+      </Tooltip>
       <InfiniteScroll
         dataLength={events.length}
         next={fetchMoreEvents}
