@@ -107,12 +107,11 @@ export async function updateEvent(event){
 
   const id = event.id;
   const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
-  const formattedDate = date.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
   const e = {
     organizationName: event.organizationName,
     eventName: event.eventName,
     eventDescription: event.eventDescription,
-    eventDate: formattedDate,
+    eventDate: date.toISOString(),
     freeEvent: event.freeEvent,
     eventCost: event.eventCost,
     eventLink: event.eventLink,
@@ -137,12 +136,11 @@ export async function updateEvent(event){
 export async function createEvent(event){
   
   const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
-  const formattedDate = date.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
   const e = {
     organizationName: event.organizationName,
     eventName: event.eventName,
     eventDescription: event.eventDescription,
-    eventDate: formattedDate,
+    eventDate: date.toISOString(),
     freeEvent: event.freeEvent,
     eventCost: event.eventCost,
     eventLink: event.eventLink,
