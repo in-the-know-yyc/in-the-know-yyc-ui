@@ -5,7 +5,7 @@ import moment from "moment/moment";
 
 
 // API
-import { switchEventStatus, deleteEvent } from '../../../api/events';
+import { switchEventStatus, deleteEvent, updateEvent, createEvent } from '../../../api/events';
 
 // HOOKS
 import { getFilteredEvents } from '../../../api/events';
@@ -27,7 +27,7 @@ import { Modal, ModalContent, useDisclosure } from "@nextui-org/modal";
 import ModalEventsContent from '../../../components/cms/ModalEventsContent';
 
 export default function AllEvents({ eventsList, searchParams }) {
-  console.log('RENDERS INDEX')
+  
   // EVENTS FETCHING
   const [events, setEvents] = useState(eventsList);
   const [params, setParams] = useState(searchParams);
@@ -52,7 +52,6 @@ export default function AllEvents({ eventsList, searchParams }) {
     if (moreEventsAvailable) {
       try {
         const newEvents = await getFilteredEvents(params);
-        console.log('NEW EVENTS:', newEvents)
 
         // Filter out duplicates based on unique IDs
         const uniqueNewEvents = newEvents.data.content.filter(
@@ -116,7 +115,7 @@ export default function AllEvents({ eventsList, searchParams }) {
       // If the event is found, set the new status: [ pending | approved | rejected ]
       const newStatus = (updatedEvents[index].status === 'pending') ? 'approved' : 'pending';
       const changeStatus = await switchEventStatus(eventId, newStatus);
-      console.log('EVENT STATUS CHANGE:', changeStatus)
+      
       if (changeStatus.type === 'success') {
         updatedEvents[index].status = newStatus;
         setEvents(updatedEvents);
@@ -127,11 +126,9 @@ export default function AllEvents({ eventsList, searchParams }) {
       }
     }
   };
-
-
   const handleEventDeletion = async (eventId, onClose) => {
     const eventDeleted = await deleteEvent(eventId);
-    console.log('EVENT DELETED:', eventDeleted);
+    
     if (eventDeleted.type === 'success') {
       const updatedEvents = events.filter(event => event.id !== eventId);
       setEvents(updatedEvents)
@@ -140,6 +137,33 @@ export default function AllEvents({ eventsList, searchParams }) {
       toast.error('There was an error removing the event. Please, try again later.', { theme: 'colored' });
     }
     onClose();
+  }
+  const handleFormSubmit = async (type, evt, onClose) => {
+    console.log(' - - - - - - - ');
+    console.log('TYPE:',type);
+    console.log('DATA FOR SAVING:',evt);
+    console.log(' - - - - - - - ');
+
+    const response = (type === 'edit') ? await updateEvent(evt) : await createEvent(evt);
+
+    switch(response.type){
+      case 'success':
+        const successMesage = (type === 'edit') ? "updated" : "created"
+        toast.success(`The event was ${successMesage} successfully`, { theme: 'colored' });
+        break;
+      case 'error':
+        const errorMesage = (type === 'edit') ? "updating" : "creating"
+        toast.error(`There was an error ${errorMesage} the event. Pleas try again later.`, { theme: 'colored' });
+        break;
+      default:
+        toast.error(`There was an unexpected error. Pleas try again later.`, { theme: 'colored' });
+    }
+
+    onClose();
+
+    console.log('RESPONSE CRUD:', response)
+
+    
   }
 
   return (
@@ -221,7 +245,7 @@ export default function AllEvents({ eventsList, searchParams }) {
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop='blur'>
         <ModalContent>
           {(onClose) => (
-            <ModalEventsContent type={modalType} event={modalEvent} onClose={onClose} handleEventDeletion={handleEventDeletion} />
+            <ModalEventsContent type={modalType} event={modalEvent} onClose={onClose} handleEventDeletion={handleEventDeletion} handleFormSubmit={handleFormSubmit} />
           )}
         </ModalContent>
       </Modal>

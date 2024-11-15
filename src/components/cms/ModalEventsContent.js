@@ -15,42 +15,11 @@ import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
 import { Input } from "@nextui-org/input";
 
-// API
-import { updateEvent, createEvent } from '../../api/events';
 
-export default function ModalEventsContent({ type, event = null, onClose, handleEventDeletion }) {
-    console.log('RENDERS MODAL COMPLETO')
-    console.log(event)
-
+export default function ModalEventsContent({ type, event = null, onClose, handleEventDeletion, handleFormSubmit }) {
     const modalColor = (type === 'edit') ? 'warning' : (type === 'delete') ? 'danger' : 'primary';
     const headerText = (type === 'edit') ? 'Edit event' : (type === 'delete') ? 'Sure you want to delete this event?' : 'New event';
     const CancelButton = <Button color='default' onPress={onClose}>Cancel</Button>;
-
-    // EVENT STATE
-    //const [selectedEvent, setSelectedEvent] = React.useState(event);
-
-    
-
-
-
-
-    // FORM HANDLER
-    const handleSubmit = async (evt) => {
-        console.log(' - - - - - - - ');
-        console.log('TYPE:',type);
-        console.log(' - - - - - - - ');
-        console.log('DATA FOR SAVING:',evt);
-        console.log(' - - - - - - - ');
-        console.log(' - - - - - - - ');
-        console.log(' - - - - - - - ');
-
-        const response = (type === 'edit') ? await updateEvent(evt) : await createEvent(evt);
-
-        console.log('RESPONSE CRUD:', response)
-
-
-
-    }
 
     // MODAL CONTENT - DELETE
     const BodyDelete = ({ event }) => {
@@ -105,7 +74,7 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
 
     // MODAL CONTENT - FORM CREATE / EDIT
     const BodyForm = ({ event }) => {
-        console.log('RENDERS BODY FORM')
+        
         // SELECTED EVENT
         const [evt, setEvt] = React.useState((event !== null ) ? {...event} : {
             eventId: 0,
@@ -122,12 +91,12 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
             eventType: '',
             speakers: [{name: 'speaker name', company: 'speaker company'}]
         });
-        console.log('SELECTED EVENT:',evt)
+        
 
         return (
             <>
             <ModalBody>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleFormSubmit}>
                     <Input label="Organization/host" value={evt.organizationName} onChange={(e) => {setEvt({...evt, organizationName: e.target.value})}} isRequired className="max-w-xs" />
                     <Input label="Event Name" value={evt.eventName} onChange={(e) => {setEvt({...evt, eventName: e.target.value})}} className="max-w-xs" isRequired />
                     <Input label="Description" value={evt.eventDescription} onChange={(e) => {setEvt({...evt, eventDescription: e.target.value})}} isRequired className="max-w-xs" />
@@ -168,7 +137,7 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
             <ModalFooter>
                 {CancelButton}
                 {(type === 'new') ? <Button color="primary">Create event</Button> : '' }
-                {(type === 'edit') ? <Button color="warning" onPress={() => {handleSubmit(evt)}}>Save changes</Button> : ''}
+                {(type === 'edit') ? <Button color="warning" onPress={() => {handleFormSubmit(type, evt, onClose)}}>Save changes</Button> : ''}
             </ModalFooter>
             </>
         )
