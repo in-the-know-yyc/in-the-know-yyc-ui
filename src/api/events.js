@@ -99,12 +99,77 @@ export async function switchEventStatus(id, status){
     return {type: 'error', error}
   }
 }
+
+
+export async function updateEvent(event){
+
+  
+
+  const id = event.id;
+  const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
+  const formattedDate = date.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+  const e = {
+    organizationName: event.organizationName,
+    eventName: event.eventName,
+    eventDescription: event.eventDescription,
+    eventDate: formattedDate,
+    freeEvent: event.freeEvent,
+    eventCost: event.eventCost,
+    eventLink: event.eventLink,
+    eventType: event.eventType,
+    location: event.location,
+    industry: event.industry,
+    speakers: event.speakers,
+    eventImage: event.eventImage
+  }
+
+  console.log('UPDATE EVENT API:', e)
+
+  try {
+    const response = await axiosInstance.put(`${api_endpoint}/events/${id}`, e);
+    return {type: 'success', response};
+  } catch (error) {
+    console.error('Error updating event:', error);
+    return {type: 'error', error}
+  }
+}
+
+export async function createEvent(event){
+  
+  const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
+  const formattedDate = date.format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+  const e = {
+    organizationName: event.organizationName,
+    eventName: event.eventName,
+    eventDescription: event.eventDescription,
+    eventDate: formattedDate,
+    freeEvent: event.freeEvent,
+    eventCost: event.eventCost,
+    eventLink: event.eventLink,
+    eventType: event.eventType,
+    location: event.location,
+    industry: event.industry,
+    speakers: event.speakers,
+    eventImage: event.eventImage
+  }
+
+  console.log('CREATE EVENT API:', e);
+
+  try {
+    const response = await axiosInstance.post(`${api_endpoint}/events`, e);
+    return {type: 'success', response};
+  } catch (error) {
+    console.error('Error deleting event:', error);
+    return {type: 'error', error}
+  }
+}
+
 export async function deleteEvent(id){
   try {
     const response = await axiosInstance.delete(`${api_endpoint}/events/${id}`);
     return {type: 'success', response};
   } catch (error) {
-    console.error('Error switching events status:', error);
+    console.error('Error deleting event:', error);
     return {type: 'error', error}
   }
 }

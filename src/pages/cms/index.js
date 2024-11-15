@@ -1,10 +1,43 @@
-export default function App() {
+import { useState, useCallback, memo } from 'react';
+import { Input } from "@nextui-org/input";
+import { Button } from "@nextui-org/button";
+
+
+const App = () => {
+
+  console.log('RENDEREA!!!!!!!!!')
+
+  const [frmOrganizationName, setFrmOrganizationName] = useState('');
+  const handleSubmit = () => {
+      console.log(' - - - - - - - ');
+      console.log('DATA FOR SAVING:');
+      console.log('organization', frmOrganizationName);
+      console.log(' - - - - - - - ');
+      console.log(' - - - - - - - ');
+
+
+  }
+
+  const handleChange = useCallback((e) => {
+    setFrmOrganizationName(e.target.value);
+  }, []);
+
+
+
   return (
-    <>INDEX</>
+    <>
+      INDEX
+    
+      {/* <Input label="Organization/host" defaultValue={''} value={frmOrganizationName} onValueChange={setFrmOrganizationName} isRequired className="max-w-xs" /> */}
+      <Input label="Organization/host" value={frmOrganizationName} onChange={handleChange} />
+      <Button onPress={handleSubmit}>try!</Button>
+      
+      
+    </>
   );
 }
 
-
+export default memo(App)
 
 
 // import React from "react";

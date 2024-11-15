@@ -1,7 +1,8 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import moment from "moment/moment";
+
 
 // API
 import { switchEventStatus, deleteEvent } from '../../../api/events';
@@ -26,17 +27,19 @@ import { Modal, ModalContent, useDisclosure } from "@nextui-org/modal";
 import ModalEventsContent from '../../../components/cms/ModalEventsContent';
 
 export default function AllEvents({ eventsList, searchParams }) {
+  console.log('RENDERS INDEX')
   // EVENTS FETCHING
   const [events, setEvents] = useState(eventsList);
   const [params, setParams] = useState(searchParams);
   const [moreEventsAvailable, setMoreEventsAvailable] = useState(true);
 
   // CHECK IF EVENTS IS EMPTY TO RUN THE FIRST CALL
-  useEffect(() => {
-    if (!events || events.length === 0) {
-      fetchMoreEvents();
-    }
-  });
+  /* ******* ARREGLAR! tira error por mucho rendering. Falta el dependency array... ******* */
+  // useEffect(() => {
+  //   if (!events || events.length === 0) {
+  //     fetchMoreEvents();
+  //   }
+  // });
 
 
   // CSR RENDERING (ALL THE EVENTS ON INFINITE SCROLL)
@@ -215,7 +218,6 @@ export default function AllEvents({ eventsList, searchParams }) {
           ))}
         </Accordion>
       </InfiniteScroll>
-
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop='blur'>
         <ModalContent>
           {(onClose) => (
