@@ -87,8 +87,8 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
             freeEvent: true,
             eventCost: 0,
             eventImage: '',
-            industry: '',
-            eventType: '',
+            industry: 'Tech',
+            eventType: 'Meetup',
             speakers: [{name: 'speaker name', company: 'speaker company'}]
         });
         

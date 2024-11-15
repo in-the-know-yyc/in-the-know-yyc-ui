@@ -157,7 +157,7 @@ export async function createEvent(event){
     const response = await axiosInstance.post(`${api_endpoint}/events`, e);
     return {type: 'success', response};
   } catch (error) {
-    console.error('Error deleting event:', error);
+    console.error('Error creating event:', error);
     return {type: 'error', error}
   }
 }
