@@ -15,7 +15,7 @@ export default function Home({ latestEvents }) {
       <LatestEvents latestEvents={latestEvents} />
       <Comments />
       <Community />
-      <Sponsors />
+      {/* <Sponsors /> */}
     </>
   );
 }
