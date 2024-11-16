@@ -18,7 +18,9 @@ const CardVertical = ({content}) => {
     <Link href={`/events/${content.id}`} className="cardVerticalContainer">
       <article className="cardVertical">
         {/* IMAGE | REQUIRED */}
-        <Image src={image} width={390} height={228} alt={content.eventName} />
+        <div className="imageContainer">
+          <Image src={image} width={390} height={228} alt={content.eventName} />
+        </div>
 
         {/* TITLE | REQUIRED*/}
         <h3>{content.eventName}</h3>
