@@ -37,7 +37,7 @@ const CardVertical = ({content}) => {
 
           {/* SPEAKER | OPTIONAL */}
           {content.speakers && content.speakers.length > 0 && (
-            <li className="speaker">Speaker: {content.speakers.map(speaker => speaker.name+' | ')}</li>
+            <li className="speaker">Speaker: {content.speakers.map(speaker => <span className="speakerItem">{speaker.name}</span>)}</li>
           )}
 
           <li className="line-break"></li>
@@ -49,7 +49,7 @@ const CardVertical = ({content}) => {
           <li></li>
 
           {/* PRICE | REQUIRED */}
-          <li className="price">{(content.freeEvent) ? 'Free' : content.eventCost}</li>
+          <li className="price">{(content.freeEvent) ? 'Free' : `$ ${content.eventCost.toFixed(2)}`}</li>
         </ul>
       </article>
     </Link>
