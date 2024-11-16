@@ -5,7 +5,8 @@ import "../app/styles/globals.css";
 import CmsLayout from '../layouts/cmsLayout'
 import PublicLayout from '../layouts/publicLayout'
 
-
+// GOOGLE ANALITYCS
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 
 const montserrat = localFont({
@@ -37,6 +38,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         // PUBLIC WEBSITE
         <PublicLayout>
           <Component {...pageProps} />
+          <GoogleAnalytics gaId="G-HXHLMMJC5E" />
         </PublicLayout>
       )}
 
