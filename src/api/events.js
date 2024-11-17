@@ -106,7 +106,7 @@ export async function updateEvent(event){
   
 
   const id = event.id;
-  const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
+  const date = moment.utc(`${event.eventDate}T${event.eventTime}`);
   const e = {
     organizationName: event.organizationName,
     eventName: event.eventName,
@@ -135,7 +135,7 @@ export async function updateEvent(event){
 
 export async function createEvent(event){
   
-  const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
+  const date = moment.utc(`${event.eventDate}T${event.eventTime}`);
   const e = {
     organizationName: event.organizationName,
     eventName: event.eventName,

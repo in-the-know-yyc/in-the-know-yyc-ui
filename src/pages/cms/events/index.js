@@ -143,32 +143,50 @@ export default function AllEvents({ eventsList, searchParams }) {
     }
     onClose();
   }
+  const eventFormValidation = (evt) => {
+    if(
+        evt.organizationName === '' || 
+        evt.eventName === '' || 
+        evt.eventDescription === '' || 
+        (!evt.freeEvent && evt.eventCost <= 0) || 
+        evt.eventLink === '' || 
+        evt.eventType === '' || 
+        evt.location === '' || 
+        evt.industry === '' || 
+        evt.eventImage === ''
+      ){
+      toast.error('You are missing required fields.', { theme: 'colored' })
+      return false;
+    };
+
+    return true;
+  }
   const handleFormSubmit = async (type, evt, onClose) => {
     console.log(' - - - - - - - ');
     console.log('TYPE:',type);
     console.log('DATA FOR SAVING:',evt);
     console.log(' - - - - - - - ');
 
-    const response = (type === 'edit') ? await updateEvent(evt) : await createEvent(evt);
+    if(eventFormValidation(evt)){
+      const response = (type === 'edit') ? await updateEvent(evt) : await createEvent(evt);
 
-    switch(response.type){
-      case 'success':
-        const successMesage = (type === 'edit') ? "updated" : "created"
-        toast.success(`The event was ${successMesage} successfully`, { theme: 'colored' });
-        break;
-      case 'error':
-        const errorMesage = (type === 'edit') ? "updating" : "creating"
-        toast.error(`There was an error ${errorMesage} the event. Pleas try again later.`, { theme: 'colored' });
-        break;
-      default:
-        toast.error(`There was an unexpected error. Pleas try again later.`, { theme: 'colored' });
+      switch(response.type){
+        case 'success':
+          const successMesage = (type === 'edit') ? "updated" : "created"
+          toast.success(`The event was ${successMesage} successfully`, { theme: 'colored' });
+          break;
+        case 'error':
+          const errorMesage = (type === 'edit') ? "updating" : "creating"
+          toast.error(`There was an error ${errorMesage} the event. Pleas try again later.`, { theme: 'colored' });
+          break;
+        default:
+          toast.error(`There was an unexpected error. Pleas try again later.`, { theme: 'colored' });
+      }
+
+      onClose();
+
+      console.log('RESPONSE CRUD:', response)
     }
-
-    onClose();
-
-    console.log('RESPONSE CRUD:', response)
-
-    
   }
 
   return (
