@@ -5,7 +5,7 @@ import moment from "moment/moment";
 
 
 // API
-import { switchEventStatus, deleteEvent, updateEvent, createEvent } from '../../../api/events';
+import { switchEventStatus, deleteEvent, updateEvent, createEvent, uploadImage } from '../../../api/events';
 
 // HOOKS
 import { getFilteredEvents } from '../../../api/events';
@@ -143,6 +143,19 @@ export default function AllEvents({ eventsList, searchParams }) {
     }
     onClose();
   }
+  const uploadEventImage = async (currentLink) => {
+    const imageFiles = document.getElementById('inputImageFile').files;
+    if(imageFiles.length > 0){
+      const formData = new FormData();
+      formData.append('file', imageFiles[0])
+      const uploadedImage = await uploadImage(formData); // Sending FormData for file uploading
+      if(uploadedImage.type === 'success' && uploadedImage.link !== ''){
+        return uploadedImage.link
+      }else{
+        return currentLink;
+      }
+    }
+  }
   const eventFormValidation = (evt) => {
     if(
         evt.organizationName === '' || 
@@ -162,31 +175,36 @@ export default function AllEvents({ eventsList, searchParams }) {
     return true;
   }
   const handleFormSubmit = async (type, evt, onClose) => {
-    console.log(' - - - - - - - ');
-    console.log('TYPE:',type);
-    console.log('DATA FOR SAVING:',evt);
-    console.log(' - - - - - - - ');
 
-    if(eventFormValidation(evt)){
-      const response = (type === 'edit') ? await updateEvent(evt) : await createEvent(evt);
+    // IMAGE UPLOAD IF SELECTED IN INPUT
+    const eventImage = await uploadEventImage(evt.eventImage);
+    evt = {...evt, eventImage: eventImage}
 
-      switch(response.type){
-        case 'success':
-          const successMesage = (type === 'edit') ? "updated" : "created"
-          toast.success(`The event was ${successMesage} successfully`, { theme: 'colored' });
-          break;
-        case 'error':
-          const errorMesage = (type === 'edit') ? "updating" : "creating"
-          toast.error(`There was an error ${errorMesage} the event. Pleas try again later.`, { theme: 'colored' });
-          break;
-        default:
-          toast.error(`There was an unexpected error. Pleas try again later.`, { theme: 'colored' });
-      }
+    // FORM VALIDATION
+    if(!eventFormValidation(evt)){ return; }
 
-      onClose();
 
-      console.log('RESPONSE CRUD:', response)
+    // EVENT UPDATE | CREATION
+    const response = (type === 'edit') ? await updateEvent(evt) : await createEvent(evt);
+
+    // MESSAGES
+    switch(response.type){
+      case 'success':
+        const successMesage = (type === 'edit') ? "updated" : "created"
+        toast.success(`The event was ${successMesage} successfully`, { theme: 'colored' });
+        break;
+      case 'error':
+        const errorMesage = (type === 'edit') ? "updating" : "creating"
+        toast.error(`There was an error ${errorMesage} the event. Pleas try again later.`, { theme: 'colored' });
+        break;
+      default:
+        toast.error(`There was an unexpected error. Pleas try again later.`, { theme: 'colored' });
     }
+
+    // CLOSE MODAL
+    onClose();
+
+    console.log('RESPONSE CRUD:', response)
   }
 
   return (

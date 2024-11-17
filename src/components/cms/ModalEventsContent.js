@@ -157,6 +157,7 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
                         className="max-w-md mb-4" />
                     <Input label="Image" type="file"
                         defaultValue={''} 
+                        id="inputImageFile"
                         onChange={(e) => {setEvt({...evt, eventImage: e.target.value})}} 
                         isRequired 
                         isInvalid={(validateForm && evt.eventImage === '')} 

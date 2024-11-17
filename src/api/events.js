@@ -162,6 +162,17 @@ export async function createEvent(event){
   }
 }
 
+export async function uploadImage(formData){
+  console.log('IMAGE EN API: ', formData.get('file'))
+  try {
+    const response = await axiosInstance.post(`${api_endpoint}/files/upload`, formData,{headers: {'Content-Type': 'multipart/form-data',}});
+    return {type: 'success', link: `${api_endpoint}/files/download/${response}`};
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    return {type: 'error', error: error}
+  }
+}
+
 export async function deleteEvent(id){
   try {
     const response = await axiosInstance.delete(`${api_endpoint}/events/${id}`);
