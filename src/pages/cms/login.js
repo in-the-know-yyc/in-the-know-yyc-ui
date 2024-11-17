@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +25,7 @@ export default function LogIn() {
 
         e.preventDefault();
 
-        console.log('entra...')
+        console.log('Login...')
 
         const user = e.target.userEmail.value;
         const pass = e.target.userPassword.value;

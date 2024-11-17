@@ -11,7 +11,7 @@ export default function CmsLayout({ children }) {
     return (
         <Providers>
             <div id="cmsLayout">
-                {!currentPage.startsWith('/cms/login') ? <Header /> : <Header /> }
+                {!currentPage.startsWith('/cms/login') ? <Header /> : '' }
                 {children}
                 {!currentPage.startsWith('/cms/login') ? <Footer /> : '' }
             </div>
