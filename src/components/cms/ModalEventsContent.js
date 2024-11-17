@@ -1,5 +1,5 @@
 import React from "react";
-import { now, getLocalTimeZone } from "@internationalized/date";
+import { now, Time, getLocalTimeZone } from "@internationalized/date";
 import {
     Dropdown,
     DropdownTrigger,
@@ -14,7 +14,8 @@ import { Button } from "@nextui-org/button";
 import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
 import { Input } from "@nextui-org/input";
-
+import { Textarea } from "@nextui-org/input";
+import { TimeInput } from "@nextui-org/date-input";
 
 export default function ModalEventsContent({ type, event = null, onClose, handleEventDeletion, handleFormSubmit }) {
     const modalColor = (type === 'edit') ? 'warning' : (type === 'delete') ? 'danger' : 'primary';
@@ -87,8 +88,8 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
             freeEvent: true,
             eventCost: 0,
             eventImage: '',
-            industry: 'Tech',
-            eventType: 'Meetup',
+            industry: '',
+            eventType: '',
             speakers: [{name: 'speaker name', company: 'speaker company'}]
         });
         
@@ -96,19 +97,62 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
         return (
             <>
             <ModalBody>
-                <form onSubmit={handleFormSubmit}>
-                    <Input label="Organization/host" value={evt.organizationName} onChange={(e) => {setEvt({...evt, organizationName: e.target.value})}} isRequired className="max-w-xs" />
-                    <Input label="Event Name" value={evt.eventName} onChange={(e) => {setEvt({...evt, eventName: e.target.value})}} className="max-w-xs" isRequired />
-                    <Input label="Description" value={evt.eventDescription} onChange={(e) => {setEvt({...evt, eventDescription: e.target.value})}} isRequired className="max-w-xs" />
-                    <Input label="Link" value={evt.eventLink} onChange={(e) => {setEvt({...evt, eventLink: e.target.value})}} isRequired className="max-w-xs" />
-                    <Input label="Location" value={evt.location} onChange={(e) => {setEvt({...evt, location: e.target.value})}} isRequired className="max-w-xs" />
-                    <Input label="Image" value={evt.eventImage} onChange={(e) => {setEvt({...evt, eventImage: e.target.value})}} isRequired className="max-w-xs" />
-                    <DatePicker label="Date"  onChange={(date) => {setEvt({...evt, eventDate: `${date.year}-${date.month}-${date.day}`})}} showMonthAndYearPickers hideTimeZone />
+                <form onSubmit={handleFormSubmit} className="flex flex-wrap justify-between items-center">
+                    <Input 
+                        label="Organization/host" 
+                        value={evt.organizationName} 
+                        onChange={(e) => {setEvt({...evt, organizationName: e.target.value})}} 
+                        isRequired 
+                        className="max-w-md mb-4" />
+                    <Input 
+                        label="Event Name" 
+                        value={evt.eventName} 
+                        onChange={(e) => {setEvt({...evt, eventName: e.target.value})}} 
+                        className="max-w-md mb-4" 
+                        isRequired />
+                    <DatePicker 
+                        label="Date"  
+                        onChange={(date) => {setEvt({...evt, eventDate: `${date.year}-${date.month}-${date.day}`})}} 
+                        className="max-w-md mb-4" 
+                        showMonthAndYearPickers 
+                        hideTimeZone />
+                    <TimeInput 
+                        label="Time" 
+                        className="max-w-md mb-4" 
+                        defaultValue={new Time(11, 45)} />
+                    <Input 
+                        label="Location" 
+                        value={evt.location} 
+                        onChange={(e) => {setEvt({...evt, location: e.target.value})}} 
+                        isRequired 
+                        className="max-w-md mb-4" />
+                    <Input 
+                        label="Image" 
+                        type="file"
+                        defaultValue={''} 
+                        onChange={(e) => {setEvt({...evt, eventImage: e.target.value})}} 
+                        isRequired 
+                        accept="image/*" 
+                        className="max-w-md mb-4" />
+                    <Input 
+                        label="Link" 
+                        value={evt.eventLink} 
+                        onChange={(e) => {setEvt({...evt, eventLink: e.target.value})}} 
+                        isRequired 
+                        className="w-60 mb-4" />
+
                     <Dropdown>
                         <DropdownTrigger>
-                            <Button variant="bordered" className="capitalize">{evt.industry}</Button>
+                            <Button variant="faded" className="capitalize w-60 mb-4">
+                                {(evt.industry === '') ? 'Select industry' : `Industry: ${evt.industry}`}
+                            </Button>
                         </DropdownTrigger>
-                        <DropdownMenu aria-label="Industry" selectionMode="single" selectedKeys={[evt.industry]} onSelectionChange={(e)=>{setEvt({...evt, industry: e.currentKey})}}>
+                        <DropdownMenu 
+                            aria-label="Industry" 
+                            selectionMode="single" 
+                            selectedKeys={[evt.industry]} 
+                            onSelectionChange={(e)=>{setEvt({...evt, industry: e.currentKey})}}
+                        >
                             <DropdownItem key="Tech">Tech</DropdownItem>
                             <DropdownItem key="Energy">Energy</DropdownItem>
                             <DropdownItem key="Business">Business</DropdownItem>
@@ -118,7 +162,9 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
                     </Dropdown>
                     <Dropdown>
                         <DropdownTrigger>
-                            <Button variant="bordered" className="capitalize">{evt.eventType}</Button>
+                            <Button variant="faded" className="capitalize w-60 mb-4">
+                                {(evt.eventType === '') ? 'Select type' : `type: ${evt.eventType}`}
+                            </Button>
                         </DropdownTrigger>
                         <DropdownMenu aria-label="Type" selectionMode="single" selectedKeys={[evt.eventType]} onSelectionChange={(e)=>{setEvt({...evt, eventType: e.currentKey})}}>
                             <DropdownItem key="Meetup">Meetup</DropdownItem>
@@ -130,8 +176,28 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
                             <DropdownItem key="Specialization">Specialization</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
-                    <Switch isSelected={evt.freeEvent} onChange={(e) => {setEvt({...evt, freeEvent: e.target.checked})}}>Is free event</Switch>
-                    {(!evt.freeEvent) && <Input label="eventCost" value={evt.eventCost} onChange={(e) => {setEvt({...evt, eventCost: e.target.value})}} className="max-w-xs" />} 
+                    <Textarea 
+                        label="Description" 
+                        value={evt.eventDescription} 
+                        onChange={(e) => {setEvt({...evt, eventDescription: e.target.value})}} 
+                        isRequired 
+                        className="w-full mb-4" />
+                    <Switch 
+                        isSelected={evt.freeEvent} 
+                        onChange={(e) => {setEvt({...evt, freeEvent: e.target.checked})}}
+                    >
+                        Is free event
+                    </Switch>
+                    {
+                        (!evt.freeEvent) ? 
+                        <Input 
+                            label="eventCost" 
+                            value={evt.eventCost} 
+                            key={'eventCost_'}
+                            onChange={(e) => {setEvt({...evt, eventCost: e.target.value})}} 
+                            className="max-w-xs mb-4" />
+                        : ''
+                    } 
                 </form>
             </ModalBody>
             <ModalFooter>

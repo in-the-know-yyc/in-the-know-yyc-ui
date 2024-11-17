@@ -33,6 +33,9 @@ export default function AllEvents({ eventsList, searchParams }) {
   const [params, setParams] = useState(searchParams);
   const [moreEventsAvailable, setMoreEventsAvailable] = useState(true);
 
+  // MODAL SIZE
+  
+
   // CHECK IF EVENTS IS EMPTY TO RUN THE FIRST CALL
   /* ******* ARREGLAR! tira error por mucho rendering. Falta el dependency array... ******* */
   // useEffect(() => {
@@ -71,12 +74,14 @@ export default function AllEvents({ eventsList, searchParams }) {
 
 
   // MODAL
+  const [modalSize, setModalSize] = useState('5xl');
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [modalType, setModalType] = useState('new');
   const [modalEvent, setModalEvent] = useState();
   const handleModal = (type, ev) => {
     setModalType(type);
     setModalEvent(ev);
+    setModalSize((type === 'delete') ? 'sm' : '5xl');
     onOpen();
   }
 
@@ -247,7 +252,8 @@ export default function AllEvents({ eventsList, searchParams }) {
           ))}
         </Accordion>
       </InfiniteScroll>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop='blur'>
+
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop='blur' size={modalSize}>
         <ModalContent>
           {(onClose) => (
             <ModalEventsContent type={modalType} event={modalEvent} onClose={onClose} handleEventDeletion={handleEventDeletion} handleFormSubmit={handleFormSubmit} />
