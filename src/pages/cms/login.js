@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 import { useRouter } from 'next/router';
+import { login, getUserByToken } from "../../api/users";
 
 import "../../app/styles/cms/signInUp.css";
 
@@ -35,20 +36,26 @@ export default function LogIn() {
             return;
         }
 
-        try {
-            const response = await axios.post('/api/cms/login', { email: user, password: pass });
-            console.log('RESPONSE:', response);
+        // Validate credentials and create authToken in localStorage
+        const loginStatus = await login(user, pass);
 
-            if (response.data.token) {
-                localStorage.setItem('authToken', response.data.token);
-                toast.success('Login successful!');
-                router.push('/cms'); // Redirect to protected route
-            } else {
-                toast.error('Invalid credentials. Please try again.');
-            }
-        } catch (error) {
-            console.error('LOGIN ERROR:', error);
-            toast.error(error.response.data.error);
+        if(loginStatus.type === 'error'){ 
+            toast.error(loginStatus.message); 
+            return;
+        }
+        if(loginStatus.type === 'success'){ 
+            toast.success(loginStatus.message); 
+            validateUserPermissions();
+        }
+    }
+
+    const validateUserPermissions = () => {
+        console.log('entra user permissions');
+        const fetchUserInformation = getUserByToken();
+        if(fetchUserInformation){
+            router.push('/cms');
+        }else{
+            toast.error('There was an error fetching your data. Please try again later.');
         }
     }
 
