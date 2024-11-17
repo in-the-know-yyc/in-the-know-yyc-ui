@@ -39,7 +39,7 @@ const CardVertical = ({content}) => {
 
           {/* SPEAKER | OPTIONAL */}
           {content.speakers && content.speakers.length > 0 && (
-            <li className="speaker">Speaker: {content.speakers.map(speaker => <span className="speakerItem">{speaker.name}</span>)}</li>
+            <li className="speaker">Speaker: {content.speakers.map((speaker, index) => <span className="speakerItem" key={`speaker_item_${content.id}_${index}`}>{speaker.name}</span>)}</li>
           )}
 
           <li className="line-break"></li>

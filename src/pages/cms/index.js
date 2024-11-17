@@ -5,8 +5,6 @@ import { Button } from "@nextui-org/button";
 
 const App = () => {
 
-  console.log('RENDEREA!!!!!!!!!')
-
   const [frmOrganizationName, setFrmOrganizationName] = useState('');
   const handleSubmit = () => {
       console.log(' - - - - - - - ');

@@ -6,8 +6,6 @@ import Image from "next/image";
 const CardHorizontal = ({ content }) => {
   
   const dateTime = moment(content.eventDate)
-  // const eventImage = content.eventImage || '/images/events/evt2.png';
-  const eventImage = '/images/events/evt2.png';
 
   function isValidImageUrl(image) {
     const regex = /^(https?:\/\/)/;
