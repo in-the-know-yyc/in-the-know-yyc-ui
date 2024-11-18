@@ -27,10 +27,10 @@ export const getUserByToken = async () => {
     const user = await axiosInstance.get(`${api_endpoint}/users/email/${userEmail}`);
     console.log('USER:', user)
     if (user) {
-      localStorage.setItem('userId', user.id);
-      localStorage.setItem('userEmail', user.email);
-      localStorage.setItem('userName', user.fullName);
-      localStorage.setItem('userRole', user.role);
+      localStorage.setItem('userId', user.data.id);
+      localStorage.setItem('userEmail', user.data.email);
+      localStorage.setItem('userName', user.data.fullName);
+      localStorage.setItem('userRole', user.data.role);
       return true
     } else {
       return false;
