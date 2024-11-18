@@ -5,10 +5,8 @@ import moment from "moment/moment";
 
 
 // API
-import { switchEventStatus, deleteEvent, updateEvent, createEvent, uploadImage } from '../../../api/events';
+import { getAllEvents, switchEventStatus, deleteEvent, updateEvent, createEvent, uploadImage } from '../../../api/events';
 
-// HOOKS
-import { getFilteredEvents } from '../../../api/events';
 
 // NextUI Components
 import { Chip } from "@nextui-org/chip";
