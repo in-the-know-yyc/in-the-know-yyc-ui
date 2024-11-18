@@ -166,6 +166,7 @@ export async function uploadImage(formData){
   console.log('IMAGE EN API: ', formData.get('file'))
   try {
     const response = await axiosInstance.post(`${api_endpoint}/files/upload`, formData,{headers: {'Content-Type': 'multipart/form-data',}});
+    console.log('IMAGE UPLOAD RESPONSE:', response)
     return {type: 'success', link: `${api_endpoint}/files/download/${response}`};
   } catch (error) {
     console.error('Error uploading image:', error);

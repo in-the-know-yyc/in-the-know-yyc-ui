@@ -178,6 +178,7 @@ export default function AllEvents({ eventsList, searchParams }) {
 
     // IMAGE UPLOAD IF SELECTED IN INPUT
     const eventImage = await uploadEventImage(evt.eventImage);
+    console.log('EVENT IMAGE INDEX SAVE: ',eventImage)
     evt = {...evt, eventImage: eventImage}
 
     // FORM VALIDATION

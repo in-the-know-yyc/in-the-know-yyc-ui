@@ -93,7 +93,7 @@ export default function ModalEventsContent({ type, event = null, onClose, handle
             eventLink: '',
             location: '',
             freeEvent: true,
-            eventCost: '',
+            eventCost: 0,
             eventImage: '',
             industry: '',
             eventType: '',
