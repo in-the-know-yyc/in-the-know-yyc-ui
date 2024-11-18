@@ -18,7 +18,9 @@ const CardVertical = ({content}) => {
     <Link href={`/events/${content.id}`} className="cardVerticalContainer">
       <article className="cardVertical">
         {/* IMAGE | REQUIRED */}
-        <Image src={image} width={390} height={228} alt={content.eventName} />
+        <div className="imageContainer">
+          <Image src={image} width={390} height={228} alt={content.eventName} />
+        </div>
 
         {/* TITLE | REQUIRED*/}
         <h3>{content.eventName}</h3>
@@ -37,7 +39,7 @@ const CardVertical = ({content}) => {
 
           {/* SPEAKER | OPTIONAL */}
           {content.speakers && content.speakers.length > 0 && (
-            <li className="speaker">Speaker: {content.speakers.map(speaker => speaker.name+' | ')}</li>
+            <li className="speaker">Speaker: {content.speakers.map((speaker, index) => <span className="speakerItem" key={`speaker_item_${content.id}_${index}`}>{speaker.name}</span>)}</li>
           )}
 
           <li className="line-break"></li>
@@ -49,7 +51,7 @@ const CardVertical = ({content}) => {
           <li></li>
 
           {/* PRICE | REQUIRED */}
-          <li className="price">{(content.freeEvent) ? 'Free' : content.eventCost}</li>
+          <li className="price">{(content.freeEvent) ? 'Free' : `$ ${content.eventCost.toFixed(2)}`}</li>
         </ul>
       </article>
     </Link>

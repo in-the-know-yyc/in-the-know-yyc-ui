@@ -5,7 +5,7 @@ import moment from "moment/moment";
 
 
 // API
-import { switchEventStatus, deleteEvent, updateEvent, createEvent } from '../../../api/events';
+import { switchEventStatus, deleteEvent, updateEvent, createEvent, uploadImage } from '../../../api/events';
 
 // HOOKS
 import { getFilteredEvents } from '../../../api/events';
@@ -32,6 +32,9 @@ export default function AllEvents({ eventsList, searchParams }) {
   const [events, setEvents] = useState(eventsList);
   const [params, setParams] = useState(searchParams);
   const [moreEventsAvailable, setMoreEventsAvailable] = useState(true);
+
+  // MODAL SIZE
+  
 
   // CHECK IF EVENTS IS EMPTY TO RUN THE FIRST CALL
   /* ******* ARREGLAR! tira error por mucho rendering. Falta el dependency array... ******* */
@@ -71,12 +74,14 @@ export default function AllEvents({ eventsList, searchParams }) {
 
 
   // MODAL
+  const [modalSize, setModalSize] = useState('5xl');
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [modalType, setModalType] = useState('new');
   const [modalEvent, setModalEvent] = useState();
   const handleModal = (type, ev) => {
     setModalType(type);
     setModalEvent(ev);
+    setModalSize((type === 'delete') ? 'sm' : '5xl');
     onOpen();
   }
 
@@ -138,14 +143,51 @@ export default function AllEvents({ eventsList, searchParams }) {
     }
     onClose();
   }
-  const handleFormSubmit = async (type, evt, onClose) => {
-    console.log(' - - - - - - - ');
-    console.log('TYPE:',type);
-    console.log('DATA FOR SAVING:',evt);
-    console.log(' - - - - - - - ');
+  const uploadEventImage = async (currentLink) => {
+    const imageFiles = document.getElementById('inputImageFile').files;
+    if(imageFiles.length > 0){
+      const formData = new FormData();
+      formData.append('file', imageFiles[0])
+      const uploadedImage = await uploadImage(formData); // Sending FormData for file uploading
+      if(uploadedImage.type === 'success' && uploadedImage.link !== ''){
+        return uploadedImage.link
+      }else{
+        return currentLink;
+      }
+    }
+  }
+  const eventFormValidation = (evt) => {
+    if(
+        evt.organizationName === '' || 
+        evt.eventName === '' || 
+        evt.eventDescription === '' || 
+        (!evt.freeEvent && evt.eventCost <= 0) || 
+        evt.eventLink === '' || 
+        evt.eventType === '' || 
+        evt.location === '' || 
+        evt.industry === '' || 
+        evt.eventImage === ''
+      ){
+      toast.error('You are missing required fields.', { theme: 'colored' })
+      return false;
+    };
 
+    return true;
+  }
+  const handleFormSubmit = async (type, evt, onClose) => {
+
+    // IMAGE UPLOAD IF SELECTED IN INPUT
+    const eventImage = await uploadEventImage(evt.eventImage);
+    evt = {...evt, eventImage: eventImage}
+
+    // FORM VALIDATION
+    if(!eventFormValidation(evt)){ return; }
+
+
+    // EVENT UPDATE | CREATION
     const response = (type === 'edit') ? await updateEvent(evt) : await createEvent(evt);
 
+    // MESSAGES
     switch(response.type){
       case 'success':
         const successMesage = (type === 'edit') ? "updated" : "created"
@@ -159,11 +201,10 @@ export default function AllEvents({ eventsList, searchParams }) {
         toast.error(`There was an unexpected error. Pleas try again later.`, { theme: 'colored' });
     }
 
+    // CLOSE MODAL
     onClose();
 
     console.log('RESPONSE CRUD:', response)
-
-    
   }
 
   return (
@@ -197,7 +238,7 @@ export default function AllEvents({ eventsList, searchParams }) {
                 {/* EVENT INFORMATION TABS: IMAGE | DESCRIPTION | DETAILS */}
                 <Tabs aria-label="Options" variant='light'>
                   <Tab key="image" title='Images' className={(!ev.eventImage) ? 'bg-warning-100' : ''}>
-                    {(!ev.eventImage) ? ' - No image -' : <Image src={'/images/events/evt2.png'} width={'805'} height={'664'} alt='' />}
+                    {(!ev.eventImage) ? ' - No image -' : <Image src={`${process.env.NEXT_PUBLIC_API_ENDPOINT}/files/download/${ev.eventImage}`} width={'805'} height={'664'} alt='' />}
                   </Tab>
                   <Tab key="description" title="Description" className={(!ev.eventDescription) ? 'bg-warning-100' : ''} >
                     {(!ev.eventDescription) ? ' - No description -' : ev.eventDescription}
@@ -247,7 +288,8 @@ export default function AllEvents({ eventsList, searchParams }) {
           ))}
         </Accordion>
       </InfiniteScroll>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop='blur'>
+
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop='blur' size={modalSize}>
         <ModalContent>
           {(onClose) => (
             <ModalEventsContent type={modalType} event={modalEvent} onClose={onClose} handleEventDeletion={handleEventDeletion} handleFormSubmit={handleFormSubmit} />

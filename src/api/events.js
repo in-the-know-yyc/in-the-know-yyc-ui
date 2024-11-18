@@ -106,7 +106,7 @@ export async function updateEvent(event){
   
 
   const id = event.id;
-  const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
+  const date = moment.utc(`${event.eventDate}T${event.eventTime}`);
   const e = {
     organizationName: event.organizationName,
     eventName: event.eventName,
@@ -135,7 +135,7 @@ export async function updateEvent(event){
 
 export async function createEvent(event){
   
-  const date = moment(event.eventDate, 'YYYY-MM-DDTHH:mm:ss');
+  const date = moment.utc(`${event.eventDate}T${event.eventTime}`);
   const e = {
     organizationName: event.organizationName,
     eventName: event.eventName,
@@ -159,6 +159,17 @@ export async function createEvent(event){
   } catch (error) {
     console.error('Error creating event:', error);
     return {type: 'error', error}
+  }
+}
+
+export async function uploadImage(formData){
+  console.log('IMAGE EN API: ', formData.get('file'))
+  try {
+    const response = await axiosInstance.post(`${api_endpoint}/files/upload`, formData,{headers: {'Content-Type': 'multipart/form-data',}});
+    return {type: 'success', link: `${api_endpoint}/files/download/${response}`};
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    return {type: 'error', error: error}
   }
 }
 
