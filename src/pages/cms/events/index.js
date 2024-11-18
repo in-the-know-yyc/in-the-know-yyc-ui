@@ -54,7 +54,7 @@ export default function AllEvents({ eventsList, searchParams }) {
 
     if (moreEventsAvailable) {
       try {
-        const newEvents = await getFilteredEvents(params);
+        const newEvents = await getAllEvents(params);
 
         // Filter out duplicates based on unique IDs
         const uniqueNewEvents = newEvents.data.content.filter(
