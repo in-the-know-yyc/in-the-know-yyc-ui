@@ -236,7 +236,7 @@ export default function AllEvents({ eventsList, searchParams }) {
                 {/* EVENT INFORMATION TABS: IMAGE | DESCRIPTION | DETAILS */}
                 <Tabs aria-label="Options" variant='light'>
                   <Tab key="image" title='Images' className={(!ev.eventImage) ? 'bg-warning-100' : ''}>
-                    {(!ev.eventImage) ? ' - No image -' : <Image src={`${process.env.NEXT_PUBLIC_API_ENDPOINT}/files/download/${ev.eventImage}`} width={'805'} height={'664'} alt='' />}
+                    {(!ev.eventImage) ? ' - No image -' : <Image src={ev.eventImage} width={'805'} height={'664'} alt='' />}
                   </Tab>
                   <Tab key="description" title="Description" className={(!ev.eventDescription) ? 'bg-warning-100' : ''} >
                     {(!ev.eventDescription) ? ' - No description -' : ev.eventDescription}
