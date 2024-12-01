@@ -47,7 +47,7 @@ const CardHorizontal = ({ content }) => {
             <label>{content.location}</label>
 
             {/* ENTRANCE | REQUIRED */}
-            <span>{content.freeEvent ? 'General' : '$'+content.cost}</span>
+            <span>{content.freeEvent ? 'General' : `$ ${content.eventCost.toFixed(2)}`}</span>
           </div>
 
         </div>

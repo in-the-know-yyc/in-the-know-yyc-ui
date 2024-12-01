@@ -52,7 +52,7 @@ export default function EventInfo({ eventInformation }) {
                 <label className="time">{dateTime.format('h:mm a z')}</label>
                 <label className="location">{eventInformation.location}</label>
 
-                <label className="admission"><b>Admission:</b> {(eventInformation.freeEvent) ? 'Free' : eventInformation.eventCost}</label>
+                <label className="admission"><b>Admission:</b> {(eventInformation.freeEvent) ? 'Free' : `$ ${eventInformation.eventCost.toFixed(2)}`}</label>
 
                 <Link className="attend" href={eventInformation.eventLink || '#'} target="_blank"> Attend </Link>
 
