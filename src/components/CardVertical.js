@@ -1,25 +1,21 @@
-import Image from "next/image";
 import Link from "next/link";
-import validator from "validator";
 import moment from 'moment';
 import "../app/styles/components/cardVertical.css";
+import isValidImageUrl from "../utils/isValidImage";
 
 const CardVertical = ({content}) => {
 
   // NEEDS DEFINITION FOR IMAGE FULL PATH!
-  //const image = (validator.isURL(content.eventImage)) ? content.eventImage : '/images/events/evt1.png';
-  const imagePath = (content && typeof content.eventImage === 'string') ? `/images/events/${content.eventImage}` : '/images/events/evt1.png';
-  const image = (validator.isURL(imagePath)) ? imagePath : '/images/events/evt1.png';
+  const image = isValidImageUrl(content.eventImage);
   
-
   const date = moment(content.eventDate).format('MMM DD, YYYY');
 
   return (
     <Link href={`/events/${content.id}`} className="cardVerticalContainer">
       <article className="cardVertical">
         {/* IMAGE | REQUIRED */}
-        <div className="imageContainer">
-          <Image src={image} width={390} height={228} alt={content.eventName} />
+        <div className="imageContainer" style={{backgroundImage: `url(${image})`}}>
+          {/* <Image src={image} width={390} height={228} alt={content.eventName} /> */}
         </div>
 
         {/* TITLE | REQUIRED*/}
