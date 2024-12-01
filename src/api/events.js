@@ -17,7 +17,7 @@ const buildParams = (filters) => {
     eventType: (filters && filters.industry) ? filters.industry : '',
     page: (filters && filters.page) ? filters.page : 0,
     sortField: 'eventDate',
-    sortDirection: 'asc',
+    sortDirection: 'desc',
     size: (filters && filters.size) ? filters.size : 2,
   });
 }

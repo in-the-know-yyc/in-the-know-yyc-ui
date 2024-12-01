@@ -1,12 +1,15 @@
 div#publicLayout div#events-horizontal-container {
     width: 100%;
-    padding: 30px 7dvw;
+    padding: 0 7dvw;
 }
 
 div#publicLayout div#events-horizontal-container div.infinite-scroll-component {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding:30px;
+    width: calc(100% + 60px);
+    margin-left: -30px;
 }
 
 

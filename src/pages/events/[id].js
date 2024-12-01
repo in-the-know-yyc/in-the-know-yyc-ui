@@ -4,60 +4,68 @@ import "../../app/styles/components/eventInfo.css";
 import { getEventById } from '../../api/events';
 import moment from "moment/moment";
 import EventMap from "./map";
+import isValidImageUrl from "../../utils/isValidImage";
+
+// SEO: Pages metadata
+import pagesMetaData from "../../utils/pagesMetaData";
+import PagesMetaData from "../../components/PagesMetaData";
 
 
-export default function EventInfo({ eventInformation }) {
+export default function EventInfo({ eventInformation, metadata }) {
+    const eventImage = isValidImageUrl(eventInformation.eventImage)
     const dateTime = moment(eventInformation.eventDate);
-    
-    //const image = (validator.isURL(eventInformation.eventImage)) ? eventInformation.eventImage : '/images/events/evt2.png';
-    const eventImage = '/images/events/evt2.png';
+
+    // const eventImage = '/images/events/evt2.png';
 
     return (
-        <section className="eventInformation">
-            <div className="row-1">
-                <Link href={'/events'}>
-                    <Image src={'/images/icons/back-arrow.svg'} width={'15'} height={'15'} alt='' />
-                </Link>
-                <h1>{eventInformation.eventName}</h1>
-            </div>
-            <div className="row-2">
-                <Image src={eventImage} width={'805'} height={'664'} alt={eventInformation.eventName || ''} />
-                <EventMap location={eventInformation.location} />
-            </div>
-            <div className="row-3">
-                <h2>About Event</h2>
+        <>
+            <PagesMetaData metadata={metadata} />
+            <section className="eventInformation">
+                <div className="row-1">
+                    <Link href={'/events'}>
+                        <Image src={'/images/icons/back-arrow.svg'} width={'15'} height={'15'} alt='' />
+                    </Link>
+                    <h1>{eventInformation.eventName}</h1>
+                </div>
+                <div className="row-2">
+                    <Image src={eventImage} width={'805'} height={'664'} alt={eventInformation.eventName || ''} />
+                    <EventMap location={eventInformation.location} />
+                </div>
+                <div className="row-3">
+                    <h2>About Event</h2>
 
-                <h3>Event Host/Facilitator</h3>
-                <p>{eventInformation.organizationName}</p>
+                    <h3>Event Host/Facilitator</h3>
+                    <p>{eventInformation.organizationName}</p>
 
-                <h3>Event Description</h3>
-                <p>{eventInformation.eventDescription}</p>
+                    <h3>Event Description</h3>
+                    <p>{eventInformation.eventDescription}</p>
 
-                <ul>
-                    <li>
-                        <h3>Event Type</h3>
-                        <p>{eventInformation.eventType}</p>
-                    </li>
-                    <li>
-                        <h3>Industry</h3>
-                        <p>{eventInformation.industry}</p>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>
+                            <h3>Event Type</h3>
+                            <p>{eventInformation.eventType}</p>
+                        </li>
+                        <li>
+                            <h3>Industry</h3>
+                            <p>{eventInformation.industry}</p>
+                        </li>
+                    </ul>
 
-                {(eventInformation.speakers && typeof eventInformation.speakers === 'array') ? eventInformation.speakers.map((speaker, index) => {
-                    return <label className="speaker" key={`speaker_${index}`}>{speaker}</label>
-                }) : ''}
-                <label className="date">{dateTime.format('MMMM D, YYYY')}</label>
-                <label className="time">{dateTime.format('h:mm a z')}</label>
-                <label className="location">{eventInformation.location}</label>
+                    {(eventInformation.speakers && typeof eventInformation.speakers === 'array') ? eventInformation.speakers.map((speaker, index) => {
+                        return <label className="speaker" key={`speaker_${index}`}>{speaker}</label>
+                    }) : ''}
+                    <label className="date">{dateTime.format('MMMM D, YYYY')}</label>
+                    <label className="time">{dateTime.format('h:mm a z')}</label>
+                    <label className="location">{eventInformation.location}</label>
 
-                <label className="admission"><b>Admission:</b> {(eventInformation.freeEvent) ? 'Free' : eventInformation.eventCost}</label>
+                    <label className="admission"><b>Admission:</b> {(eventInformation.freeEvent) ? 'Free' : `$ ${eventInformation.eventCost.toFixed(2)}`}</label>
 
-                <Link className="attend" href={eventInformation.eventLink || '#'} target="_blank"> Attend </Link>
+                    <Link className="attend" href={eventInformation.eventLink || '#'} target="_blank"> Attend </Link>
 
 
-            </div>
-        </section>
+                </div>
+            </section>
+        </>
     );
 }
 
@@ -66,5 +74,14 @@ export async function getServerSideProps(context) {
 
     const eventInformation = await getEventById(id);
 
-    return {props: {id, eventInformation} };
+    const eventMetaData = {
+        id: id,
+        title: eventInformation.eventName,
+        description: eventInformation.eventDescription,
+        image: eventInformation.eventImage,
+    }
+
+    const metadata = await pagesMetaData('event', eventMetaData)
+
+    return { props: { id, eventInformation, metadata } };
 }

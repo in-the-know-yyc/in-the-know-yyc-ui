@@ -1,14 +1,79 @@
 import "../app/styles/components/textPages.css";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function About() {
+// SEO: Pages metadata
+import pagesMetaData from "../utils/pagesMetaData";
+import PagesMetaData from "../components/PagesMetaData";
+
+export default function About({ metadata }) {
     return (
-        <main className="textPage">
-            <h1>About Us</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquam tincidunt lacus, facilisis pellentesque lectus volutpat id. Cras at odio sit amet nisi facilisis finibus lobortis id orci. Integer urna nulla, ultricies sed tortor et, fermentum facilisis ex. Donec rhoncus commodo sem, non mattis libero pellentesque a. Praesent feugiat tortor libero, eget viverra neque dictum quis. Suspendisse cursus massa non dolor lobortis dignissim. Etiam at dolor quis sapien placerat laoreet. Nulla facilisi. Suspendisse id aliquam metus. Vivamus aliquam felis non nulla pretium molestie. Donec ac ante eget ex imperdiet feugiat. Ut sed dolor lacinia, convallis lectus ut, euismod sem. Suspendisse porttitor purus hendrerit, fermentum leo non, tincidunt erat. Curabitur eget nunc purus. Integer at ex sapien. Integer et urna augue.</p>
-              <p>Ut enim ex, ullamcorper ullamcorper eros a, pulvinar rutrum urna. Etiam molestie libero a dolor tempus, non elementum massa gravida. Ut eget dapibus arcu, ac convallis justo. Vestibulum pretium enim arcu. Quisque sodales tellus lectus, in eleifend sapien vehicula ut. Integer dictum turpis tempus odio tincidunt, vel facilisis dui faucibus. Sed erat diam, tincidunt sed odio aliquet, lacinia commodo enim. Suspendisse mollis arcu bibendum facilisis pretium. Pellentesque egestas pellentesque semper. Nulla metus mauris, aliquet in erat non, tincidunt aliquet augue. Aenean convallis, sem eget tempor ullamcorper, elit libero faucibus nunc, vel sagittis quam ipsum porttitor augue. Nunc eu lectus sed tortor venenatis molestie ut non elit. Sed lacinia massa in velit imperdiet efficitur. Aliquam in cursus justo. Duis semper nisl a consectetur dapibus. Curabitur ultricies urna a porttitor dignissim.</p>
-              <p>Nullam nibh ex, tincidunt finibus iaculis eget, semper quis metus. Quisque fringilla ligula ante, eu interdum libero volutpat vitae. Donec ut tincidunt lectus, sed mollis tortor. Proin enim elit, tempus et eros in, volutpat tristique mi. Duis malesuada et tortor in sollicitudin. Nam fermentum, dolor quis dictum rutrum, elit ipsum porttitor metus, at pretium leo lacus vitae ipsum. In malesuada dui nec neque finibus rutrum.</p>
-              <p>Suspendisse hendrerit at quam in mollis. Aenean laoreet fermentum posuere. Donec sollicitudin quis mauris vel varius. Integer molestie posuere pulvinar. Aliquam hendrerit, sapien in egestas pretium, felis purus interdum orci, vitae rhoncus tortor sapien eu elit. Vestibulum vel nulla ut dui feugiat consectetur quis vel felis. Phasellus et tortor eu erat pulvinar tristique. Quisque id blandit lorem, sed elementum augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras vitae ultrices risus, dictum venenatis nulla. Fusce tempor magna bibendum nisi auctor, nec mollis nisi feugiat. Ut tempor enim sagittis, varius odio in, scelerisque diam.</p>
-              <p>Maecenas pellentesque ex at ex rhoncus, eget gravida lorem tempor. Curabitur feugiat ultricies tellus volutpat feugiat. Morbi ac elit in tortor convallis venenatis. Curabitur nisl massa, suscipit sit amet mattis non, convallis ac elit. Suspendisse ultricies vel felis non volutpat. Phasellus rhoncus mattis pellentesque. Donec arcu neque, dictum pharetra justo vel, sagittis mollis dui. Donec posuere porta tellus, id pellentesque justo lacinia id. Nulla consequat ipsum sed lorem volutpat imperdiet. Nunc placerat massa vitae dictum suscipit.</p>
-        </main>
+        <>
+            <PagesMetaData metadata={metadata} />
+            <main className="textPage">
+                <h1>About Us</h1>
+                
+                <h2>Every event starts with a post/information from us</h2>
+                <p>At In the Know YYC, we&apos;re on a mission to help attend more events, connect with people, grow their businesses, and get back to what&apos;s important to them - by creating the most powerful platform for attending events in Alberta.</p>
+                
+                <h2>Our Story</h2>
+                <p>
+                    <Image src={'/images/about/debbie-butt-small.png'} width={206} height={212} alt="Debbie Butt" />
+                </p>
+                <p>Meet Debbie, a woman with a unique blend of expertise in accounting, a long career in the oil and gas industry, and an undeniable passion for events. Born and raised in Alberta, Debbie developed an early interest in the province&apos;s thriving energy sector and went on to earn a degree in Accounting from the University of Calgary. This academic background helped him land his first job as a financial analyst at a major oil company, where he learned the intricacies of balancing books, managing finances, and ensuring profitability in one of the world&apos;s most competitive industries.</p>
+                <p>However, there was another side to Debbie&apos;s-her  deep love for community events and social gatherings. Whether it was attending Tech events, Calgary Stampede, local food festivals, or business conferences, she thrived on the energy of Alberta&apos;s vibrant event scene. Over the years, as her career in oil and gas advanced, she never lost sight of this passion. She began posting organizing and attending more events, both professional and recreational, and noticed a common problem: finding information on events in Alberta was scattered and unreliable.</p>
+                <p>Inspired by her frustration, Debbie decided to combine her financial acumen with her love for events. She founded In the Know YYC Events Hub, a comprehensive website dedicated to listing, promoting, and organizing events across Alberta. From Tech, to music festivals to oil industry expos, the site became the go-to platform for residents and visitors to find out what was happening in the province. With her meticulous attention to detail, rooted in his accounting background, Debbie ensured that her site was user-friendly, well-organized, and a valuable resource for event planners and attendees alike.</p>
+                <p>Today, Debbie splits her time between her career in oil and gas and running In the Know YYC Events Hub. She takes pride in connecting people, bringing communities together, and making it easier for others to enjoy the same events that sparked her own passion. For Debbie, it&apos;s more than just a business-it&apos;s about celebrating the culture and energy of Alberta, whether it&apos;s in the oil fields, Tech events or at a weekend festival.</p>
+
+                <h2>Our Vision</h2>
+                <p>Our vision is to become Alberta&apos;s leading event platform, where residents and visitors alike can effortlessly discover events that inspire, educate, and entertain. We aim to be the cornerstone of Alberta&apos;s event ecosystem, enhancing the province&apos;s sense of community and creating lasting memories for all who participate.</p>
+
+                <h2>Our Mission</h2>
+                <p>Our mission at In the Know YYC Events Hub is to connect communities across Alberta by providing a comprehensive, user-friendly platform for discovering and promoting local events. We strive to make it easy for event organizers and attendees to engage with Alberta&apos;s vibrant cultural, social, and business scenes, fostering stronger connections through shared experiences.</p>
+
+                <h2>Our Team</h2>
+                <p>At In the Know YYC, we&apos;re on a mission to help attend more events, connect with people, grow their businesses, and get back to what&apos;s important to them - by creating the most powerful platform for attending events in Alberta.</p>
+                <div className="aboutImagesContainer">
+                    <div className="aboutImagesColumn">
+                        <Link href={'https://www.linkedin.com/in/debbie-butt/'} target="_blank">
+                            <Image src={'/images/about/debbie-butt.png'} width={364} height={622} alt="Debbie Butt" />
+                        </Link>
+                        <Link href={'https://www.linkedin.com/in/abia-yitschaq/'} target="_blank">
+                            <Image src={'/images/about/abia-yitschaq.png'} width={364} height={622} alt="Yitschaq Abia" />
+                        </Link>
+                        <Link href={'https://www.linkedin.com/in/chukwuka-chukwuma-83b26a125/'} target="_blank">
+                            <Image src={'/images/about/chukwuka-chukwuma.png'} width={364} height={409} alt="Chukwuka Chukwuma" />
+                        </Link>
+                    </div>
+                    <div className="aboutImagesColumn">
+                        <Link href={'https://www.linkedin.com/in/nicolasfracchia/'} target="_blank">
+                            <Image src={'/images/about/nicolas-fracchia.png'} width={364} height={409} alt="Nicolas Fracchia" />
+                        </Link>
+                        <Link href={'https://www.linkedin.com/in/manisha-sakpal-499757138/'} target="_blank">
+                            <Image src={'/images/about/manisha-sakpal.png'} width={364} height={622} alt="Manisha Sakpal" />
+                        </Link>
+                        <Link href={'https://www.linkedin.com/in/taras-romaniuk-a20474144/'} target="_blank">
+                            <Image src={'/images/about/taras-romaniuk.png'} width={364} height={622} alt="Taras Romaniuk" />
+                        </Link>
+                    </div>
+                    <div className="aboutImagesColumn">
+                        <Link href={'https://www.linkedin.com/in/dmytro-masliuk/'} target="_blank">
+                            <Image src={'/images/about/dmytro-masliuk.png'} width={364} height={409} alt="Dmytro Masliuk" />
+                        </Link>
+                        <Link href={'https://www.linkedin.com/in/sergii-smagin/'} target="_blank">
+                            <Image src={'/images/about/sergii-smagin.png'} width={364} height={622} alt="Sergii Smagin" />
+                        </Link>
+                        <Link href={'https://www.linkedin.com/in/debbie-butt/'} target="_blank">
+                            <Image src={'/images/about/debbie-butt.png'} width={364} height={622} alt="Debbie Butt" />
+                        </Link>
+                    </div>
+                </div>
+            </main>
+        </>
     );
 };
+
+export async function getServerSideProps() {
+    const metadata = await pagesMetaData('about')
+    return { props: { metadata } };
+}

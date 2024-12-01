@@ -50,8 +50,10 @@ div#publicLayout section.eventInformation div.row-2{
     margin: 0 0 2.5rem 0;
 }
 div#publicLayout section.eventInformation div.row-2 img{
-    width: 59%;
+    width: auto;
     height: auto;
+    max-width: 59%;
+    max-height: 664px;
 }
 div#publicLayout section.eventInformation div.row-2 iframe{
     border:none;

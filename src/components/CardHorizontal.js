@@ -1,24 +1,18 @@
 import Link from "next/link";
 import "../app/styles/components/cardHorizontal.css";
 import moment from "moment/moment";
-import Image from "next/image";
+import isValidImageUrl from "../utils/isValidImage";
 
 const CardHorizontal = ({ content }) => {
-  
-  const dateTime = moment(content.eventDate)
 
-  function isValidImageUrl(image) {
-    const regex = /^(https?:\/\/)/;
-    return regex.test(image);
-  }
+  const image = isValidImageUrl(content.eventImage);
+  const dateTime = moment(content.eventDate)
   
   return (
     <Link href={`/events/${content.id}`} className="linkCardHorizontal">
       <article className="cardHorizontal">
         {/* IMAGE | REQUIRED */}
-        <div className="img">
-          {(isValidImageUrl(content.eventImage)) ? <Image src={content.eventImage} alt={content.eventName} width={445} height={241} /> : ''}
-        </div>
+        <div className="img" style={{backgroundImage: `url(${image})`}}></div>
 
         <div className="content">
           {/* DATE | REQUIRED*/}
@@ -34,10 +28,10 @@ const CardHorizontal = ({ content }) => {
 
           <ul>
             {/* HOST | OPTIONAL */}
-            {content.host && content.host !== '' && (
+            {content.organizationName && content.organizationName !== '' && (
               <li>
                 <label>Host/Facilitator:</label><br />
-                <p>{content.host}</p>
+                <p>{content.organizationName}</p>
               </li>
             )}
 
@@ -53,7 +47,7 @@ const CardHorizontal = ({ content }) => {
             <label>{content.location}</label>
 
             {/* ENTRANCE | REQUIRED */}
-            <span>{content.freeEvent ? 'General' : '$'+content.cost}</span>
+            <span>{content.freeEvent ? 'General' : `$ ${content.eventCost.toFixed(2)}`}</span>
           </div>
 
         </div>

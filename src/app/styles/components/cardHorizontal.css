@@ -36,18 +36,9 @@ div#publicLayout article.cardHorizontal div.img{
     position:relative;
     width:40%;
     z-index: 1;
-}
-div#publicLayout article.cardHorizontal div.img:before{
-    content: '';
-    position: absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    background: rgb(3,38,75);
-    background: linear-gradient(45deg, rgba(3,38,75,1) 0%, rgba(203,213,225,1) 49%, rgba(203,213,225,1) 51%, rgba(105,45,215,1) 100%);
-    border-radius: 50%;
-    z-index: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 div#publicLayout article.cardHorizontal div.img img{
     position: relative;

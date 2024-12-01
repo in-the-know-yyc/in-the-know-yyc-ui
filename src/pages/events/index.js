@@ -9,8 +9,12 @@ import "../../app/styles/pages/events.css";
 
 import { getFilteredEvents } from '../../api/events';
 
+// SEO: Pages metadata
+import pagesMetaData from "../../utils/pagesMetaData";
+import PagesMetaData from "../../components/PagesMetaData";
 
-export default function AllEvents({ eventsList, searchParams }) {
+
+export default function AllEvents({ eventsList, searchParams, metadata }) {
   const [events, setEvents] = useState(eventsList);
   const [params, setParams] = useState(searchParams);
   const [moreEventsAvailable, setMoreEventsAvailable] = useState(true);
@@ -35,6 +39,7 @@ export default function AllEvents({ eventsList, searchParams }) {
 
   return (
     <>
+      <PagesMetaData metadata={metadata} />
       <Banner />
       <EventsFilter filters={params} />
       <div id="events-horizontal-container">
@@ -56,8 +61,9 @@ export default function AllEvents({ eventsList, searchParams }) {
 
 // SSR RENDERING (ONLY FIRST BATCH OF EVENTS)
 export async function getServerSideProps(context) {
+  const metadata = await pagesMetaData('events')
   const events = await getFilteredEvents(context.query);
-  return { props: { eventsList: events.data.content, searchParams: events.params } };
+  return { props: { eventsList: events.data.content, searchParams: events.params, metadata } };
 }
 
 
