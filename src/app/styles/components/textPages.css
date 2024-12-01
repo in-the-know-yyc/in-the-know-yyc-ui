@@ -14,6 +14,7 @@ div#publicLayout .textPage h1{
     line-height: 2.5rem;
     color:#000000;
     margin-top:3.75rem;
+    text-align: center;
 }
 div#publicLayout .textPage h2{
     font-family: var(--font-montserrat);
@@ -22,6 +23,7 @@ div#publicLayout .textPage h2{
     line-height: 1.25rem;
     color:#000000;
     margin-top:2.5rem;
+    text-align: center;
 }
 div#publicLayout .textPage p{
     font-family: var(--font-montserrat);
@@ -30,6 +32,7 @@ div#publicLayout .textPage p{
     line-height: 1.25rem;
     color:#000000;
     margin-top:2rem;
+    text-align: center;
 }
 div#publicLayout .textPage ul{
     width: 100%;
@@ -47,6 +50,23 @@ div#publicLayout .textPage ul li{
     color:#000000;
 }
 
+div#publicLayout .textPage div.aboutImagesContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+}
+div#publicLayout .textPage div.aboutImagesContainer div.aboutImagesColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+div#publicLayout .textPage div.aboutImagesContainer div.aboutImagesColumn img{
+    width: 364px;
+    margin:14px;
+    height: auto;
+}
+
 
   /* MOBILE */
   @media only screen and (max-width: 800px) {
@@ -58,7 +78,7 @@ div#publicLayout .textPage ul li{
         font-size: 1.5rem;
         margin-top: 0;
     }
-    div#publicLayout .textPage p{
-        margin-top:0;
+    div#publicLayout .textPage div.aboutImagesContainer{
+        flex-direction: column;
     }
   }
