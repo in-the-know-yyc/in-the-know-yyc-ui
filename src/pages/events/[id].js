@@ -4,13 +4,14 @@ import "../../app/styles/components/eventInfo.css";
 import { getEventById } from '../../api/events';
 import moment from "moment/moment";
 import EventMap from "./map";
+import isValidImageUrl from "../../utils/isValidImage";
 
 
 export default function EventInfo({ eventInformation }) {
+    const eventImage = isValidImageUrl(eventInformation.eventImage)
     const dateTime = moment(eventInformation.eventDate);
     
-    //const image = (validator.isURL(eventInformation.eventImage)) ? eventInformation.eventImage : '/images/events/evt2.png';
-    const eventImage = '/images/events/evt2.png';
+    // const eventImage = '/images/events/evt2.png';
 
     return (
         <section className="eventInformation">
