@@ -15,10 +15,54 @@ export default function Contact() {
             <div className="contactContainer">
                 <div className="contactFormContainer">
                     <form action="#" method='post' id='contactForm'>
-                        <Input label="Email" labelPlacement={'outside'} placeholder="Enter your email" className="formInput" type="email" />
-                        <Input label="Address" labelPlacement={'outside'} placeholder="Enter your address" className="formInput" type="text" />
-                        <Input label="Phone" labelPlacement={'outside'} placeholder="Enter your phone number" className="formInput" type="phone" />
-                        <Input label="Social Media" labelPlacement={'outside'} placeholder="Enter your LinkedIn profile" className="formInput" type="text" />
+                        <Input 
+                            label="Email" 
+                            labelPlacement={'outside'} 
+                            placeholder="Enter your email" 
+                            className="formInput" 
+                            type="email" 
+                            classNames={{
+                                mainWrapper:"inputContact-mainWrapper",
+                                innerWrapper:"inputContact-innerWrapper",
+                                inputWrapper: "inputContact-inputWrapper"
+                            }} 
+                        />
+                        <Input 
+                            label="Address" 
+                            labelPlacement={'outside'} 
+                            placeholder="Enter your address" 
+                            className="formInput" 
+                            type="text" 
+                            classNames={{
+                                mainWrapper:"inputContact-mainWrapper",
+                                innerWrapper:"inputContact-innerWrapper",
+                                inputWrapper: "inputContact-inputWrapper"
+                            }} 
+                        />
+                        <Input 
+                            label="Phone" 
+                            labelPlacement={'outside'} 
+                            placeholder="Enter your phone number" 
+                            className="formInput" 
+                            type="phone" 
+                            classNames={{
+                                mainWrapper:"inputContact-mainWrapper",
+                                innerWrapper:"inputContact-innerWrapper",
+                                inputWrapper: "inputContact-inputWrapper"
+                            }} 
+                        />
+                        <Input 
+                            label="Social Media" 
+                            labelPlacement={'outside'} 
+                            placeholder="Enter your LinkedIn profile" 
+                            className="formInput" 
+                            type="text" 
+                            classNames={{
+                                mainWrapper:"inputContact-mainWrapper",
+                                innerWrapper:"inputContact-innerWrapper",
+                                inputWrapper: "inputContact-inputWrapper"
+                            }} 
+                        />
 
                         <button type="submit">Send</button>
                     </form>
